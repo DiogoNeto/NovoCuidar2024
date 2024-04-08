@@ -7,11 +7,8 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Utente")]
-        public int UtenteId { get; set; }
         [Required]
         public required string Nome { get; set;}
-        [Required]
-        public int NomeId { get; set;}
+
     }
 }

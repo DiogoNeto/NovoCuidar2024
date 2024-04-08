@@ -12,8 +12,8 @@ using NovoCuidar2024.Data;
 namespace NovoCuidar2024.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240325221719_remakeBD")]
-    partial class remakeBD
+    [Migration("20240403165149_UpdateDB")]
+    partial class UpdateDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -319,7 +319,7 @@ namespace NovoCuidar2024.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("NovoCuidar2024.Models.Subsistema", b =>
+            modelBuilder.Entity("NovoCuidar2024.Models.SubSistema", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -331,15 +331,9 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("NomeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UtenteId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Subsistema");
+                    b.ToTable("SubSistema");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.Colaborador", b =>
@@ -369,11 +363,13 @@ namespace NovoCuidar2024.Migrations
                     b.Property<int>("ResponsavelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubSistemaId")
+                    b.Property<int?>("SubSistemaId")
                         .HasColumnType("int");
 
                     b.Property<int>("TecnicoResponsavelId")
                         .HasColumnType("int");
+
+                    b.HasIndex("SubSistemaId");
 
                     b.ToTable("Pessoa", t =>
                         {
@@ -433,6 +429,15 @@ namespace NovoCuidar2024.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Utente", b =>
+                {
+                    b.HasOne("NovoCuidar2024.Models.SubSistema", "SubSistema")
+                        .WithMany()
+                        .HasForeignKey("SubSistemaId");
+
+                    b.Navigation("SubSistema");
                 });
 #pragma warning restore 612, 618
         }

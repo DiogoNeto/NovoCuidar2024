@@ -54,7 +54,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PessoaId,Tipo")] Colaborador colaborador)
+        public async Task<IActionResult> Create([Bind("Id,Tipo")] Colaborador colaborador)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PessoaId,Tipo")] Colaborador colaborador)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Tipo")] Colaborador colaborador)
         {
             if (id != colaborador.Id)
             {

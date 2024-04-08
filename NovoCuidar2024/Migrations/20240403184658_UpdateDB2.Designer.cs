@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NovoCuidar2024.Data;
 
@@ -11,9 +12,11 @@ using NovoCuidar2024.Data;
 namespace NovoCuidar2024.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240403184658_UpdateDB2")]
+    partial class UpdateDB2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,7 +225,7 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("NovoCuidar2024.Models.Colaborador", b =>
+            modelBuilder.Entity("NovoCuidar2024.Models.Pessoa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -251,6 +254,11 @@ namespace NovoCuidar2024.Migrations
 
                     b.Property<DateOnly>("DataNascimento")
                         .HasColumnType("date");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("varchar(13)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -302,13 +310,13 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Tipo")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Colaborador");
+                    b.ToTable("Pessoa");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Pessoa");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.SubSistema", b =>
@@ -333,98 +341,43 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("SubSistema");
                 });
 
-            modelBuilder.Entity("NovoCuidar2024.Models.Utente", b =>
+            modelBuilder.Entity("NovoCuidar2024.Models.Colaborador", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.HasBaseType("NovoCuidar2024.Models.Pessoa");
+
+                    b.Property<int>("PessoaId")
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasDiscriminator().HasValue("Colaborador");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Utente", b =>
+                {
+                    b.HasBaseType("NovoCuidar2024.Models.Pessoa");
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("CC")
+                    b.Property<int>("PessoaId")
                         .HasColumnType("int");
-
-                    b.Property<string>("CodPostal1")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("CodPostal2")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Concelho1")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Concelho2")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateOnly>("DataNascimento")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("EstadoCivil")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Genero")
-                        .IsRequired()
-                        .HasColumnType("varchar(1)");
-
-                    b.Property<string>("Localidade1")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Localidade2")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Morada1")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Morada2")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Nacionalidade")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("Nif")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NomeApelido")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NomePrincipal")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<int>("ResponsavelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SNS")
                         .HasColumnType("int");
 
                     b.Property<int>("TecnicoResponsavelId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.ToTable("Pessoa", t =>
+                        {
+                            t.Property("PessoaId")
+                                .HasColumnName("Utente_PessoaId");
+                        });
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Utente");
+                    b.HasDiscriminator().HasValue("Utente");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
