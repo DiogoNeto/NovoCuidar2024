@@ -22,8 +22,6 @@ namespace NovoCuidar2024.Controllers
         // GET: Utentes
         public async Task<IActionResult> Index()
         {
-            //var a = await _context.Pessoa.Select(x => x.Morada1 + x.CodPostal1 + x.NomePrincipal + x.NomeApelido).ToListAsync();
-
             return View(await _context.Utente.ToListAsync());
         }
 
@@ -48,6 +46,7 @@ namespace NovoCuidar2024.Controllers
         // GET: Utentes/Create
         public IActionResult Create()
         {
+            ViewBag.Data = _context.SubSistema;
             return View();
         }
 
@@ -56,7 +55,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PessoaId,ResponsavelId,Ativo,TecnicoResponsavelId")] Utente utente)
+        public async Task<IActionResult> Create([Bind("Id,ResponsavelId,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil, Ativo,TecnicoResponsavelId")] Utente utente)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +87,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PessoaId,ResponsavelId,Ativo,TecnicoResponsavelId")] Utente utente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ResponsavelId,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil, Ativo,TecnicoResponsavelId")] Utente utente)
         {
             if (id != utente.Id)
             {

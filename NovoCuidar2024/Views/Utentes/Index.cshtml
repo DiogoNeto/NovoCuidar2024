@@ -13,7 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PessoaId)
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomePrincipal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeApelido)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ResponsavelId)
@@ -33,13 +39,13 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.NomePrincipal)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NomeApelido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PessoaId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ResponsavelId)
@@ -51,13 +57,13 @@
                     @Html.DisplayFor(modelItem => item.TecnicoResponsavelId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SubSistema)
-                </td>
-                <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
+                @* <td>
+                    @Html.DisplayFor(modelItem => item.SubSistema)
+                </td> *@
             </tr>
         }
     </tbody>

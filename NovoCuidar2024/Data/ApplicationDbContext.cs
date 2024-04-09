@@ -10,7 +10,6 @@ namespace NovoCuidar2024.Data
             : base(options)
         {
         }
-        public DbSet<NovoCuidar2024.Models.Pessoa> Pessoa { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.Utente> Utente { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.Colaborador> Colaborador { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.SubSistema> SubSistema { get; set; } = default!;
