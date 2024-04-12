@@ -2,10 +2,6 @@
 
 @{
     ViewData["Title"] = "Create";
-
-    // var modeloExterno = new List<NovoCuidar2024.Models.SubSistema>();
-    // modeloExterno.Add(new SubSistema { Nome = "nome1", Id = 1 });
-    // modeloExterno.Add(new SubSistema { Nome = "nome2", Id = 2 });
 }
 
 <h1>Criar</h1>
@@ -16,22 +12,18 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @* <div class="form-group">
-            <label asp-for="PessoaId" class="control-label"></label>
-            <input asp-for="PessoaId" class="form-control" />
-            <span asp-validation-for="PessoaId" class="text-danger"></span>
-            </div> *@
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="SubSistema" class="control-label"></label>
+                <label asp-for="SubSistemaId" class="control-label"></label>
                 <select>
+                    <option value="0">Nenhum</option>
                     @foreach (var item in ViewBag.Data)
                     {
-                        <option value="@item.Nome">@item.Nome</option>
+                        <option value="@item.Id">@item.Nome</option>
                     }
                 </select>
             </div>
@@ -77,15 +69,15 @@
                 <label asp-for="Genero" class="control-label"></label>
                 <label asp-for="Genero" class="control-label">
                     <input type="radio" name="gender" value="m">
-                    Male
+                    Masculino
                 </label>
                 <label asp-for="Genero" class="control-label">
                     <input type="radio" name="gender" value="f">
-                    Female
+                    Feminino
                 </label>
                 <label asp-for="Genero" class="control-label">
                     <input type="radio" name="gender" value="o">
-                    Other
+                    Outro
                 </label>
             </div>
             <div class="form-group">

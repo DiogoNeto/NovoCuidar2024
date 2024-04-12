@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NovoCuidar2024.Data;
 
@@ -11,9 +12,11 @@ using NovoCuidar2024.Data;
 namespace NovoCuidar2024.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240409111746_AddGenderAndSubSistem")]
+    partial class AddGenderAndSubSistem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -309,35 +312,6 @@ namespace NovoCuidar2024.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colaborador");
-                });
-
-            modelBuilder.Entity("NovoCuidar2024.Models.Servico", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Descricao")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("OrigemContacto")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Preco")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ServicoContratado")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UtenteId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Servico");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.SubSistema", b =>

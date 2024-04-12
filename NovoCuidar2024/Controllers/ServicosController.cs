@@ -1,32 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
 
 namespace NovoCuidar2024.Controllers
 {
-    public class UtentesController : Controller
+    public class ServicosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public UtentesController(ApplicationDbContext context)
+        public ServicosController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Utentes
-        public async Task<IActionResult> Index(bool activo)
+        // GET: Servicos
+        public async Task<IActionResult> Index()
         {
-
-            return View(await _context.Utente.Where(x=>x.Ativo!=activo).ToListAsync());
+            return View(await _context.Servico.ToListAsync());
         }
 
-        // GET: Utentes/Details/5   
+        // GET: Servicos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,40 +28,40 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var utente = await _context.Utente
+            var servico = await _context.Servico
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (utente == null)
+            if (servico == null)
             {
                 return NotFound();
             }
 
-            return View(utente);
+            return View(servico);
         }
 
-        // GET: Utentes/Create
+        // GET: Servicos/Create
         public IActionResult Create()
         {
-            ViewBag.Data = _context.SubSistema;
+            ViewBag.Data = _context.Utente;
             return View();
         }
 
-        // POST: Utentes/Create
+        // POST: Servicos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ResponsavelId,SubSistemaId,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil, Ativo,TecnicoResponsavelId")] Utente utente)
+        public async Task<IActionResult> Create([Bind("Id,UtenteId,ServicoContratado,Descricao,OrigemContacto,Preco,DataServico")] Servico servico)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(utente);
+                _context.Add(servico);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(utente);
+            return View(servico);
         }
 
-        // GET: Utentes/Edit/5
+        // GET: Servicos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +69,22 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var utente = await _context.Utente.FindAsync(id);
-            if (utente == null)
+            var servico = await _context.Servico.FindAsync(id);
+            if (servico == null)
             {
                 return NotFound();
             }
-            return View(utente);
+            return View(servico);
         }
 
-        // POST: Utentes/Edit/5
+        // POST: Servicos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ResponsavelId,SubSistemaId,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil, Ativo,TecnicoResponsavelId")] Utente utente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,ServicoContratado,Descricao,OrigemContacto,Preco,DataServico")] Servico servico)
         {
-            if (id != utente.Id)
+            if (id != servico.Id)
             {
                 return NotFound();
             }
@@ -99,12 +93,12 @@ namespace NovoCuidar2024.Controllers
             {
                 try
                 {
-                    _context.Update(utente);
+                    _context.Update(servico);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UtenteExists(utente.Id))
+                    if (!ServicoExists(servico.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +109,10 @@ namespace NovoCuidar2024.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(utente);
+            return View(servico);
         }
 
-        // GET: Utentes/Delete/5
+        // GET: Servicos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,34 +120,34 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var utente = await _context.Utente
+            var servico = await _context.Servico
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (utente == null)
+            if (servico == null)
             {
                 return NotFound();
             }
 
-            return View(utente);
+            return View(servico);
         }
 
-        // POST: Utentes/Delete/5
+        // POST: Servicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var utente = await _context.Utente.FindAsync(id);
-            if (utente != null)
+            var servico = await _context.Servico.FindAsync(id);
+            if (servico != null)
             {
-                _context.Utente.Remove(utente);
+                _context.Servico.Remove(servico);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UtenteExists(int id)
+        private bool ServicoExists(int id)
         {
-            return _context.Utente.Any(e => e.Id == id);
+            return _context.Servico.Any(e => e.Id == id);
         }
     }
 }

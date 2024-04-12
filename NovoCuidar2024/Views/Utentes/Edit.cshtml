@@ -19,13 +19,14 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="SubSistema" class="control-label"></label>
-                @* <select>
-                    @foreach (var item in ViewBag.Data)
+                <label asp-for="SubSistemaId" class="control-label"></label>
+                <select>
+                    <option value="0">Nenhum</option>
+                   @*  @foreach (var item in ViewBag.Data)
                     {
-                        <option value="@item.Nome">@item.Nome</option>
-                    }
-                </select> *@
+                        <option value="@item.Id">@item.Nome</option>
+                    } *@
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Nif" class="control-label"></label>
@@ -69,15 +70,15 @@
                 <label asp-for="Genero" class="control-label"></label>
                 <label asp-for="Genero" class="control-label">
                     <input type="radio" name="gender" value="m">
-                    Male
+                    Masculino
                 </label>
                 <label asp-for="Genero" class="control-label">
                     <input type="radio" name="gender" value="f">
-                    Female
+                    Feminino
                 </label>
                 <label asp-for="Genero" class="control-label">
                     <input type="radio" name="gender" value="o">
-                    Other
+                    Outro
                 </label>
             </div>
             <div class="form-group">

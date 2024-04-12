@@ -3,13 +3,139 @@
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <title>Get Text from Textbox</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
 
-<h1>Index</h1>
+<h1>Utentes</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar Novo</a>
 </p>
-<table class="table">
+
+<a href="@Url.Action("Index", "Utentes", new { activo = "false" })">Ativos</a>
+<a href="@Url.Action("Index", "Utentes", new { activo = "true" })">Não Ativos</a>
+<br />
+
+<label>Responsável</label>
+<input type="text" id="responsavelInput" onkeyup="procuraResponsavel()" placeholder="Procurar por responsável">
+<label>Técnica</label>
+<input type="text" id="tecnicaInput" onkeyup="procuraTecnica()" placeholder="Procurar por técnica">
+<label>Zona1</label>
+<input type="text" id="zona1Input" onkeyup="procuraZona1()" placeholder="Procurar por zona">
+<label>Zona2</label>
+<input type="text" id="zona2Input" onkeyup="procuraZona2()" placeholder="Procurar por zona">
+
+<script>
+    function procuraResponsavel() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("responsavelInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableUtentes");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function procuraTecnica() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("tecnicaInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableUtentes");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function procuraZona1() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("zona1Input");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableUtentes");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[5];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function procuraZona2() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("zona2Input");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableUtentes");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[6];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableUtentes').on('input', function () {
+            var filterText = $(this).val().toLowerCase();
+            $('.contentItem').each(function () {
+                var content = $(this).text().toLowerCase();
+                if (content.includes(filterText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+
+
+<table class="table" id="tableUtentes">
     <thead>
         <tr>
             <th>
@@ -25,11 +151,18 @@
                 @Html.DisplayNameFor(model => model.ResponsavelId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.TecnicoResponsavelId)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidade1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidade2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+
 
             <th></th>
         </tr>
@@ -51,10 +184,16 @@
                     @Html.DisplayFor(modelItem => item.ResponsavelId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ativo)
+                    @Html.DisplayFor(modelItem => item.TecnicoResponsavelId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TecnicoResponsavelId)
+                    @Html.DisplayFor(modelItem => item.Localidade1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localidade2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -62,8 +201,8 @@
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
                 @* <td>
-                    @Html.DisplayFor(modelItem => item.SubSistema)
-                </td> *@
+            @Html.DisplayFor(modelItem => item.SubSistema)
+            </td> *@
             </tr>
         }
     </tbody>

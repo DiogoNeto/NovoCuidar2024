@@ -7,13 +7,13 @@ namespace NovoCuidar2024.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Descricao { get; set; }
+        public int UtenteId { get; set; }
         [Required]
-        public int Preco { get; set; }
-        [Required]
-        public int Tipo { get; set;}
-        [Required]
-        public DateOnly Data { get;}
+        public string? ServicoContratado { get; set; }
+        public string? OrigemContacto { get; set; }
+        public string? Descricao { get; set; }
+        public string? Preco { get; set; }
+        public DateOnly DataServico { get; }
 
     }
 }

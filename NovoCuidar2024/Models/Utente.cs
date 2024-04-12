@@ -9,6 +9,8 @@ namespace NovoCuidar2024.Models
         public int Id { get; set; }
         [ForeignKey("Responsavel")]
         public int ResponsavelId { get; set; }
+        [ForeignKey("SubSistema")]
+        public int SubSistemaId { get; set; }
         public bool Ativo { get; set; }
         [ForeignKey("Colaborador")]
         public int TecnicoResponsavelId { get; set; }
@@ -46,6 +48,5 @@ namespace NovoCuidar2024.Models
         public required string CodPostal2 { get; set; }
         [Required]
         public required string EstadoCivil { get; set; }
-        public List<SubSistema>? SubSistema { get; set; }
     }
 }
