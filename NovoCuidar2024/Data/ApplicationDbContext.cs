@@ -14,5 +14,10 @@ namespace NovoCuidar2024.Data
         public DbSet<NovoCuidar2024.Models.Colaborador> Colaborador { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.SubSistema> SubSistema { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.Servico> Servico { get; set; } = default!;
+        public DbSet<NovoCuidar2024.Models.Visita> Visita { get; set; } = default!;
+        public DbSet<NovoCuidar2024.Models.Responsavel> Responsavel { get; set; } = default!;
+        public DbSet<NovoCuidar2024.Models.Orcamento> Orcamento { get; set; } = default!;
+        public DbSet<NovoCuidar2024.Models.Contrato> Contrato { get; set; } = default!;
+        public DbSet<NovoCuidar2024.Models.LinhaOrcamento> LinhaOrcamento { get; set; } = default!;
     }
 }

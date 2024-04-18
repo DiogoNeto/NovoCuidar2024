@@ -233,19 +233,11 @@ namespace NovoCuidar2024.Migrations
                     b.Property<int>("CC")
                         .HasColumnType("int");
 
-                    b.Property<string>("CodPostal1")
+                    b.Property<string>("CodPostal")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("CodPostal2")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Concelho1")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Concelho2")
+                    b.Property<string>("Concelho")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -264,19 +256,11 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(1)");
 
-                    b.Property<string>("Localidade1")
+                    b.Property<string>("Localidade")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Localidade2")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Morada1")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Morada2")
+                    b.Property<string>("Morada")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -309,6 +293,168 @@ namespace NovoCuidar2024.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colaborador");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Contrato", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly>("DataFim")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("DataInicio")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Motivo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("NumeroContrato")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TipoContrato")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UtenteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Valor")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contrato");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.LinhaOrcamento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("OrcamentoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Preco")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServicoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UtenteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LinhaOrcamento");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Orcamento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DataOrcamento")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UtenteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orcamento");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Responsavel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CC")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CodPostal")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Concelho")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateOnly>("DataNascimento")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("EstadoCivil")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Genero")
+                        .IsRequired()
+                        .HasColumnType("varchar(1)");
+
+                    b.Property<string>("Localidade")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Morada")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nacionalidade")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Nif")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NomeApelido")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NomePrincipal")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Observações")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("SNS")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Responsavel");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.Servico", b =>
@@ -452,6 +598,32 @@ namespace NovoCuidar2024.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Utente");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Visita", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ColaboradorId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataHora")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Observações")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UtenteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Visita");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

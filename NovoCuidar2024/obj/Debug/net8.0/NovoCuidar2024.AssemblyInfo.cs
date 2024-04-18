@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NovoCuidar2024")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7fd828863b1232821f9d2996a539c0adfb0c0e77")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+770b72f9be94764f7b5274b93757069f8ee8443c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NovoCuidar2024")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NovoCuidar2024")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

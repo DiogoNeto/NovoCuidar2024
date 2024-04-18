@@ -4,5 +4,65 @@
 
 <div class="text-center">
     <h1 class="display-4">Bem vindo ao Novo Cuidar 2024</h1>
-    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    <div id="utentes" class="align-content-start">
+        @{
+            var data = ViewBag.Message;
+        }
+        <h4>Número de utentes ativos</h4>
+        <h5>@data.numeroUtentes</h5>
+        <button class="button button-primary">
+        @Html.ActionLink("Lista de Utentes", "Index", "Utentes", null, new { @class = "page-scroll" })
+        </button>
+        <button class="button button-primary">
+        @Html.ActionLink("Criar novo Utente", "Create", "Utentes", null, new { @class = "page-scroll" })
+        </button>
+    </div>
+    
+    <div id="servicos" class="col-6">
+        <h5>Últimos Serviços</h5>
+        <div id="servicosRecentes">
+            <table class="table table-primary">
+                <tr>
+                    <td>
+                        <h5>@data.Utente1</h5>
+                    </td>
+                    <td>
+                        <h5>@data.Preco1</h5>
+                    </td>
+                    <td>
+                        <h5>@data.Servico1</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5>@data.Utente2</h5>
+                    </td>
+                    <td>
+                        <h5>@data.Preco2</h5>
+                    </td>
+                    <td>
+                        <h5>@data.Servico2</h5>
+                    </td>
+                <tr>
+                    <td>
+                        <h5>@data.Utente3</h5>
+                    </td>
+                    <td>
+                        <h5>@data.Preco3</h5>
+                    </td>
+                    <td>
+                        <h5>@data.Servico3</h5>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="listaServicos" align="left">
+            <button class="button button-primary">
+                @Html.ActionLink("Lista de Serviços", "Index", "Servicos", null, new { @class = "page-scroll" })
+            </button>
+            <button class="button button-primary">
+                @Html.ActionLink("Criar novo Serviço", "Create", "Servicos", null, new { @class = "page-scroll" })
+            </button>
+        </div>
+    </div>
 </div>
