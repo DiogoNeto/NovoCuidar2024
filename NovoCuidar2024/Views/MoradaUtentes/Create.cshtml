@@ -1,0 +1,69 @@
+﻿@model NovoCuidar2024.Models.MoradaUtente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar Utente</h1>
+
+<h4>Passo 2</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*             <div class="form-group">
+                <label asp-for="UtenteId" class="control-label"></label>
+                <input asp-for="UtenteId" class="form-control" />
+                <span asp-validation-for="UtenteId" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Morada" class="control-label"></label>
+                <input asp-for="Morada" class="form-control" />
+                <span asp-validation-for="Morada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodPostal" class="control-label"></label>
+                <input asp-for="CodPostal" class="form-control" />
+                <span asp-validation-for="CodPostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Localidade" class="control-label"></label>
+                <input asp-for="Localidade" class="form-control" />
+                <span asp-validation-for="Localidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Concelho" class="control-label"></label>
+                <input asp-for="Concelho" class="form-control" />
+                <span asp-validation-for="Concelho" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumPorta" class="control-label"></label>
+                <input asp-for="NumPorta" class="form-control" />
+                <span asp-validation-for="NumPorta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Andar" class="control-label"></label>
+                <input asp-for="Andar" class="form-control" />
+                <span asp-validation-for="Andar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fracao" class="control-label"></label>
+                <input asp-for="Fracao" class="form-control" />
+                <span asp-validation-for="Fracao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pais" class="control-label"></label>
+                <input asp-for="Pais" class="form-control" />
+                <span asp-validation-for="Pais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

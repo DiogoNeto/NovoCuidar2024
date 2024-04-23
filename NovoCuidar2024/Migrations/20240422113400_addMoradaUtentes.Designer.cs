@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NovoCuidar2024.Data;
 
@@ -11,9 +12,11 @@ using NovoCuidar2024.Data;
 namespace NovoCuidar2024.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240422113400_addMoradaUtentes")]
+    partial class addMoradaUtentes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -371,9 +374,6 @@ namespace NovoCuidar2024.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Andar")
-                        .HasColumnType("int");
-
                     b.Property<string>("CodPostal")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -382,22 +382,11 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Fracao")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Localidade")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Morada")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("NumPorta")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Pais")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -563,6 +552,22 @@ namespace NovoCuidar2024.Migrations
                     b.Property<int>("CC")
                         .HasColumnType("int");
 
+                    b.Property<string>("CodPostal1")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CodPostal2")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Concelho1")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Concelho2")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateOnly>("DataNascimento")
                         .HasColumnType("date");
 
@@ -577,6 +582,22 @@ namespace NovoCuidar2024.Migrations
                     b.Property<string>("Genero")
                         .IsRequired()
                         .HasColumnType("varchar(1)");
+
+                    b.Property<string>("Localidade1")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Localidade2")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Morada1")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Morada2")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nacionalidade")
                         .IsRequired()

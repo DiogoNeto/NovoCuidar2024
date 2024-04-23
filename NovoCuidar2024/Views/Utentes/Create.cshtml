@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Criar</h1>
+<h1>Criar Utente</h1>
 
-<h4>Utente</h4>
+<h4>Passo 1</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -91,49 +91,9 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Morada1" class="control-label"></label>
-                <input asp-for="Morada1" class="form-control" />
-                <span asp-validation-for="Morada1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CodPostal1" class="control-label"></label>
-                <input asp-for="CodPostal1" class="form-control" />
-                <span asp-validation-for="CodPostal1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Localidade1" class="control-label"></label>
-                <input asp-for="Localidade1" class="form-control" />
-                <span asp-validation-for="Localidade1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Concelho1" class="control-label"></label>
-                <input asp-for="Concelho1" class="form-control" />
-                <span asp-validation-for="Concelho1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="EstadoCivil" class="control-label"></label>
                 <input asp-for="EstadoCivil" class="form-control" />
                 <span asp-validation-for="EstadoCivil" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Morada2" class="control-label"></label>
-                <input asp-for="Morada2" class="form-control" />
-                <span asp-validation-for="Morada2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CodPostal2" class="control-label"></label>
-                <input asp-for="CodPostal2" class="form-control" />
-                <span asp-validation-for="CodPostal2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Localidade2" class="control-label"></label>
-                <input asp-for="Localidade2" class="form-control" />
-                <span asp-validation-for="Localidade2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Concelho2" class="control-label"></label>
-                <input asp-for="Concelho2" class="form-control" />
-                <span asp-validation-for="Concelho2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ResponsavelId" class="control-label"></label>
@@ -146,6 +106,10 @@
                 <input asp-for="TecnicoResponsavelId" class="form-control" />
                 <span asp-validation-for="TecnicoResponsavelId" class="text-danger"></span>
             </div>
+
+@*             <button class="button button-primary">
+                @Html.ActionLink("Adicionar Morada", "Create", "MoradaUtentes", null, new { @class = "page-scroll" })
+            </button> *@
             @* <div class="form-group">
             <label asp-for="SubSistema" class="control-label"></label>
             <input asp-for="SubSistema" class="form-control" />
@@ -159,7 +123,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar à lista</a>
 </div>
 
 @section Scripts {

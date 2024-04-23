@@ -35,18 +35,6 @@ namespace NovoCuidar2024.Models
         [Required]
         public required string Email { get; set; }
         [Required]
-        public required string Morada1 { get; set; }
-        [Required]
-        public required string CodPostal1 { get; set; }
-        [Required]
-        public required string Localidade1 { get; set; }
-        [Required]
-        public required string Concelho1 { get; set; }
-        public required string Morada2 { get; set; }
-        public required string Concelho2 { get; set; }
-        public required string Localidade2 { get; set; }
-        public required string CodPostal2 { get; set; }
-        [Required]
         public required string EstadoCivil { get; set; }
     }
 }

@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\images\\novoCuidar.png",
+      "PackagePath": "staticwebassets\\images\\novoCuidar.png"
+    },
+    {
       "Id": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
