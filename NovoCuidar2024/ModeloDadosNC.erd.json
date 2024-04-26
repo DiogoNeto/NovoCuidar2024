@@ -4,9 +4,9 @@
   "settings": {
     "width": 3000,
     "height": 3000,
-    "scrollTop": 0,
-    "scrollLeft": 0,
-    "zoomLevel": 1,
+    "scrollTop": -125.0422,
+    "scrollLeft": -108.4867,
+    "zoomLevel": 0.2,
     "show": 431,
     "database": 4,
     "databaseName": "NC_WebApp_DEV",
@@ -267,7 +267,8 @@
         "comment": "",
         "columnIds": [
           "5gfcVK3PKYpGmuA48B7JQ",
-          "w1dce1sTiwIKCdT8UrMW5"
+          "w1dce1sTiwIKCdT8UrMW5",
+          "SmMnbK0wrB4IblMMSFOSm"
         ],
         "seqColumnIds": [
           "14e7ALyQaGpz7SEB9Du89",
@@ -276,7 +277,8 @@
           "2TRJUfxxEKs9WHYJ-CAW_",
           "5gfcVK3PKYpGmuA48B7JQ",
           "Z-hIP5bLexZd0ab_Q3kLS",
-          "w1dce1sTiwIKCdT8UrMW5"
+          "w1dce1sTiwIKCdT8UrMW5",
+          "SmMnbK0wrB4IblMMSFOSm"
         ],
         "ui": {
           "x": 17.457,
@@ -287,7 +289,7 @@
           "color": ""
         },
         "meta": {
-          "updateAt": 1713621056734,
+          "updateAt": 1714089653788,
           "createAt": 1711664888267
         }
       },
@@ -4732,6 +4734,26 @@
           "updateAt": 1714087479520,
           "createAt": 1714087442697
         }
+      },
+      "SmMnbK0wrB4IblMMSFOSm": {
+        "id": "SmMnbK0wrB4IblMMSFOSm",
+        "tableId": "O2LTnKZY39x6kvyFhHTYi",
+        "name": "Foto",
+        "comment": "",
+        "dataType": "BLOB",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1714089662717,
+          "createAt": 1714089653788
+        }
       }
     },
     "relationshipEntities": {
@@ -4774,7 +4796,7 @@
             "5gfcVK3PKYpGmuA48B7JQ"
           ],
           "x": 275.457,
-          "y": 168,
+          "y": 192,
           "direction": 8
         },
         "end": {
@@ -7518,6 +7540,15 @@
       {
         "name": 1714087457133,
         "dataType": 1714087479519
+      }
+    ],
+    "SmMnbK0wrB4IblMMSFOSm": [
+      "tableColumnEntities",
+      1714089653786,
+      -1,
+      {
+        "name": 1714089657281,
+        "dataType": 1714089662716
       }
     ]
   }
