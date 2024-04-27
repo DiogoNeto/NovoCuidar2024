@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Humanizer.Localisation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
+using System.IO;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -17,7 +19,7 @@ namespace NovoCuidar2024.Controllers
         // GET: Utentes
         public async Task<IActionResult> Index(bool activo)
         {
-
+            var items = _context.Utente.ToList();
             return View(await _context.Utente.Where(x=>x.Ativo!=activo).ToListAsync());
         }
 
@@ -51,10 +53,50 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ResponsavelId,SubSistemaId,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,EstadoCivil, Ativo,TecnicoResponsavelId")] Utente utente)
+        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContrato,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
         {
             if (ModelState.IsValid)
             {
+                var uploadsDirectory = "C:\\Testes";
+                // var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                var filePath = Path.Combine(uploadsDirectory, utente.Foto);
+
+                //using (FileStream fs = File.Create(filePath))
+                //{
+                //    Console.WriteLine("File created successfully.");
+                //}
+
+
+
+                //File.Copy(filePath, uploadsDirectory + utente.Foto);
+                //using (var fileStream = new FileStream(filePath, FileMode.Create))
+                //{
+                //    await file.CopyToAsync(fileStream);
+                //}
+
+
+
+                try
+                {
+                    // Read the source file
+                    using (FileStream sourceStream = new FileStream(uploadsDirectory, FileMode.Open, FileAccess.Read))
+                    {
+                        // Create or overwrite the destination file
+                        using (FileStream destinationStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                        {
+                            // Copy data from source to destination
+                            sourceStream.CopyTo(destinationStream);
+                        }
+                    }
+
+                    Console.WriteLine("File copied successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred while copying the file: " + ex.Message);
+                }
+
+
                 _context.Add(utente);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.Utente;
@@ -150,6 +192,30 @@ namespace NovoCuidar2024.Controllers
         private bool UtenteExists(int id)
         {
             return _context.Utente.Any(e => e.Id == id);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Upload(IFormFile photo)
+        {
+            if (photo == null || photo.Length == 0)
+            {
+                // Handle empty or missing file
+                return RedirectToAction("Error");
+            }
+            
+            // Save the uploaded photo to a directory on the server
+            var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+            var filePath = Path.Combine(uploadsDirectory, photo.FileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await photo.CopyToAsync(fileStream);
+            }
+
+            // Store the file path in the MySQL database
+            // Add your database logic here
+
+            return RedirectToAction("Success");
         }
     }
 }

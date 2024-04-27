@@ -74,6 +74,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/FamiliaUtentes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/FamiliaUtentes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/FamiliaUtentes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/FamiliaUtentes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/FamiliaUtentes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -212,6 +232,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/SubSistemas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViU2lzdGVtYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Tecnicos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Tecnicos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Tecnicos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Tecnicos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Tecnicos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Utentes/Create.cshtml]

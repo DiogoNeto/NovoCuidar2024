@@ -335,6 +335,23 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("Contrato");
                 });
 
+            modelBuilder.Entity("NovoCuidar2024.Models.FamiliaUtentes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FamiliaUtentes");
+                });
+
             modelBuilder.Entity("NovoCuidar2024.Models.LinhaOrcamento", b =>
                 {
                     b.Property<int>("Id")
@@ -549,6 +566,22 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("SubSistema");
                 });
 
+            modelBuilder.Entity("NovoCuidar2024.Models.Tecnico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Tipo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tecnico");
+                });
+
             modelBuilder.Entity("NovoCuidar2024.Models.Utente", b =>
                 {
                     b.Property<int>("Id")
@@ -560,23 +593,60 @@ namespace NovoCuidar2024.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("CC")
-                        .HasColumnType("int");
+                    b.Property<string>("ContactoEmail")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ContactoTelemovel")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateOnly>("DataInscricao")
+                        .HasColumnType("date");
 
                     b.Property<DateOnly>("DataNascimento")
                         .HasColumnType("date");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("DocIdentificacaoNum")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("DocIdentificacaoTipo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateOnly>("DocIdentificacaoValidade")
+                        .HasColumnType("date");
+
                     b.Property<string>("EstadoCivil")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("FamiliaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Foto")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Genero")
                         .IsRequired()
                         .HasColumnType("varchar(1)");
+
+                    b.Property<string>("Habilitacoes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("HabitacaoPartilhada")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("HabitacaoTipo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("IdInterno")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nacionalidade")
                         .IsRequired()
@@ -585,27 +655,26 @@ namespace NovoCuidar2024.Migrations
                     b.Property<int>("Nif")
                         .HasColumnType("int");
 
-                    b.Property<string>("NomeApelido")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("NomePrincipal")
+                    b.Property<string>("NomeEmpresa")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("ResponsavelId")
+                    b.Property<string>("OrigemContrato")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("ResponsavelTecnicoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SNS")
-                        .HasColumnType("int");
+                    b.Property<string>("SegurancaSocialNum")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("SubSistemaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TecnicoResponsavelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Telefone")
+                    b.Property<string>("Vivencia")
                         .IsRequired()
                         .HasColumnType("longtext");
 
