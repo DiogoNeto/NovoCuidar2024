@@ -10,17 +10,17 @@ namespace NovoCuidar2024.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_SubSistema_Utente_UtenteId",
-                table: "SubSistema");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_SubSistema_Utente_UtenteId",
+            //    table: "SubSistema");
 
-            migrationBuilder.DropIndex(
-                name: "IX_SubSistema_UtenteId",
-                table: "SubSistema");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_SubSistema_UtenteId",
+            //    table: "SubSistema");
 
-            migrationBuilder.DropColumn(
-                name: "UtenteId",
-                table: "SubSistema");
+            //migrationBuilder.DropColumn(
+            //    name: "UtenteId",
+            //    table: "SubSistema");
 
             migrationBuilder.AddColumn<int>(
                 name: "SubSistemaId",
@@ -37,23 +37,23 @@ namespace NovoCuidar2024.Migrations
                 name: "SubSistemaId",
                 table: "Utente");
 
-            migrationBuilder.AddColumn<int>(
-                name: "UtenteId",
-                table: "SubSistema",
-                type: "int",
-                nullable: true);
+            //migrationBuilder.AddColumn<int>(
+            //    name: "UtenteId",
+            //    table: "SubSistema",
+            //    type: "int",
+            //    nullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_SubSistema_UtenteId",
                 table: "SubSistema",
                 column: "UtenteId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_SubSistema_Utente_UtenteId",
-                table: "SubSistema",
-                column: "UtenteId",
-                principalTable: "Utente",
-                principalColumn: "Id");
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_SubSistema_Utente_UtenteId",
+            //    table: "SubSistema",
+            //    column: "UtenteId",
+            //    principalTable: "Utente",
+            //    principalColumn: "Id");
         }
     }
 }

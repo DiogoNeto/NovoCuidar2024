@@ -6,17 +6,17 @@
 
 <h1>Criar Utente</h1>
 
-<h4>Passo 2</h4>
+<h4>Passo 2 - Morada</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@*             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="UtenteId" class="control-label"></label>
-                <input asp-for="UtenteId" class="form-control" />
+                <input asp-for="UtenteId" class="form-control" disabled="disabled"/>
                 <span asp-validation-for="UtenteId" class="text-danger"></span>
-            </div> *@
+            </div>
             <div class="form-group">
                 <label asp-for="Morada" class="control-label"></label>
                 <input asp-for="Morada" class="form-control" />

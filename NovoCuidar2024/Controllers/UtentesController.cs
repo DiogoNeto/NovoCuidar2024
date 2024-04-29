@@ -1,9 +1,8 @@
-﻿using Humanizer.Localisation;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
-using System.IO;
+using System.Drawing;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -57,9 +56,29 @@ namespace NovoCuidar2024.Controllers
         {
             if (ModelState.IsValid)
             {
-                var uploadsDirectory = "C:\\Testes";
-                // var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
-                var filePath = Path.Combine(uploadsDirectory, utente.Foto);
+                //string content = "Este é o conteúdo do arquivo que será baixado.";
+
+                //byte[] bytes = Encoding.UTF8.GetBytes(content);
+
+                // Define o tipo de conteúdo e o nome do arquivo
+                //string contentType = "text/plain";
+                //string fileName = "C:\\Teste\\arquivo.txt";
+
+               
+
+                var uploadsDirectoryLeitura = "C:\\Teste";
+                var uploadsDirectoryEscrita = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                var filePathLeitura = Path.Combine(uploadsDirectoryLeitura, utente.Foto);
+                var filePathEscrita = Path.Combine(uploadsDirectoryEscrita, utente.Foto);
+
+                Image image = Image.FromFile(filePathLeitura);
+                var ms = new MemoryStream();
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                var bytess = ms.ToArray();
+                image.Dispose();
+                System.IO.File.WriteAllBytes(filePathEscrita, bytess);
+                //var a = File(bytes, contentType, filePath);
 
                 //using (FileStream fs = File.Create(filePath))
                 //{
@@ -76,25 +95,25 @@ namespace NovoCuidar2024.Controllers
 
 
 
-                try
-                {
-                    // Read the source file
-                    using (FileStream sourceStream = new FileStream(uploadsDirectory, FileMode.Open, FileAccess.Read))
-                    {
-                        // Create or overwrite the destination file
-                        using (FileStream destinationStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                        {
-                            // Copy data from source to destination
-                            sourceStream.CopyTo(destinationStream);
-                        }
-                    }
+                //try
+                //{
+                //    // Read the source file
+                //    using (FileStream sourceStream = new FileStream(uploadsDirectory, FileMode.Open, FileAccess.Read))
+                //    {
+                //        // Create or overwrite the destination file
+                //        using (FileStream destinationStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                //        {
+                //            // Copy data from source to destination
+                //            sourceStream.CopyTo(destinationStream);
+                //        }
+                //    }
 
-                    Console.WriteLine("File copied successfully.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occurred while copying the file: " + ex.Message);
-                }
+                //    Console.WriteLine("File copied successfully.");
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine("An error occurred while copying the file: " + ex.Message);
+                //}
 
 
                 _context.Add(utente);

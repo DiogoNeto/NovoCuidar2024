@@ -5,11 +5,11 @@ using NovoCuidar2024.Models;
 
 namespace NovoCuidar2024.Controllers
 {
-    public class ResponsaveisController : Controller
+    public class ContactoPrioritarioController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ResponsaveisController(ApplicationDbContext context)
+        public ContactoPrioritarioController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -38,10 +38,15 @@ namespace NovoCuidar2024.Controllers
             return View(responsavel);
         }
 
-        // GET: Responsaveis/Create
+        // GET: ContactoPrioritario/Create
         public IActionResult Create()
         {
-            return View();
+            ContactoPrioritario contactoPrioritario = new ContactoPrioritario
+            {
+                UtenteId = _context.Utente.ToList().LastOrDefault().Id
+            };
+
+            return View(contactoPrioritario);
         }
 
         // POST: Responsaveis/Create
@@ -49,13 +54,14 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada,CodPostal,Localidade,Concelho,EstadoCivil,Observações")] Responsavel responsavel)
+        public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome,Parentesco,Pais,Nif,Telefone,Email,Morada,NumPorta,Andar,Fracao,CodPostal,Localidade,Descricao,Concelho,Ativo")] ContactoPrioritario responsavel)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(responsavel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Data = _context.Utente;
+                return RedirectToAction("Create", "SubSistemas");
             }
             return View(responsavel);
         }
@@ -81,7 +87,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada,CodPostal,Localidade,Concelho,EstadoCivil,Observações")] Responsavel responsavel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada,CodPostal,Localidade,Concelho,EstadoCivil,Observações")] ContactoPrioritario responsavel)
         {
             if (id != responsavel.Id)
             {

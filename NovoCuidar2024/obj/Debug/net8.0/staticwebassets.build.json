@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "k3vlNQ8s/+OYDitk6aGA7AbN0TtmUWjlXQQzWoqzYLY=",
+  "Hash": "wMJuF5s5as5HTPntTQZ8ny16fME6PufKefNRAUBQyDE=",
   "Source": "NovoCuidar2024",
   "BasePath": "_content/NovoCuidar2024",
   "Mode": "Default",
@@ -2392,6 +2392,25 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\uploads\\assinatura.png",
+      "SourceId": "NovoCuidar2024",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\",
+      "BasePath": "_content/NovoCuidar2024",
+      "RelativePath": "uploads/assinatura.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\assinatura.png"
+    },
+    {
       "Identity": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\uploads\\desktop.ini",
       "SourceId": "NovoCuidar2024",
       "SourceType": "Discovered",
@@ -2409,6 +2428,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\desktop.ini"
+    },
+    {
+      "Identity": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\uploads\\image.png",
+      "SourceId": "NovoCuidar2024",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\",
+      "BasePath": "_content/NovoCuidar2024",
+      "RelativePath": "uploads/image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\image.png"
     }
   ]
 }

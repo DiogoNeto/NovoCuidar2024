@@ -45,7 +45,7 @@ namespace NovoCuidar2024.Controllers
             {
                 UtenteId = _context.Utente.ToList().LastOrDefault().Id
             };
-            return View();
+            return View(moradaUtentes);
         }
 
         // POST: MoradaUtentes/Create
@@ -59,7 +59,9 @@ namespace NovoCuidar2024.Controllers
             {
                 _context.Add(moradaUtente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                ViewBag.Data = _context.MoradaUtente;
+                return RedirectToAction("Create", "ContactoPrioritario");
             }
             return View(moradaUtente);
         }

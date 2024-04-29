@@ -249,8 +249,16 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\uploads\\assinatura.png",
+      "PackagePath": "staticwebassets\\uploads\\assinatura.png"
+    },
+    {
       "Id": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\uploads\\desktop.ini",
       "PackagePath": "staticwebassets\\uploads\\desktop.ini"
+    },
+    {
+      "Id": "C:\\Users\\joao.dias\\Documents\\Diogo\\Projects\\NovoCuidar2024\\NovoCuidar2024\\wwwroot\\uploads\\image.png",
+      "PackagePath": "staticwebassets\\uploads\\image.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NovoCuidar2024.Microsoft.AspNetCore.StaticWebAssets.props",

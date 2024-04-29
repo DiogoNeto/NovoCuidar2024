@@ -42,7 +42,12 @@ namespace NovoCuidar2024.Controllers
         // GET: Subsistemas/Create
         public IActionResult Create()
         {
-            return View();
+            SubSistema subSistema = new SubSistema
+            {
+                UtenteId = _context.Utente.ToList().LastOrDefault().Id
+            };
+
+            return View(subSistema);
         }
 
         // POST: Subsistemas/Create
@@ -50,13 +55,14 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] SubSistema subsistema)
+        public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome")] SubSistema subsistema)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(subsistema);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Data = _context.Utente;
+                return RedirectToAction("Create", "DadosClinicos");
             }
             return View(subsistema);
         }

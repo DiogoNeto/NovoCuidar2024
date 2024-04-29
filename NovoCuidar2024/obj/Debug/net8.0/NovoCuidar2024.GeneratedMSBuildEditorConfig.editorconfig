@@ -54,6 +54,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sYWJvcmFkb3Jlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/ContactoPrioritario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/ContactoPrioritario/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/ContactoPrioritario/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/ContactoPrioritario/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/ContactoPrioritario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Contratos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,6 +92,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Contratos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/DadosClinicos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/DadosClinicos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/DadosClinicos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/DadosClinicos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/DadosClinicos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/FamiliaUtentes/Create.cshtml]
@@ -160,26 +200,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Orcamentos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Responsaveis/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWlzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Responsaveis/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWlzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Responsaveis/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWlzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Responsaveis/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWlzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Responsaveis/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWlzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joao.dias/Documents/Diogo/Projects/NovoCuidar2024/NovoCuidar2024/Views/Servicos/Create.cshtml]

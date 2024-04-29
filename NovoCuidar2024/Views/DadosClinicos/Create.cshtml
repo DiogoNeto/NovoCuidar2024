@@ -1,0 +1,74 @@
+﻿@model NovoCuidar2024.Models.DadosClinicos
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar</h1>
+
+<h4>Passo 5 - DadosClinicos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UtenteId" class="control-label"></label>
+                <input asp-for="UtenteId" class="form-control" disabled="disabled" />
+                <span asp-validation-for="UtenteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CentroSaude" class="control-label"></label>
+                <input asp-for="CentroSaude" class="form-control" />
+                <span asp-validation-for="CentroSaude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicoAssistente" class="control-label"></label>
+                <input asp-for="MedicoAssistente" class="form-control" />
+                <span asp-validation-for="MedicoAssistente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumUtenteSaúde" class="control-label"></label>
+                <input asp-for="NumUtenteSaúde" class="form-control" />
+                <span asp-validation-for="NumUtenteSaúde" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GrupoSanguinio" class="control-label"></label>
+                <input asp-for="GrupoSanguinio" class="form-control" />
+                <span asp-validation-for="GrupoSanguinio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alergias" class="control-label"></label>
+                <input asp-for="Alergias" class="form-control" />
+                <span asp-validation-for="Alergias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RestricoesAlimentare" class="control-label"></label>
+                <input asp-for="RestricoesAlimentare" class="form-control" />
+                <span asp-validation-for="RestricoesAlimentare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patologias" class="control-label"></label>
+                <input asp-for="Patologias" class="form-control" />
+                <span asp-validation-for="Patologias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InformacoessComplementares" class="control-label"></label>
+                <input asp-for="InformacoessComplementares" class="form-control" />
+                <span asp-validation-for="InformacoessComplementares" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResumoClinico" class="control-label"></label>
+                <input asp-for="ResumoClinico" class="form-control" />
+                <span asp-validation-for="ResumoClinico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Gravar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

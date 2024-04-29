@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NovoCuidar2024.Models
 {
@@ -8,7 +7,9 @@ namespace NovoCuidar2024.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public required string Nome { get; set;}
+        public int UtenteId { get; set; }
+        [Required]
+        public string Nome { get; set;}
 
     }
 }

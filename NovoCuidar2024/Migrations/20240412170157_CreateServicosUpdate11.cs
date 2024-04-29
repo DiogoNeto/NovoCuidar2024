@@ -10,15 +10,15 @@ namespace NovoCuidar2024.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateOnly>(
-                name: "DataServico",
-                table: "Servico",
-                type: "date",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "date")
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            //migrationBuilder.AlterColumn<DateOnly>(
+            //    name: "DataServico",
+            //    table: "Servico",
+            //    type: "date",
+            //    nullable: true,
+            //    oldClrType: typeof(string),
+            //    oldType: "date")
+            //    .Annotation("MySql:CharSet", "utf8mb4")
+            //    .OldAnnotation("MySql:CharSet", "utf8mb4");
         }
 
         /// <inheritdoc />
