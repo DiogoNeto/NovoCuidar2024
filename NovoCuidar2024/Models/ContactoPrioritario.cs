@@ -7,6 +7,7 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
+        [ForeignKey("Utente")]
         [Required]
         public int UtenteId { get; set; }
         [Required]

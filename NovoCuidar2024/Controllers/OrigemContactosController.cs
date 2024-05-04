@@ -5,22 +5,22 @@ using NovoCuidar2024.Models;
 
 namespace NovoCuidar2024.Controllers
 {
-    public class MoradaUtentesController : Controller
+    public class OrigemContactosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MoradaUtentesController(ApplicationDbContext context)
+        public OrigemContactosController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: MoradaUtentes
+        // GET: OrigemContactos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MoradaUtente.ToListAsync());
+            return View(await _context.OrigemContacto.ToListAsync());
         }
 
-        // GET: MoradaUtentes/Details/5
+        // GET: OrigemContactos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -28,44 +28,39 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var moradaUtente = await _context.MoradaUtente
+            var origemContacto = await _context.OrigemContacto
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (moradaUtente == null)
+            if (origemContacto == null)
             {
                 return NotFound();
             }
 
-            return View(moradaUtente);
+            return View(origemContacto);
         }
 
-        // GET: MoradaUtentes/Create
+        // GET: OrigemContactos/Create
         public IActionResult Create()
         {
-            MoradaUtente moradaUtentes = new MoradaUtente
-            {
-                UtenteId = _context.Utente.ToList().LastOrDefault().Id
-            };
-            return View(moradaUtentes);
+            return View();
         }
 
-        // POST: MoradaUtentes/Create
+        // POST: OrigemContactos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UtenteId,Morada,CodPostal,Localidade,Concelho,NumPorta,Andar,Fracao,CodPostal,Pais")] MoradaUtente moradaUtente)
+        public async Task<IActionResult> Create([Bind("Id,Nome")] OrigemContacto origemContacto)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(moradaUtente);
+                _context.Add(origemContacto);
                 await _context.SaveChangesAsync();
-                ViewBag.Data = _context.MoradaUtente;
-                return RedirectToAction("Create", "ContactoPrioritario");
+                return RedirectToAction(nameof(Index));
             }
-            return View(moradaUtente);
+            return View(origemContacto);
         }
 
-        // GET: MoradaUtentes/Edit/5
+        // GET: OrigemContactos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +68,22 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var moradaUtente = await _context.MoradaUtente.FindAsync(id);
-            if (moradaUtente == null)
+            var origemContacto = await _context.OrigemContacto.FindAsync(id);
+            if (origemContacto == null)
             {
                 return NotFound();
             }
-            return View(moradaUtente);
+            return View(origemContacto);
         }
 
-        // POST: MoradaUtentes/Edit/5
+        // POST: OrigemContactos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,Morada,CodPostal,Localidade,Concelho")] MoradaUtente moradaUtente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] OrigemContacto origemContacto)
         {
-            if (id != moradaUtente.Id)
+            if (id != origemContacto.Id)
             {
                 return NotFound();
             }
@@ -97,12 +92,12 @@ namespace NovoCuidar2024.Controllers
             {
                 try
                 {
-                    _context.Update(moradaUtente);
+                    _context.Update(origemContacto);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MoradaUtenteExists(moradaUtente.Id))
+                    if (!OrigemContactoExists(origemContacto.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +108,10 @@ namespace NovoCuidar2024.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(moradaUtente);
+            return View(origemContacto);
         }
 
-        // GET: MoradaUtentes/Delete/5
+        // GET: OrigemContactos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +119,34 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var moradaUtente = await _context.MoradaUtente
+            var origemContacto = await _context.OrigemContacto
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (moradaUtente == null)
+            if (origemContacto == null)
             {
                 return NotFound();
             }
 
-            return View(moradaUtente);
+            return View(origemContacto);
         }
 
-        // POST: MoradaUtentes/Delete/5
+        // POST: OrigemContactos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var moradaUtente = await _context.MoradaUtente.FindAsync(id);
-            if (moradaUtente != null)
+            var origemContacto = await _context.OrigemContacto.FindAsync(id);
+            if (origemContacto != null)
             {
-                _context.MoradaUtente.Remove(moradaUtente);
+                _context.OrigemContacto.Remove(origemContacto);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MoradaUtenteExists(int id)
+        private bool OrigemContactoExists(int id)
         {
-            return _context.MoradaUtente.Any(e => e.Id == id);
+            return _context.OrigemContacto.Any(e => e.Id == id);
         }
     }
 }

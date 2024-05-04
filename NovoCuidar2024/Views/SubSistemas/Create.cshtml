@@ -9,7 +9,7 @@
         <form asp-action="Create">
             <div class="form-group">
                 <label asp-for="UtenteId" class="control-label"></label>
-                <input asp-for="UtenteId" class="form-control" disabled="disabled" />
+                <input asp-for="UtenteId" class="form-control" readonly />
                 <span asp-validation-for="UtenteId" class="text-danger"></span>
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

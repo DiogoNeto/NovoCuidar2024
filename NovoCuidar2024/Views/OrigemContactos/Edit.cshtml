@@ -1,4 +1,4 @@
-﻿@model NovoCuidar2024.Models.Tecnico
+﻿@model NovoCuidar2024.Models.OrigemContacto
 
 @{
     ViewData["Title"] = "Edit";
@@ -7,7 +7,7 @@
 
 <h1>Edit</h1>
 
-<h4>Tecnico</h4>
+<h4>OrigemContacto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,11 +18,6 @@
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
-                <input asp-for="Foto" class="form-control" />
-                <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

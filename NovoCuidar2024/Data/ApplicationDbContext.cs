@@ -23,5 +23,6 @@ namespace NovoCuidar2024.Data
         public DbSet<NovoCuidar2024.Models.Tecnico> Tecnico { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.FamiliaUtentes> FamiliaUtentes { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.DadosClinicos> DadosClinicos { get; set; } = default!;
+        public DbSet<NovoCuidar2024.Models.OrigemContacto> OrigemContacto { get; set; } = default!;
     }
 }

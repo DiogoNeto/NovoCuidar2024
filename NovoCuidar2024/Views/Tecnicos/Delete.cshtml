@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Delete";
-    Layout = "MoradaUtenteController";
+    Layout = "OrigemContactoController";
 }
 
 <h1>Delete</h1>
@@ -13,10 +13,16 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tipo)
+            @Html.DisplayNameFor(model => model.Nome)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tipo)
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Foto)
         </dd>
     </dl>
     

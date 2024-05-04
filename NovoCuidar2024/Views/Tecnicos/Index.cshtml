@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "MoradaUtenteController";
+    Layout = "OrigemContactoController";
 }
 
 <h1>Index</h1>
@@ -14,7 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Tipo)
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
             </th>
             <th></th>
         </tr>
@@ -23,7 +26,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

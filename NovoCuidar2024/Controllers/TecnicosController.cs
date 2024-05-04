@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -49,7 +54,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tipo")] Tecnico tecnico)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Foto")] Tecnico tecnico)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +86,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Tipo")] Tecnico tecnico)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Foto")] Tecnico tecnico)
         {
             if (id != tecnico.Id)
             {

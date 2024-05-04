@@ -1,4 +1,4 @@
-﻿@model NovoCuidar2024.Models.Tecnico
+﻿@model NovoCuidar2024.Models.OrigemContacto
 
 @{
     ViewData["Title"] = "Details";
@@ -8,7 +8,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Tecnico</h4>
+    <h4>OrigemContacto</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -16,12 +16,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto)
         </dd>
     </dl>
 </div>

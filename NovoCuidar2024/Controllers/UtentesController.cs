@@ -43,7 +43,12 @@ namespace NovoCuidar2024.Controllers
         // GET: Utentes/Create
         public IActionResult Create()
         {
-            ViewBag.Data = _context.SubSistema;
+            var dataResponsavelTecnico = _context.Responsavel.ToList();
+            var dataFamilia = _context.FamiliaUtentes.ToList();
+
+            ViewBag.DataResponsavel = dataResponsavelTecnico;
+            ViewBag.DataFamilia = dataFamilia;
+
             return View();
         }
 
@@ -52,7 +57,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContrato,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
+        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContrato,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +69,7 @@ namespace NovoCuidar2024.Controllers
                 //string contentType = "text/plain";
                 //string fileName = "C:\\Teste\\arquivo.txt";
 
-               
+
 
                 var uploadsDirectoryLeitura = "C:\\Teste";
                 var uploadsDirectoryEscrita = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
@@ -115,10 +120,10 @@ namespace NovoCuidar2024.Controllers
                 //    Console.WriteLine("An error occurred while copying the file: " + ex.Message);
                 //}
 
-
                 _context.Add(utente);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.Utente;
+
                 return RedirectToAction("Create", "MoradaUtentes");
             }
             return View(utente);
