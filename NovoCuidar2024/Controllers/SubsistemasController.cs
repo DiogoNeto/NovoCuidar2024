@@ -39,6 +39,23 @@ namespace NovoCuidar2024.Controllers
             return View(subsistema);
         }
 
+        // GET: Subsistemas/Add
+        public IActionResult Add()
+        {
+            SubSistema subSistema = new SubSistema
+            {
+                UtenteId = _context.Utente.ToList().LastOrDefault().Id
+            };
+
+            var DataSubsistemas = _context.SubSistema.ToList();
+            ViewBag.DataSubsistemas = DataSubsistemas;
+
+             _context.SaveChangesAsync();
+            ViewBag.Data = _context.Utente;
+            return RedirectToAction("Create", "SubSistema");
+        }
+
+
         // GET: Subsistemas/Create
         public IActionResult Create()
         {
@@ -46,7 +63,8 @@ namespace NovoCuidar2024.Controllers
             {
                 UtenteId = _context.Utente.ToList().LastOrDefault().Id
             };
-
+            var DataSubsistemas = _context.SubSistema.ToList();
+            ViewBag.DataSubsistemas = DataSubsistemas;
             return View(subSistema);
         }
 
