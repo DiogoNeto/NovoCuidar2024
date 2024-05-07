@@ -88,11 +88,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="OrigemContrato" class="control-label">Origem de Contrato</label>
-                        <input asp-for="OrigemContrato" class="form-control" />
-                        <span asp-validation-for="OrigemContrato" class="text-danger"></span>
-                    </div>
-                    <div class="col-md-6">
                         <label asp-for="Genero" class="control-label">Género</label>
                         <label asp-for="Genero" class="control-label">
                             <input type="radio" name="genero" value="m">
@@ -468,6 +463,13 @@
                         <br />
                         <select id="origemContacto" name="origemContacto" onchange="dropdownOrigemContactoChanged()">
                             <option value="">Selecione uma opção</option>
+                            @foreach (var item in ViewBag.DataOrigemContacto)
+                            {
+                                <option value="@item.Id">@item.Nome</option>
+                            }
+                        </select>
+                       @*  <select id="origemContacto" name="origemContacto" onchange="dropdownOrigemContactoChanged()">
+                            <option value="">Selecione uma opção</option>
                             <option value="Internet">Internet</option>
                             <option value="MaisQueCuidar">Mais Que Cuidar</option>
                             <option value="SMP">SMP</option>
@@ -475,7 +477,7 @@
                             <option value="RNA">RNA</option>
                             <option value="Outro">Outro</option>
                             <option value="Referenciado">Referenciado</option>
-                        </select>
+                        </select> *@
                         <span asp-validation-for="OrigemContacto" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">

@@ -30,7 +30,7 @@ namespace NovoCuidar2024.Migrations
                     MedicoAssistente = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NumUtenteSaúde = table.Column<int>(type: "int", nullable: false),
-                    GrupoSanguinio = table.Column<string>(type: "longtext", nullable: false)
+                    GrupoSanguineo = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Alergias = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),

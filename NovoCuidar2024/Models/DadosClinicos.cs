@@ -15,7 +15,7 @@ namespace NovoCuidar2024.Models
         [Required]
         public int NumUtenteSaúde { get; set; }
         [Required]
-        public string GrupoSanguinio { get; set; }
+        public string GrupoSanguineo { get; set; }
         [Required]
         public string Alergias { get; set; }
         [Required]

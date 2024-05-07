@@ -54,7 +54,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UtenteId,CentroSaude,MedicoAssistente,NumUtenteSaúde,GrupoSanguinio,Alergias,RestricoesAlimentare,Patologias,InformacoessComplementares,ResumoClinico")] DadosClinicos dadosClinicos)
+        public async Task<IActionResult> Create([Bind("Id,UtenteId,CentroSaude,MedicoAssistente,NumUtenteSaúde,GrupoSanguineo,Alergias,RestricoesAlimentare,Patologias,InformacoessComplementares,ResumoClinico")] DadosClinicos dadosClinicos)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,CentroSaude,MedicoAssistente,NumUtenteSaúde,GrupoSanguinio,Alergias,RestricoesAlimentare,Patologias,InformacoessComplementares,ResumoClinico")] DadosClinicos dadosClinicos)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,CentroSaude,MedicoAssistente,NumUtenteSaúde,GrupoSanguineo,Alergias,RestricoesAlimentare,Patologias,InformacoessComplementares,ResumoClinico")] DadosClinicos dadosClinicos)
         {
             if (id != dadosClinicos.Id)
             {

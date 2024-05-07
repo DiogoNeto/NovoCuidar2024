@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
 using System.Drawing;
+using System.Linq;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -37,6 +38,19 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
+            var morada = _context.MoradaUtente.FirstOrDefault(m => m.UtenteId == id);
+            ViewBag.Morada = morada;
+
+            var contactoPrioritario = _context.Responsavel.FirstOrDefault(m => m.UtenteId == id);
+            ViewBag.ContactoPrioritario = contactoPrioritario;
+
+            var subSistema = _context.SubSistema.FirstOrDefault(m => m.UtenteId == id);
+            ViewBag.SubSistema = subSistema;
+
+            var dadosClinicos = _context.DadosClinicos.FirstOrDefault(m => m.UtenteId == id);
+            ViewBag.DadosClinicos = dadosClinicos;
+
+
             return View(utente);
         }
 
@@ -45,9 +59,11 @@ namespace NovoCuidar2024.Controllers
         {
             var dataResponsavelTecnico = _context.Responsavel.ToList();
             var dataFamilia = _context.FamiliaUtentes.ToList();
+            var dataOrigemContacto = _context.OrigemContacto.ToList();
 
             ViewBag.DataResponsavel = dataResponsavelTecnico;
             ViewBag.DataFamilia = dataFamilia;
+            ViewBag.DataOrigemContacto = dataOrigemContacto;
 
             return View();
         }
@@ -57,7 +73,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContrato,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
+        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
         {
             if (ModelState.IsValid)
             {

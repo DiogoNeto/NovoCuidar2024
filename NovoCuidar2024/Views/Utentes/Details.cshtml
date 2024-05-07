@@ -4,27 +4,529 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Detalhes</h1>
 
 <div>
-    <h4>Utente</h4>
+    <h4>Ficha do Utente</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+        <dd class="col-sm-10">
+            <div style="max-height:100px; max-width:100px">
+                <img src="~/uploads/@Html.DisplayFor(model => model.Foto)" />
+            </div>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Ativo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Ativo)
         </dd>
-        @* <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SubSistema)
+        <dt class="col-sm-2">
+            Contacto de Email
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SubSistema)
-        </dd> *@
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactoEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeEmpresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomeEmpresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocIdentificacaoNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocIdentificacaoNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SegurancaSocialNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SegurancaSocialNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocIdentificacaoValidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocIdentificacaoValidade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nacionalidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nacionalidade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactoEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactoEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactoTelemovel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactoTelemovel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocIdentificacaoNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocIdentificacaoNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocIdentificacaoTipo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocIdentificacaoTipo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocIdentificacaoValidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocIdentificacaoValidade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EstadoCivil)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FamiliaId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FamiliaId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genero)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Habilitacoes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Habilitacoes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HabitacaoPartilhada)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HabitacaoPartilhada)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HabitacaoTipo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HabitacaoTipo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdInterno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdInterno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrigemContacto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrigemContacto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResponsavelTecnicoId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResponsavelTecnicoId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SegurancaSocialNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SegurancaSocialNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vivencia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vivencia)
+        </dd>
     </dl>
+    <h4>Moradas do Utente</h4>
+    <hr />
+    @if (ViewBag.ContactoPrioritario != null)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                <p>Id</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.Id
+            </dd>
+            <dt class="col-sm-2">
+                <p>UtenteId</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.UtenteId
+            </dd>
+            <dt class="col-sm-2">
+                <p>Morada Id</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.Id
+            </dd>
+            <dt class="col-sm-2">
+                <p>Código Postal</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.CodPostal
+            </dd>
+            <dt class="col-sm-2">
+                <p>Localidade</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.Localidade
+            </dd>
+            <dt class="col-sm-2">
+                <p>Concelho</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.Concelho
+            </dd>
+            <dt class="col-sm-2">
+                <p>Andar</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.Andar
+            </dd>
+            <dt class="col-sm-2">
+                <p>Fração</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.Fracao
+            </dd>
+            <dt class="col-sm-2">
+                <p>Número de Porta</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.NumPorta
+            </dd>
+            <dt class="col-sm-2">
+                <p>País</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Morada.Pais
+            </dd>
+        </dl>
+    }
+    else
+    {
+        <div>Ainda não tem Moradas associadas.</div>
+    }
+    <div style="padding-bottom:20px">
+        <table>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+                </div>
+            </td>
+        </table>
+    </div>
+    <h4>Contacto Prioritário</h4>
+    <hr />
+    @if (ViewBag.ContactoPrioritario != null)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                <p>Id</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Id
+            </dd>
+            <dt class="col-sm-2">
+                <p>NIF</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Nif
+            </dd>
+            <dt class="col-sm-2">
+                <p>Número de Porta</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.NumPorta
+            </dd>
+            <dt class="col-sm-2">
+                <p>Utente Id</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.UtenteId
+            </dd>
+            <dt class="col-sm-2">
+                <p>Parentesco</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Parentesco
+            </dd>
+            <dt class="col-sm-2">
+                <p>País</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Pais
+            </dd>
+            <dt class="col-sm-2">
+                <p>Nome</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Nome
+            </dd>
+            <dt class="col-sm-2">
+                <p>Telefone</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Telefone
+            </dd>
+            <dt class="col-sm-2">
+                <p>Email</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Email
+            </dd>
+            <dt class="col-sm-2">
+                <p>Morada</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Morada
+            </dd>
+            <dt class="col-sm-2">
+                <p>Código Postal</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.CodPostal
+            </dd>
+            <dt class="col-sm-2">
+                <p>Localidade</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Localidade
+            </dd>
+            <dt class="col-sm-2">
+                <p>Descrição</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Descricao
+            </dd>
+            <dt class="col-sm-2">
+                <p>Andar</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Andar
+            </dd>
+            <dt class="col-sm-2">
+                <p>Ativo</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Ativo
+            </dd>
+            <dt class="col-sm-2">
+                <p>Fração</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.ContactoPrioritario.Fracao
+            </dd>
+        </dl>
+    }
+    else
+    {
+        <div>Ainda não tem Contactos Prioritários associados.</div>
+    }
+
+    <div style="padding-bottom:20px">
+        <table>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+                </div>
+            </td>
+        </table>
+    </div>
+    <h4>Sub Sistemas</h4>
+    <hr />
+    @if (ViewBag.SubSistema != null)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                <p>Sub Sistema</p>
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.SubSistema.Nome
+            </dd>
+        </dl>
+    }
+    else
+    {
+        <div>Ainda não tem Sub Sistemas associados.</div>
+    }
+    <div style="padding-bottom : 20px;">
+        <table>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+                </div>
+            </td>
+        </table>
+    </div>
+    <h4>Dados Clínicos</h4>
+    <hr />
+    @if (ViewBag.DadosClinicos != null)
+    {
+        <dl>
+            <dt>
+                Centro de Saúde
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.CentroSaude
+            </dd>
+            <dt>
+                Médico Assistente
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.MedicoAssistente
+            </dd>
+            <dt>
+                Número de Utente de Saúde
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.NumUtenteSaúde
+            </dd>
+            <dt>
+                Grupo Sanguineo
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.GrupoSanguineo
+            </dd>
+            <dt>
+                Centro de Saúde
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.CentroSaude
+            </dd>
+            <dt>
+                Alergias
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.Alergias
+            </dd>
+            <dt>
+                Restricões Alimentares
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.RestricoesAlimentare
+            </dd>
+            <dt>
+                Patologias
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.Patologias
+            </dd>
+            <dt>
+                Informacões Complementares
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.InformacoessComplementares
+            </dd>
+            <dt>
+                Resumo Clinico
+            </dt>
+            <dd>
+                @ViewBag.DadosClinicos.ResumoClinico
+            </dd>
+        </dl>
+    }
+    else
+    {
+        <div>Ainda não tem Dados Clínicos associados.</div>
+    }
+    <div style="padding-bottom : 20px;">
+        <table>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+                </div>
+            </td>
+        </table>
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="Index">Voltar à lista</a>
 </div>

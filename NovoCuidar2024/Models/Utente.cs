@@ -24,8 +24,6 @@ namespace NovoCuidar2024.Models
         [Required]
         public string OrigemContacto { get; set; }
         [Required]
-        public string OrigemContrato { get; set; }
-        [Required]
         public char Genero { get; set; }
         [Required]
         public DateOnly DataNascimento { get; set; }
