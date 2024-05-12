@@ -41,8 +41,13 @@ namespace NovoCuidar2024.Controllers
             var morada = _context.MoradaUtente.FirstOrDefault(m => m.UtenteId == id);
             ViewBag.Morada = morada;
 
-            var contactoPrioritario = _context.Responsavel.FirstOrDefault(m => m.UtenteId == id);
-            ViewBag.ContactoPrioritario = contactoPrioritario;
+            List<ContactoPrioritario> contact = new List<ContactoPrioritario>();
+            foreach (var r in _context.Responsavel.Where(m => m.UtenteId == id))
+            {
+                contact.Add(r);
+            }
+
+            ViewBag.ContactoPrioritario = contact;
 
             var subSistema = _context.SubSistema.FirstOrDefault(m => m.UtenteId == id);
             ViewBag.SubSistema = subSistema;

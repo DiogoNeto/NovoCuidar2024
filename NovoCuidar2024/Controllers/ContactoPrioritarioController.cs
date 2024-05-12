@@ -87,7 +87,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada,CodPostal,Localidade,Concelho,EstadoCivil,Observações")] ContactoPrioritario responsavel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,Nome,Pais,Descricao,Parentesco,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada,CodPostal,Localidade,Concelho,EstadoCivil,Observações")] ContactoPrioritario responsavel)
         {
             if (id != responsavel.Id)
             {
@@ -112,7 +112,8 @@ namespace NovoCuidar2024.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Utentes", new { id = responsavel.UtenteId });
+                //return RedirectToAction(nameof(Index));
             }
             return View(responsavel);
         }

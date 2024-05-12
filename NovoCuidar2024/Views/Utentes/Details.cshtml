@@ -276,104 +276,126 @@
     <hr />
     @if (ViewBag.ContactoPrioritario != null)
     {
-        <dl class="row">
-            <dt class="col-sm-2">
-                <p>Id</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Id
-            </dd>
-            <dt class="col-sm-2">
-                <p>NIF</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Nif
-            </dd>
-            <dt class="col-sm-2">
-                <p>Número de Porta</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.NumPorta
-            </dd>
-            <dt class="col-sm-2">
-                <p>Utente Id</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.UtenteId
-            </dd>
-            <dt class="col-sm-2">
-                <p>Parentesco</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Parentesco
-            </dd>
-            <dt class="col-sm-2">
-                <p>País</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Pais
-            </dd>
-            <dt class="col-sm-2">
-                <p>Nome</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Nome
-            </dd>
-            <dt class="col-sm-2">
-                <p>Telefone</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Telefone
-            </dd>
-            <dt class="col-sm-2">
-                <p>Email</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Email
-            </dd>
-            <dt class="col-sm-2">
-                <p>Morada</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Morada
-            </dd>
-            <dt class="col-sm-2">
-                <p>Código Postal</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.CodPostal
-            </dd>
-            <dt class="col-sm-2">
-                <p>Localidade</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Localidade
-            </dd>
-            <dt class="col-sm-2">
-                <p>Descrição</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Descricao
-            </dd>
-            <dt class="col-sm-2">
-                <p>Andar</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Andar
-            </dd>
-            <dt class="col-sm-2">
-                <p>Ativo</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Ativo
-            </dd>
-            <dt class="col-sm-2">
-                <p>Fração</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.ContactoPrioritario.Fracao
-            </dd>
-        </dl>
+        int i = 0;
+        @foreach (var c in ViewBag.ContactoPrioritario)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">
+                    <p>Id</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Id
+                </dd>
+                <dt class="col-sm-2">
+                    <p>NIF</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Nif
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Número de Porta</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].NumPorta
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Utente Id</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].UtenteId
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Parentesco</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Parentesco
+                </dd>
+                <dt class="col-sm-2">
+                    <p>País</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Pais
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Nome</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Nome
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Telefone</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Telefone
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Email</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Email
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Morada</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Morada
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Código Postal</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].CodPostal
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Localidade</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Localidade
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Descrição</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Descricao
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Andar</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Andar
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Ativo</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Ativo
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Fração</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.ContactoPrioritario[i].Fracao
+                </dd>
+            </dl>
+
+            <div style="padding-bottom:20px">
+                <table>
+                    <td>
+                        <a href="@Url.Action("Edit", "ContactoPrioritario", new { id = @ViewBag.ContactoPrioritario[i].Id })" class="btn btn-sm btn-info">Editar</a>
+                        @* <div class="form-group">
+                            <input type="submit" value="Ediar" class="btn btn-sm btn-info" href="@Url.Action("Edit", "ContactoPrioritario")" />
+                        </div> *@
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+                        </div>
+                    </td>
+                </table>
+            </div>
+
+            i++;
+        }
     }
     else
     {
@@ -385,16 +407,6 @@
             <td>
                 <div class="form-group">
                     <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
                 </div>
             </td>
         </table>
