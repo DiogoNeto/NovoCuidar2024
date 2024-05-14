@@ -46,6 +46,7 @@ namespace NovoCuidar2024.Controllers
                 UtenteId = _context.Utente.ToList().LastOrDefault().Id
             };
 
+
             return View(contactoPrioritario);
         }
 
@@ -56,14 +57,41 @@ namespace NovoCuidar2024.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome,Parentesco,Pais,Nif,Telefone,Email,Morada,NumPorta,Andar,Fracao,CodPostal,Localidade,Descricao,Concelho,Ativo")] ContactoPrioritario responsavel)
         {
+            bool novoContacto = _context.Responsavel.Where(x => x.UtenteId == responsavel.UtenteId) != null;
             if (ModelState.IsValid)
             {
                 _context.Add(responsavel);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.Utente;
-                return RedirectToAction("Create", "SubSistemas");
+                if (!novoContacto)
+                {
+                    return RedirectToAction("Create", "SubSistemas");
+                }
+                else
+                {
+                    return RedirectToAction("Details", "Utentes", new { id = responsavel.UtenteId });
+                }
             }
             return View(responsavel);
+        }
+
+        // POST: Responsaveis/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        public IActionResult Add(int utenteId)
+        {
+            if (utenteId == null)
+            {
+                return NotFound();
+            }
+
+            ContactoPrioritario contactoPrioritario = new ContactoPrioritario
+            {
+                UtenteId = utenteId
+                //_context.Utente.ToList().LastOrDefault().Id
+            };
+
+            return View(contactoPrioritario);
         }
 
         // GET: Responsaveis/Edit/5
@@ -148,7 +176,7 @@ namespace NovoCuidar2024.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Utente", new { id = id });
         }
 
         private bool ResponsavelExists(int id)

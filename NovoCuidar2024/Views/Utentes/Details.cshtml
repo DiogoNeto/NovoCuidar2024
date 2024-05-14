@@ -184,97 +184,108 @@
     </dl>
     <h4>Moradas do Utente</h4>
     <hr />
-    @if (ViewBag.ContactoPrioritario != null)
+
+    @if (ViewBag.Morada != null && ViewBag.Morada.Count > 0)
     {
-        <dl class="row">
-            <dt class="col-sm-2">
-                <p>Id</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.Id
-            </dd>
-            <dt class="col-sm-2">
-                <p>UtenteId</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.UtenteId
-            </dd>
-            <dt class="col-sm-2">
-                <p>Morada Id</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.Id
-            </dd>
-            <dt class="col-sm-2">
-                <p>Código Postal</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.CodPostal
-            </dd>
-            <dt class="col-sm-2">
-                <p>Localidade</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.Localidade
-            </dd>
-            <dt class="col-sm-2">
-                <p>Concelho</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.Concelho
-            </dd>
-            <dt class="col-sm-2">
-                <p>Andar</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.Andar
-            </dd>
-            <dt class="col-sm-2">
-                <p>Fração</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.Fracao
-            </dd>
-            <dt class="col-sm-2">
-                <p>Número de Porta</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.NumPorta
-            </dd>
-            <dt class="col-sm-2">
-                <p>País</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.Morada.Pais
-            </dd>
-        </dl>
+        int i = 0;
+        @foreach (var c in ViewBag.Morada)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">
+                    <p>Id</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].Id
+                </dd>
+                <dt class="col-sm-2">
+                    <p>UtenteId</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].UtenteId
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Morada Id</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].Id
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Código Postal</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].CodPostal
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Localidade</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].Localidade
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Concelho</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].Concelho
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Andar</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].Andar
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Fração</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].Fracao
+                </dd>
+                <dt class="col-sm-2">
+                    <p>Número de Porta</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].NumPorta
+                </dd>
+                <dt class="col-sm-2">
+                    <p>País</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.Morada[i].Pais
+                </dd>
+            </dl>
+            <table>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
+                    </div>
+                </td>
+            </table>
+
+            i++;
+        }
     }
     else
     {
         <div>Ainda não tem Moradas associadas.</div>
     }
+
     <div style="padding-bottom:20px">
         <table>
             <td>
                 <div class="form-group">
-                    <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+                    <a href="@Url.Action("Add", "MoradaUtentes", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
                 </div>
             </td>
         </table>
     </div>
     <h4>Contacto Prioritário</h4>
     <hr />
-    @if (ViewBag.ContactoPrioritario != null)
+    @if (ViewBag.ContactoPrioritario != null && ViewBag.ContactoPrioritario.Count > 0)
     {
         int i = 0;
         @foreach (var c in ViewBag.ContactoPrioritario)
@@ -383,12 +394,13 @@
                     <td>
                         <a href="@Url.Action("Edit", "ContactoPrioritario", new { id = @ViewBag.ContactoPrioritario[i].Id })" class="btn btn-sm btn-info">Editar</a>
                         @* <div class="form-group">
-                            <input type="submit" value="Ediar" class="btn btn-sm btn-info" href="@Url.Action("Edit", "ContactoPrioritario")" />
-                        </div> *@
+                <input type="submit" value="Ediar" class="btn btn-sm btn-info" href="@Url.Action("Edit", "ContactoPrioritario")" />
+                </div> *@
                     </td>
                     <td>
                         <div class="form-group">
-                            <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
+                            <a href="@Url.Action("Delete", "ContactoPrioritario", new { id = @ViewBag.ContactoPrioritario[i].Id })" class="btn btn-sm btn-danger">Remover</a>
+                            @* <input type="submit" value="Remover" class="btn btn-sm btn-danger" /> *@
                         </div>
                     </td>
                 </table>
@@ -406,47 +418,57 @@
         <table>
             <td>
                 <div class="form-group">
-                    <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
+                    @* <p>
+                    <a asp-action="Add">Adicionar</a>
+                    </p> *@
+                    <a href="@Url.Action("Add", "ContactoPrioritario", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
+
+                    @* <a href="@Url.Action("Add", "ContactoPrioritario")" class="btn btn-sm btn-primary">Adicionar</a> *@
                 </div>
             </td>
         </table>
     </div>
     <h4>Sub Sistemas</h4>
     <hr />
-    @if (ViewBag.SubSistema != null)
+    @if (ViewBag.SubSistema != null && ViewBag.SubSistema.Count > 0)
     {
-        <dl class="row">
-            <dt class="col-sm-2">
-                <p>Sub Sistema</p>
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.SubSistema.Nome
-            </dd>
-        </dl>
+        int i = 0;
+        @foreach (var c in ViewBag.SubSistema)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">
+                    <p>Sub Sistema</p>
+                </dt>
+                <dd class="col-sm-10">
+                    @ViewBag.SubSistema[i].Nome
+                </dd>
+            </dl>
+
+            <table>
+                <td>
+                    <div class="form-group">
+                        <a href="@Url.Action("Delete", "SubSistemas", new { id = @ViewBag.SubSistema[i].Id })" class="btn btn-sm btn-danger">Remover</a>
+                    </div>
+                </td>
+            </table>
+            i++;
+        }
+        <div style="padding-bottom : 20px;">
+            <table>
+                <td>
+                    <div class="form-group">
+                        @* <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" /> *@
+                        <a href="@Url.Action("Add", "SubSistemas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
+                    </div>
+                </td>
+            </table>
+        </div>
     }
     else
     {
         <div>Ainda não tem Sub Sistemas associados.</div>
     }
-    <div style="padding-bottom : 20px;">
-        <table>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Ediar" class="btn btn-sm btn-info" />
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Remover" class="btn btn-sm btn-danger" />
-                </div>
-            </td>
-        </table>
-    </div>
+
     <h4>Dados Clínicos</h4>
     <hr />
     @if (ViewBag.DadosClinicos != null)

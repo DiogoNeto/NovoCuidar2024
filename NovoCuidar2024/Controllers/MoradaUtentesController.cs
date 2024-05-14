@@ -20,6 +20,23 @@ namespace NovoCuidar2024.Controllers
             return View(await _context.MoradaUtente.ToListAsync());
         }
 
+        // GET: Subsistemas/Add
+        public IActionResult Add(int utenteId)
+        {
+            if (utenteId == null)
+            {
+                return NotFound();
+            }
+
+            MoradaUtente morada = new MoradaUtente
+            {
+                UtenteId = utenteId
+
+            };
+            
+            return View(morada);
+        }
+
         // GET: MoradaUtentes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

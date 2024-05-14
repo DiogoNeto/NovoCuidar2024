@@ -38,8 +38,19 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var morada = _context.MoradaUtente.FirstOrDefault(m => m.UtenteId == id);
+            
+            ViewBag.Utente = utente;
+
+            //var morada = _context.MoradaUtente.FirstOrDefault(m => m.UtenteId == id);
+
+            List<MoradaUtente> morada = new List<MoradaUtente>();
+            foreach (var v in _context.MoradaUtente.Where(m => m.UtenteId == id))
+            {
+                morada.Add(v);
+            }
             ViewBag.Morada = morada;
+
+
 
             List<ContactoPrioritario> contact = new List<ContactoPrioritario>();
             foreach (var r in _context.Responsavel.Where(m => m.UtenteId == id))
@@ -49,7 +60,12 @@ namespace NovoCuidar2024.Controllers
 
             ViewBag.ContactoPrioritario = contact;
 
-            var subSistema = _context.SubSistema.FirstOrDefault(m => m.UtenteId == id);
+            List<SubSistema> subSistema = new List<SubSistema>();
+            foreach (var s in _context.SubSistema.Where(m => m.UtenteId == id))
+            {
+                subSistema.Add(s);
+            }
+
             ViewBag.SubSistema = subSistema;
 
             var dadosClinicos = _context.DadosClinicos.FirstOrDefault(m => m.UtenteId == id);

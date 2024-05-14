@@ -40,19 +40,27 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Subsistemas/Add
-        public IActionResult Add()
+        public IActionResult Add(int utenteId)
         {
+            if (utenteId == null)
+            {
+                return NotFound();
+            }
+
             SubSistema subSistema = new SubSistema
             {
-                UtenteId = _context.Utente.ToList().LastOrDefault().Id
+                UtenteId = utenteId
+
             };
 
             var DataSubsistemas = _context.SubSistema.ToList();
-            ViewBag.DataSubsistemas = DataSubsistemas;
+            ViewBag.DataSubSistemas = DataSubsistemas;
 
-             _context.SaveChangesAsync();
-            ViewBag.Data = _context.Utente;
-            return RedirectToAction("Create", "SubSistema");
+            // _context.SaveChangesAsync();
+            //ViewBag.Data = _context.Utente;
+
+
+            return View(subSistema);
         }
 
 
@@ -64,7 +72,7 @@ namespace NovoCuidar2024.Controllers
                 UtenteId = _context.Utente.ToList().LastOrDefault().Id
             };
             var DataSubsistemas = _context.SubSistema.ToList();
-            ViewBag.DataSubsistemas = DataSubsistemas;
+            ViewBag.DataSubSistemas = DataSubsistemas;
             return View(subSistema);
         }
 
@@ -75,12 +83,21 @@ namespace NovoCuidar2024.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome")] SubSistema subsistema)
         {
+            bool novoContacto = _context.Responsavel.Where(x => x.UtenteId == subsistema.UtenteId) != null;
+
             if (ModelState.IsValid)
             {
                 _context.Add(subsistema);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.Utente;
-                return RedirectToAction("Create", "DadosClinicos");
+                if (!novoContacto)
+                {
+                    return RedirectToAction("Create", "DadosClinicos");
+                }
+                else
+                {
+                    return RedirectToAction("Details", "Utentes", new { id = subsistema.UtenteId });
+                }
             }
             return View(subsistema);
         }
@@ -166,7 +183,9 @@ namespace NovoCuidar2024.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return RedirectToAction("Details", "Utentes", new { id = subsistema.UtenteId });
+            //return RedirectToAction(nameof(Index));
         }
 
         private bool SubSistemaExists(int id)
