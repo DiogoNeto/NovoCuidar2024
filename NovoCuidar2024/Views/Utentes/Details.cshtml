@@ -453,22 +453,20 @@
             </table>
             i++;
         }
-        <div style="padding-bottom : 20px;">
-            <table>
-                <td>
-                    <div class="form-group">
-                        @* <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" /> *@
-                        <a href="@Url.Action("Add", "SubSistemas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
-                    </div>
-                </td>
-            </table>
-        </div>
     }
     else
     {
         <div>Ainda não tem Sub Sistemas associados.</div>
     }
-
+    <div style="padding-bottom : 20px;">
+        <table>
+            <td>
+                <div class="form-group">
+                    <a href="@Url.Action("Add", "SubSistemas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
+                </div>
+            </td>
+        </table>
+    </div>
     <h4>Dados Clínicos</h4>
     <hr />
     @if (ViewBag.DadosClinicos != null)
