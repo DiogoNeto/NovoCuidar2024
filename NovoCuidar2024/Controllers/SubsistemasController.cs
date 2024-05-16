@@ -53,7 +53,7 @@ namespace NovoCuidar2024.Controllers
 
             };
 
-            var DataSubsistemas = _context.SubSistema.ToList();
+            var DataSubsistemas = _context.SubSistema.Where(x => x.UtenteId == 0).ToList();
             ViewBag.DataSubSistemas = DataSubsistemas;
 
             // _context.SaveChangesAsync();
@@ -71,7 +71,7 @@ namespace NovoCuidar2024.Controllers
             {
                 UtenteId = _context.Utente.ToList().LastOrDefault().Id
             };
-            var DataSubsistemas = _context.SubSistema.ToList();
+            var DataSubsistemas = _context.SubSistema.Where(x=>x.UtenteId==0).ToList();
             ViewBag.DataSubSistemas = DataSubsistemas;
             return View(subSistema);
         }
@@ -83,14 +83,14 @@ namespace NovoCuidar2024.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome")] SubSistema subsistema)
         {
-            bool novoContacto = _context.Responsavel.Where(x => x.UtenteId == subsistema.UtenteId) != null;
+            var novoContacto = _context.Utente.Where(x => x.Id == subsistema.UtenteId).Count();
 
             if (ModelState.IsValid)
             {
                 _context.Add(subsistema);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.Utente;
-                if (!novoContacto)
+                if (novoContacto==0)
                 {
                     return RedirectToAction("Create", "DadosClinicos");
                 }

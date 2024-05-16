@@ -57,13 +57,13 @@ namespace NovoCuidar2024.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome,Parentesco,Pais,Nif,Telefone,Email,Morada,NumPorta,Andar,Fracao,CodPostal,Localidade,Descricao,Concelho,Ativo")] ContactoPrioritario responsavel)
         {
-            bool novoContacto = _context.Responsavel.Where(x => x.UtenteId == responsavel.UtenteId) != null;
+            var novoContacto = _context.Utente.Where(x => x.Id == responsavel.UtenteId).Count();
             if (ModelState.IsValid)
             {
                 _context.Add(responsavel);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.Utente;
-                if (!novoContacto)
+                if (novoContacto == 0)
                 {
                     return RedirectToAction("Create", "SubSistemas");
                 }

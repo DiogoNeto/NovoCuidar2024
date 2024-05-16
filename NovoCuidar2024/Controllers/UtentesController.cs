@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
 using System.Drawing;
-using System.Linq;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -108,18 +107,29 @@ namespace NovoCuidar2024.Controllers
 
 
 
-                var uploadsDirectoryLeitura = "C:\\Teste";
+                var uploadsDirectoryLeitura = "C:\\Utilizador\\Diogo\\Imagens";
                 var uploadsDirectoryEscrita = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
                 var filePathLeitura = Path.Combine(uploadsDirectoryLeitura, utente.Foto);
                 var filePathEscrita = Path.Combine(uploadsDirectoryEscrita, utente.Foto);
 
-                Image image = Image.FromFile(filePathLeitura);
-                var ms = new MemoryStream();
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Image? image = null;
 
-                var bytess = ms.ToArray();
-                image.Dispose();
-                System.IO.File.WriteAllBytes(filePathEscrita, bytess);
+                try
+                {
+                    image = Image.FromFile(filePathLeitura);
+                    var ms = new MemoryStream();
+                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                    var bytess = ms.ToArray();
+                    image.Dispose();
+                    System.IO.File.WriteAllBytes(filePathEscrita, bytess);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e + " - Erro ao carregar a imagem.");
+                }
+
+                
                 //var a = File(bytes, contentType, filePath);
 
                 //using (FileStream fs = File.Create(filePath))
