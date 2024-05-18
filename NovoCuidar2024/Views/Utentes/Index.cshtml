@@ -6,6 +6,7 @@
 <head>
     <title>Get Text from Textbox</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <h1>Utentes</h1>
@@ -147,9 +148,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Ativo)
             </th>
-
-
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -166,13 +164,10 @@
                     @Html.DisplayFor(modelItem => item.Ativo)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-folder" style="margin:2px;" title="Criar"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-bars" style="margin:2px;" title="Detalhes"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash" style="margin:2px;" title="Eliminar"></i></a>
                 </td>
-                @* <td>
-            @Html.DisplayFor(modelItem => item.SubSistema)
-            </td> *@
             </tr>
         }
     </tbody>

@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
-<h4>MoradaUtente</h4>
+<h4>Morada do Utente</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +15,7 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="UtenteId" class="control-label"></label>
-                <input asp-for="UtenteId" class="form-control" />
+                <input asp-for="UtenteId" class="form-control" readonly />
                 <span asp-validation-for="UtenteId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -24,7 +24,22 @@
                 <span asp-validation-for="Morada" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CodPostal" class="control-label"></label>
+                <label asp-for="Andar" class="control-label"></label>
+                <input asp-for="Andar" class="form-control" />
+                <span asp-validation-for="Andar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumPorta" class="control-label">Número de Porta</label>
+                <input asp-for="NumPorta" class="form-control" />
+                <span asp-validation-for="NumPorta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fracao" class="control-label">Fração</label>
+                <input asp-for="Fracao" class="form-control" />
+                <span asp-validation-for="Fracao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodPostal" class="control-label">Código Postal</label>
                 <input asp-for="CodPostal" class="form-control" />
                 <span asp-validation-for="CodPostal" class="text-danger"></span>
             </div>
@@ -39,16 +54,23 @@
                 <span asp-validation-for="Concelho" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Pais" class="control-label">País</label>
+                <input asp-for="Pais" class="form-control" />
+                <span asp-validation-for="Pais" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="padding-top:20px;">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

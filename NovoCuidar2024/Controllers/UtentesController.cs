@@ -19,7 +19,7 @@ namespace NovoCuidar2024.Controllers
         public async Task<IActionResult> Index(bool activo)
         {
             var items = _context.Utente.ToList();
-            return View(await _context.Utente.Where(x=>x.Ativo!=activo).ToListAsync());
+            return View(await _context.Utente.Where(x=>x.Ativo!=activo).OrderByDescending(x=>x.Id).ToListAsync());
         }
 
         // GET: Utentes/Details/5   

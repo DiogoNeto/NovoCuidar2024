@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
+using NovoCuidar2024.Migrations;
 using NovoCuidar2024.Models;
+using System.Reflection.PortableExecutable;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -72,14 +74,22 @@ namespace NovoCuidar2024.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,Morada,CodPostal,Localidade,Concelho,NumPorta,Andar,Fracao,CodPostal,Pais")] MoradaUtente moradaUtente)
         {
+            var novoContacto = _context.Utente.Where(x => x.Id == moradaUtente.UtenteId).Count();
+
             if (ModelState.IsValid)
             {
                 _context.Add(moradaUtente);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.MoradaUtente;
+            }
+            if (novoContacto == 0)
+            {
                 return RedirectToAction("Create", "ContactoPrioritario");
             }
-            return View(moradaUtente);
+            else
+            {
+                return RedirectToAction("Details", "Utentes", new { id = moradaUtente.UtenteId });
+            }
         }
 
         // GET: MoradaUtentes/Edit/5
@@ -103,7 +113,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,Morada,CodPostal,Localidade,Concelho")] MoradaUtente moradaUtente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,Pais,Fracao,Andar,NumPorta,Morada,CodPostal,Localidade,Concelho")] MoradaUtente moradaUtente)
         {
             if (id != moradaUtente.Id)
             {
@@ -128,7 +138,7 @@ namespace NovoCuidar2024.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Utentes", new { id = moradaUtente.UtenteId });
             }
             return View(moradaUtente);
         }
@@ -163,7 +173,7 @@ namespace NovoCuidar2024.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Utentes", new { id = moradaUtente.UtenteId });
         }
 
         private bool MoradaUtenteExists(int id)
