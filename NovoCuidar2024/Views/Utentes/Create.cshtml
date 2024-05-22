@@ -471,7 +471,7 @@
                         <span asp-validation-for="OrigemContacto" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="Foto">Select File:</label>
+                        <label asp-for="Foto"></label>
                         <input asp-for="Foto" type="file" id="file" name="file" class="form-control-file">
                     </div>
                     <div class="col-md-6" style="visibility: hidden;">
@@ -484,15 +484,12 @@
             <div class="form-group">
                 <input type="submit" value="Próximo" class="btn btn-primary" />
             </div>
-
+            <div>
+                <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
+            </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
-</div>
-
 
 <script>
     // Get the file input element

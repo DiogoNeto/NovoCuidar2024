@@ -1,0 +1,83 @@
+﻿@model IEnumerable<NovoCuidar2024.Models.ServicoContratado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UtenteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServicoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContratoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Periodicidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorDia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorSemana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorMes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UtenteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServicoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContratoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Periodicidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorDia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorSemana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorMes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

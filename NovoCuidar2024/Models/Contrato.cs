@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NovoCuidar2024.Models
 {
@@ -7,22 +6,17 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Utente")]
         [Required]
-        public int UtenteId { get; set; }
-        [Required]
-        public DateOnly DataInicio { get; set; }
-        [Required]
-        public DateOnly DataFim { get; set; }
+        public DateOnly DataAssinatura { get; set; }
         [Required]
         public required string Motivo { get; set; }
         [Required]
-        public int NumeroContrato { get; set; }
-        [Required]
         public required string Descricao { get; set; }
         [Required]
-        public required string TipoContrato { get; set; }
+        public int Valor { get; set; }
         [Required]
-        public int Valor {  get; set; }
+        public bool Ativo { get; set; }
+        [Required]
+        public int Ficheiro { get; set; }
     }
 }

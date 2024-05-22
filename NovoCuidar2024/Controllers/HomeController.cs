@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
-using System;
 using System.Diagnostics;
 
 namespace NovoCuidar2024.Controllers
@@ -19,21 +17,30 @@ namespace NovoCuidar2024.Controllers
 
         public IActionResult Index()
         {
-            Home rec = new Home
+            var nUtentes = _context.Utente.Where(x => x.Ativo == true).Count();
+            if (nUtentes > 3 && _context.Servico.ToList()[2].Descricao != null && _context.Servico.ToList()[2].Nome != null)
             {
-                numeroUtentes = _context.Utente.Where(x => x.Ativo == true).Count().ToString(),
-                Utente1 = _context.Servico.ToList().FirstOrDefault().Descricao.ToString(),
-                Servico1 = _context.Servico.ToList().FirstOrDefault().ServicoContratado.ToString(),
-                Preco1 = _context.Servico.ToList().FirstOrDefault().Preco.ToString(),
-                Utente2 = _context.Servico.ToList()[1].Descricao.ToString(),
-                Servico2 = _context.Servico.ToList()[1].ServicoContratado.ToString(),
-                Preco2 = _context.Servico.ToList()[1].Preco.ToString(),
-                Utente3 = _context.Servico.ToList()[2].Descricao.ToString(),
-                Servico3 = _context.Servico.ToList()[2].ServicoContratado.ToString(),
-                Preco3 = _context.Servico.ToList()[2].Preco.ToString(),
-            };
-        
-            ViewBag.Message = rec;
+                Home rec = new Home
+                {
+                    numeroUtentes = nUtentes,
+                    Utente1 = _context.Servico.ToList().FirstOrDefault().Descricao?.ToString(),
+                    Servico1 = _context.Servico.ToList().FirstOrDefault().Nome?.ToString(),
+                    //Preco1 = _context.Servico.ToList().FirstOrDefault().Preco.ToString(),
+                    Utente2 = _context.Servico.ToList()[1].Descricao?.ToString(),
+                    Servico2 = _context.Servico.ToList()[1].Nome?.ToString(),
+                    //Preco2 = _context.Servico.ToList()[1].Preco.ToString(),
+                    Utente3 = _context.Servico.ToList()[2].Descricao?.ToString(),
+                    Servico3 = _context.Servico.ToList()[2].Nome?.ToString(),
+                    //Preco3 = _context.Servico.ToList()[2].Preco.ToString(),
+                };
+                ViewBag.Message = rec;
+            }
+            else
+            {
+                Home rec = null;
+                ViewBag.Message = rec;
+            }
+
             return View();
         }
 

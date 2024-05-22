@@ -1,0 +1,63 @@
+﻿@model NovoCuidar2024.Models.LinhaEscala
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>LinhaEscala</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CuidadoraId" class="control-label"></label>
+                <input asp-for="CuidadoraId" class="form-control" />
+                <span asp-validation-for="CuidadoraId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServicoContratadoId" class="control-label"></label>
+                <input asp-for="ServicoContratadoId" class="form-control" />
+                <span asp-validation-for="ServicoContratadoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataHoraInicio" class="control-label"></label>
+                <input asp-for="DataHoraInicio" class="form-control" />
+                <span asp-validation-for="DataHoraInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataHoraFim" class="control-label"></label>
+                <input asp-for="DataHoraFim" class="form-control" />
+                <span asp-validation-for="DataHoraFim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorReceberInicial" class="control-label"></label>
+                <input asp-for="ValorReceberInicial" class="form-control" />
+                <span asp-validation-for="ValorReceberInicial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorPago" class="control-label"></label>
+                <input asp-for="ValorPago" class="form-control" />
+                <span asp-validation-for="ValorPago" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorReceberAtualizado" class="control-label"></label>
+                <input asp-for="ValorReceberAtualizado" class="form-control" />
+                <span asp-validation-for="ValorReceberAtualizado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

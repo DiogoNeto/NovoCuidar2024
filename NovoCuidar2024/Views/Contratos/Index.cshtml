@@ -13,28 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UtenteId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataFim)
+                @Html.DisplayNameFor(model => model.DataAssinatura)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Motivo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumeroContrato)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Descricao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoContrato)
+                @Html.DisplayNameFor(model => model.Valor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Valor)
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ficheiro)
             </th>
             <th></th>
         </tr>
@@ -43,32 +37,26 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UtenteId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataFim)
+                @Html.DisplayFor(modelItem => item.DataAssinatura)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Motivo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumeroContrato)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoContrato)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Valor)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ficheiro)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalher</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
             </td>
         </tr>

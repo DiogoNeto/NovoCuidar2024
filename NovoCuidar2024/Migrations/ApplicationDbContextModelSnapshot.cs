@@ -222,6 +222,30 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("NovoCuidar2024.Models.Adendas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ContratoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Ficheiro")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Adendas");
+                });
+
             modelBuilder.Entity("NovoCuidar2024.Models.Colaborador", b =>
                 {
                     b.Property<int>("Id")
@@ -370,29 +394,22 @@ namespace NovoCuidar2024.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("DataFim")
-                        .HasColumnType("date");
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<DateOnly>("DataInicio")
+                    b.Property<DateOnly>("DataAssinatura")
                         .HasColumnType("date");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Ficheiro")
+                        .HasColumnType("int");
+
                     b.Property<string>("Motivo")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int>("NumeroContrato")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TipoContrato")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UtenteId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Valor")
                         .HasColumnType("int");
@@ -400,6 +417,39 @@ namespace NovoCuidar2024.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contrato");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Cuidadora", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Contacto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ContactoWhatsapp")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NIB")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NIF")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Observacoes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cuidadora");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.DadosClinicos", b =>
@@ -468,6 +518,40 @@ namespace NovoCuidar2024.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FamiliaUtentes");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.LinhaEscala", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CuidadoraId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataHoraFim")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataHoraInicio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("ServicoContratadoId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("ValorPago")
+                        .HasColumnType("double");
+
+                    b.Property<double>("ValorReceberAtualizado")
+                        .HasColumnType("double");
+
+                    b.Property<double>("ValorReceberInicial")
+                        .HasColumnType("double");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LinhaEscala");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.LinhaOrcamento", b =>
@@ -594,22 +678,54 @@ namespace NovoCuidar2024.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("OrigemContacto")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Preco")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ServicoContratado")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int>("UtenteId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("Servico");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.ServicoContratado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ContratoId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataFim")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Periodicidade")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("ServicoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UtenteId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("ValorDia")
+                        .HasColumnType("float");
+
+                    b.Property<float>("ValorMes")
+                        .HasColumnType("float");
+
+                    b.Property<float>("ValorSemana")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServicoContratado");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.SubSistema", b =>

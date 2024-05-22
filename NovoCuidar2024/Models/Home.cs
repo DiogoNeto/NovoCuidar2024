@@ -4,7 +4,7 @@ namespace NovoCuidar2024.Models
 {
     public class Home
     {
-        public string numeroUtentes { get; set; }
+        public int numeroUtentes { get; set; }
         public string Utente1 { get; set; }
         public string Servico1 { get; set; }
         public string Preco1 { get; set; }

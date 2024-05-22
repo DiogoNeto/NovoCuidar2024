@@ -13,22 +13,10 @@
     <thead>
         <tr>
             <th>
-                Utente
-            </th>
-            <th>
                 Serviço
             </th>
             <th>
-                Origem Contacto
-            </th>
-            <th>
                 Descrição
-            </th>
-            <th>
-                Preço
-            </th>
-            <th>
-                Data
             </th>
             <th></th>
         </tr>
@@ -38,22 +26,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UtenteId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServicoContratado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrigemContacto)
+                    @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Preco)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataServico)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
