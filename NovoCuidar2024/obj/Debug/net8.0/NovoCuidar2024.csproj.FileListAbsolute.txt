@@ -267,9 +267,9 @@ C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\De
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\scopedcss\bundle\NovoCuidar2024.styles.css
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\scopedcss\projectbundle\NovoCuidar2024.bundle.scp.css
-C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\NovoCuidar2024.csproj.CopyComplete
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\NovoCuidar2024.dll
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\refint\NovoCuidar2024.dll
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\NovoCuidar2024.pdb
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\NovoCuidar2024.genruntimeconfig.cache
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\ref\NovoCuidar2024.dll
+C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\NovoCuid.F69F6FB8.Up2Date

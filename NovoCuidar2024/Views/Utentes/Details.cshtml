@@ -11,13 +11,11 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Foto)
         </dt>
         <dd class="col-sm-9">
-            <div style="max-height:100px; max-width:100px">
+            <div style="max-height:10px; max-width:10px; float:right">
                 <img src="~/uploads/@Html.DisplayFor(model => model.Foto)" />
             </div>
-            @Html.DisplayFor(model => model.Foto)
         </dd>
         <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Ativo)
@@ -182,15 +180,17 @@
             @Html.DisplayFor(model => model.Vivencia)
         </dd>
     </dl>
+
     <div style="padding-bottom : 20px;">
         <table>
             <tr>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
-
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-sm btn-info">Editar</a>
                 </td>
             </tr>
         </table>
+    </div>
+
         <h4>Moradas do Utente</h4>
         <hr />
 
@@ -261,19 +261,20 @@
                         @ViewBag.Morada[i].Pais
                     </dd>
                     <dd>
-                        <a href="@Url.Action("Delete", "MoradaUtentes", new { id = @ViewBag.Morada[i].Id })" class="btn btn-sm btn-danger">X</a>
+                        <table>
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("Edit", "MoradaUtentes", new { id = @ViewBag.Morada[i].Id })" class="btn btn-sm btn-info">Editar</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "MoradaUtentes", new { id = @ViewBag.Morada[i].Id })" class="btn btn-sm btn-danger">Remover</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </dd>
+                    <dd>
                     </dd>
                 </dl>
-                <table>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <a href="@Url.Action("Edit", "MoradaUtentes", new { id = @ViewBag.Morada[i].Id })" class="btn btn-sm btn-info">Editar</a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-
                 i++;
             }
         }
@@ -405,12 +406,7 @@
                     <input type="submit" value="Ediar" class="btn btn-sm btn-info" href="@Url.Action("Edit", "ContactoPrioritario")" />
                     </div> *@
                         </td>
-                        <td>
-                            <div class="form-group">
-                                <a href="@Url.Action("Delete", "ContactoPrioritario", new { id = @ViewBag.ContactoPrioritario[i].Id })" class="fa fa-trash"></a>
-                                @* <input type="submit" value="Remover" class="btn btn-sm btn-danger" /> *@
-                            </div>
-                        </td>
+
                     </table>
                 </div>
 
@@ -424,120 +420,119 @@
 
         <div style="padding-bottom:20px">
             <table>
-                <td>
-                    <div class="form-group">
-                        @* <p>
-                        <a asp-action="Add">Adicionar</a>
-                        </p> *@
+                <tr>
+                    <td>
                         <a href="@Url.Action("Add", "ContactoPrioritario", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
+                    </td>
+                </tr>
+            </table>
 
-                        @* <a href="@Url.Action("Add", "ContactoPrioritario")" class="btn btn-sm btn-primary">Adicionar</a> *@
-                    </div>
-                </td>
-            </table>
+            @* <p>
+            <a asp-action="Add">Adicionar</a>
+            </p> *@
+
+            @* <a href="@Url.Action("Add", "ContactoPrioritario")" class="btn btn-sm btn-primary">Adicionar</a> *@
         </div>
-        <h4>Sub Sistemas</h4>
-        <hr />
-        @if (ViewBag.SubSistema != null && ViewBag.SubSistema.Count > 0)
-        {
-            int i = 0;
-            @foreach (var c in ViewBag.SubSistema)
-            {
-                <dl class="row">
-                    <dd class="col-sm-3">
-                        @ViewBag.SubSistema[i].Nome
-                    </dd>
-                    <dd class="col-sm-3">
-                            <a href="@Url.Action("Delete", "SubSistemas", new { id = @ViewBag.SubSistema[i].Id })" class="btn btn-sm btn-danger">X</a>
-                    </dd>
-                </dl>
-                i++;
-            }
-        }
-        else
-        {
-            <div>Ainda não tem Sub Sistemas associados.</div>
-        }
-        <div style="padding-bottom : 20px;">
-            <table>
-                <td>
-                    <div class="form-group">
-                        <a href="@Url.Action("Add", "SubSistemas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">+</a>
-                    </div>
-                </td>
-            </table>
-        </div>
-        <h4>Dados Clínicos</h4>
-        <hr />
-        @if (ViewBag.DadosClinicos != null)
+        </td>
+        </table>
+    </div>
+    <h4>Sub Sistemas</h4>
+    <hr />
+    @if (ViewBag.SubSistema != null && ViewBag.SubSistema.Count > 0)
+    {
+        int i = 0;
+        @foreach (var c in ViewBag.SubSistema)
         {
             <dl class="row">
-                <dt class="col-sm-3">
-                    Centro de Saúde
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.CentroSaude
+                <dd class="col-sm-3">
+                    @ViewBag.SubSistema[i].Nome
                 </dd>
-                <dt class="col-sm-3">
-                    Médico Assistente
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.MedicoAssistente
-                </dd>
-                <dt class="col-sm-3">
-                    Número de Utente de Saúde
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.NumUtenteSaúde
-                </dd>
-                <dt class="col-sm-3">
-                    Grupo Sanguineo
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.GrupoSanguineo
-                </dd>
-                <dt class="col-sm-3">
-                    Centro de Saúde
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.CentroSaude
-                </dd>
-                <dt class="col-sm-3">
-                    Alergias
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.Alergias
-                </dd>
-                <dt class="col-sm-3">
-                    Restricões Alimentares
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.RestricoesAlimentare
-                </dd>
-                <dt class="col-sm-3">
-                    Patologias
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.Patologias
-                </dd>
-                <dt class="col-sm-3">
-                    Informacões Complementares
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.InformacoessComplementares
-                </dd>
-                <dt class="col-sm-3">
-                    Resumo Clinico
-                </dt>
-                <dd class="col-sm-9">
-                    @ViewBag.DadosClinicos.ResumoClinico
+                <dd class="col-sm-3">
+                    <a href="@Url.Action("Delete", "SubSistemas", new { id = @ViewBag.SubSistema[i].Id })" class="btn btn-sm btn-danger">X</a>
                 </dd>
             </dl>
+            i++;
         }
-        else
-        {
-            <div>Ainda não tem Dados Clínicos associados.</div>
-        }
+    }
+    else
+    {
+        <div>Ainda não tem Sub Sistemas associados.</div>
+    }
+    <div style="padding-bottom : 20px;">
+        <table>
+            <td>
+                <div class="form-group">
+                    <a href="@Url.Action("Add", "SubSistemas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">+</a>
+                </div>
+            </td>
+        </table>
+    </div>
+    <h4>Dados Clínicos</h4>
+    <hr />
+    @if (ViewBag.DadosClinicos != null)
+    {
+        <dl class="row">
+            <dt class="col-sm-3">
+                Centro de Saúde
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.CentroSaude
+            </dd>
+            <dt class="col-sm-3">
+                Médico Assistente
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.MedicoAssistente
+            </dd>
+            <dt class="col-sm-3">
+                Número de Utente de Saúde
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.NumUtenteSaúde
+            </dd>
+            <dt class="col-sm-3">
+                Grupo Sanguineo
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.GrupoSanguineo
+            </dd>
+            <dt class="col-sm-3">
+                Centro de Saúde
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.CentroSaude
+            </dd>
+            <dt class="col-sm-3">
+                Alergias
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.Alergias
+            </dd>
+            <dt class="col-sm-3">
+                Restricões Alimentares
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.RestricoesAlimentare
+            </dd>
+            <dt class="col-sm-3">
+                Patologias
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.Patologias
+            </dd>
+            <dt class="col-sm-3">
+                Informacões Complementares
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.InformacoessComplementares
+            </dd>
+            <dt class="col-sm-3">
+                Resumo Clinico
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.DadosClinicos.ResumoClinico
+            </dd>
+        </dl>
         <div style="padding-bottom : 20px;">
             <table>
                 <td>
@@ -547,8 +542,13 @@
                 </td>
             </table>
         </div>
-    </div>
-    <div>
-        <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
-    </div>
+    }
+    else
+    {
+        <div>Ainda não tem Dados Clínicos associados.</div>
+    }
+    
+</div>
+<div>
+    <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
 </div>

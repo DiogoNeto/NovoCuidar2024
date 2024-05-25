@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
+using NovoCuidar2024.ViewModel;
 using System.Drawing;
 
 namespace NovoCuidar2024.Controllers
@@ -18,8 +19,52 @@ namespace NovoCuidar2024.Controllers
         // GET: Utentes
         public async Task<IActionResult> Index(bool activo)
         {
-            var items = _context.Utente.ToList();
-            return View(await _context.Utente.Where(x=>x.Ativo!=activo).OrderByDescending(x=>x.Id).ToListAsync());
+            //var items = _context.Utente.ToList();
+
+            //return View(await _context.Utente.Where(x=>x.Ativo!=activo).OrderByDescending(x=>x.Id).ToListAsync());
+
+            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
+                          FROM utente u
+                          LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
+                          LEFT JOIN servicocontratado s ON s.UtenteId = u.Id
+                          Where u.Ativo !="+activo;
+            //var resul = _context.Utente.FromSqlRaw(query).ToList();
+            var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
+
+            //var query=from utentes in _context.Utente
+            //          join tecnicas in _context.Tecnico
+            //          on utentes.ResponsavelTecnicoId equals tecnicas.Id into utenteTecnicas
+            //          from tecnicas in utenteTecnicas.DefaultIfEmpty()
+            //          join servicos in _context.ServicoContratado
+            //          on utentes.OrigemContacto equals servicos.Id into utenteContrato
+            //          from servicos in utenteServicos.DefaultIfEmpty()
+            //          select new UtentesViewModel
+            //          {
+            //              Id = utentes.Id,
+            //              Foto = utentes.Foto,
+            //              Estado = utentes.Ativo,
+            //              Nome = utentes.Nome,
+            //              Tecnica = tecnicas.Nome,
+            //              Servico = contrato.
+            //          }
+
+
+            var Utentes = _context.Utente;
+            var Tecnicos = _context.Tecnico;
+            var Servicos = _context.ServicoContratado;
+            var viewModel = new UtentesViewModel
+            {
+                //Utente = Utentes.ToList(),
+                //Tecnicos = Tecnicos.ToList().Where(x => x.Id == Utentes.First().ResponsavelTecnicoId).ToList(),
+                //Servicos = Servicos.ToList().Where(x => x.UtenteId == Utentes.First().Id).ToList()
+            };
+
+            //var utentesViewModels = new List<UtentesViewModel>();
+            //utentesViewModels.Add(viewModel);
+            //IEnumerable<UtentesViewModel> listUtentes = utentesViewModels;
+            IEnumerable<UtentesViewModel> listUtentes = result;
+
+            return View(listUtentes);
         }
 
         // GET: Utentes/Details/5   
@@ -37,7 +82,7 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            
+
             ViewBag.Utente = utente;
 
             //var morada = _context.MoradaUtente.FirstOrDefault(m => m.UtenteId == id);
@@ -129,7 +174,7 @@ namespace NovoCuidar2024.Controllers
                     Console.WriteLine(e + " - Erro ao carregar a imagem.");
                 }
 
-                
+
                 //var a = File(bytes, contentType, filePath);
 
                 //using (FileStream fs = File.Create(filePath))
@@ -273,7 +318,7 @@ namespace NovoCuidar2024.Controllers
                 // Handle empty or missing file
                 return RedirectToAction("Error");
             }
-            
+
             // Save the uploaded photo to a directory on the server
             var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
             var filePath = Path.Combine(uploadsDirectory, photo.FileName);

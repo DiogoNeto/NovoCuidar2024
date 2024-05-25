@@ -19,6 +19,8 @@ namespace NovoCuidar2024.Models
         [Required]
         public string Periodicidade { get; set;}
         [Required]
+        public string Descricao { get; set; }
+        [Required]
         public float ValorDia { get; set;}
         [Required]
         public float ValorSemana { get; set;}
