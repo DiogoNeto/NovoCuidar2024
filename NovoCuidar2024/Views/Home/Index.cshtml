@@ -3,34 +3,42 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bem vindo ao Novo Cuidar 2024</h1>
+    <h1 class="display-4">Bem vindo</h1>
     <div id="utentes" class="align-content-start">
         @{
             var data = ViewBag.Message;
         }
         <h4>Número de utentes ativos</h4>
         <h5>@data.numeroUtentes</h5>
-        <button class="button button-primary">
+@*         <button class="button button-primary">
         @Html.ActionLink("Lista de Utentes", "Index", "Utentes", null, new { @class = "page-scroll" })
-        </button>
-        <button class="button button-primary">
+
+        </button> *@
+        <button onclick="location.href='@Url.Action("Index", "Utentes")'" class="btn btn-primary">Listar Todos os Utentes</button>
+
+@*         <button class="button button-primary">
         @Html.ActionLink("Criar novo Utente", "Create", "Utentes", null, new { @class = "page-scroll" })
-        </button>
+        </button> *@
+        <button onclick="location.href='@Url.Action("Create", "Utentes")'" class="btn btn-primary">Criar Novos Utentes</button>
+
     </div>
     
     <div id="servicos" class="col-6">
-        <h5>Últimos Serviços</h5>
+        <h5>Últimos Serviços Contratados</h5>
         <div id="servicosRecentes">
-            <table class="table table-primary">
+            <table class="table">
                 <tr>
                     <td>
                         <h5>@data.Utente1</h5>
                     </td>
                     <td>
-                        <h5>@data.Preco1</h5>
+                        <h5>@data.Servico1</h5>
                     </td>
                     <td>
-                        <h5>@data.Servico1</h5>
+                        <h5>@data.Periodicidade1</h5>
+                    </td>
+                    <td>
+                        <h5>@data.DataInicio1</h5>
                     </td>
                 </tr>
                 <tr>
@@ -38,31 +46,33 @@
                         <h5>@data.Utente2</h5>
                     </td>
                     <td>
-                        <h5>@data.Preco2</h5>
+                        <h5>@data.Servico2</h5>
                     </td>
                     <td>
-                        <h5>@data.Servico2</h5>
+                        <h5>@data.Periodicidade2</h5>
+                    </td>
+                    <td>
+                        <h5>@data.DataInicio2</h5>
                     </td>
                 <tr>
                     <td>
                         <h5>@data.Utente3</h5>
                     </td>
                     <td>
-                        <h5>@data.Preco3</h5>
+                        <h5>@data.Servico3</h5>
                     </td>
                     <td>
-                        <h5>@data.Servico3</h5>
+                        <h5>@data.Periodicidade3</h5>
+                    </td>
+                    <td>
+                        <h5>@data.DataInicio3</h5>
                     </td>
                 </tr>
             </table>
         </div>
         <div id="listaServicos" align="left">
-            <button class="button button-primary">
-                @Html.ActionLink("Lista de Serviços", "Index", "Servicos", null, new { @class = "page-scroll" })
-            </button>
-            <button class="button button-primary">
-                @Html.ActionLink("Criar novo Serviço", "Create", "Servicos", null, new { @class = "page-scroll" })
-            </button>
+            <button onclick="location.href='@Url.Action("Index", "Servicos")'" class="btn btn-primary">Listar Todos os Serviços</button>
+            <button onclick="location.href='@Url.Action("Create", "Servicos")'" class="btn btn-primary">Criar Novo Serviço</button>
         </div>
     </div>
 </div>

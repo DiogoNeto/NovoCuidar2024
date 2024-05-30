@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -15,12 +16,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Colaboradors
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Colaborador.ToListAsync());
         }
 
         // GET: Colaboradors/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,6 +52,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Tipo, Nif, CC, SNS, NomePrincipal, NomeApelido, DataNascimento, Nacionalidade, Genero, Telefone, Email, Morada, CodPostal, Localidade, Concelho, EstadoCivil")] Colaborador colaborador)
         {
             if (ModelState.IsValid)
@@ -81,6 +85,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Tipo")] Colaborador colaborador)
         {
             if (id != colaborador.Id)
@@ -112,6 +117,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Colaboradors/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,6 +138,7 @@ namespace NovoCuidar2024.Controllers
         // POST: Colaboradors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var colaborador = await _context.Colaborador.FindAsync(id);

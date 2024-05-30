@@ -14,27 +14,34 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Criar</a>
 </p>
-<div style="margin-bottom:5px">
+@* <div style="margin-bottom:5px">
     <label class="btn btn-sm btn-secondary" style="margin-right:1px;" type="check">
         <a href="@Url.Action("Index", "Utentes", new { activo = "false" })" id="option1">Ativos</a>
     </label>
     <label class="btn btn-sm btn-secondary" style="margin-left:1px;" type="check">
         <a href="@Url.Action("Index", "Utentes", new { activo = "true" })" id="option2">Não Ativos</a>
     </label>
-</div>
+</div> *@
 <br />
-
 <label>Responsável</label>
+
+<input type="checkbox" id="myCheckbox" onclick="handleCheckboxChange(this)">
+
+<script>
+    function handleCheckboxChange(checkbox) {
+        if (checkbox.checked) {
+            fetch('/Utentes/Index');
+        } else {
+            fetch('/Utentes/Index');
+        }
+    }
+</script>
+
 <input type="text" id="responsavelInput" onkeyup="procuraResponsavel()" placeholder="Procurar por responsável">
-<label>Técnica</label>
-<input type="text" id="tecnicaInput" onkeyup="procuraTecnica()" placeholder="Procurar por técnica">
-<label>Zona1</label>
-<input type="text" id="zona1Input" onkeyup="procuraZona1()" placeholder="Procurar por zona">
-<label>Zona2</label>
-<input type="text" id="zona2Input" onkeyup="procuraZona2()" placeholder="Procurar por zona">
 
 <script>
     function procuraResponsavel() {
+        console.log("nome");
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("responsavelInput");
@@ -44,7 +51,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
+            td = tr[i].getElementsByTagName("td")[4];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -66,7 +73,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[4];
+            td = tr[i].getElementsByTagName("td")[5];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -88,7 +95,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[5];
+            td = tr[i].getElementsByTagName("td")[6];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -110,7 +117,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[6];
+            td = tr[i].getElementsByTagName("td")[7];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -120,6 +127,18 @@
                 }
             }
         }
+    }
+
+
+    document.getElementById('activa').addEventListener('change', function () {
+            if (this.checked) {
+                alert("Checkbox is checked.");
+                // Additional code for when the checkbox is checked
+            } else {
+                alert("Checkbox is unchecked.");
+                // Additional code for when the checkbox is unchecked
+            }
+        });
     }
 </script>
 
@@ -139,9 +158,32 @@
         });
     });
 </script>
+<input type="text" id="responsavelInput" onkeyup="procuraResponsavel()" placeholder="Procurar por Nome">
+
 <table class="table" id="tableUtentes">
     <thead>
         <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                Ativo<input type="checkbox" id="activa" onclick="change())" />
+            </td>
+            <td>
+            </td>
+            <td>
+                <input type="text" id="tecnicaInput" onkeyup="procuraTecnica()" placeholder="Procurar por Técnica">
+            </td>
+            <td>
+                <input type="text" id="zona1Input" onkeyup="procuraZona1()" placeholder="Procurar por Serviço">
+            </td>
+            <td>
+                <input type="text" id="zona2Input" onkeyup="procuraZona2()" placeholder="Procurar por Tipologia de Contrato">
+            </td>
+        </tr>
+        <tr>
+
             <th>
             </th>
             <th>

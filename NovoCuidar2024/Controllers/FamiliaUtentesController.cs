@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -15,12 +16,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: FamiliaUtentes
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.FamiliaUtentes.ToListAsync());
         }
 
         // GET: FamiliaUtentes/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,6 +42,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: FamiliaUtentes/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -49,6 +53,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Codigo")] FamiliaUtentes familiaUtentes)
         {
             if (ModelState.IsValid)
@@ -61,6 +66,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: FamiliaUtentes/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,6 +87,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Codigo")] FamiliaUtentes familiaUtentes)
         {
             if (id != familiaUtentes.Id)
@@ -112,6 +119,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: FamiliaUtentes/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,6 +140,7 @@ namespace NovoCuidar2024.Controllers
         // POST: FamiliaUtentes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var familiaUtentes = await _context.FamiliaUtentes.FindAsync(id);

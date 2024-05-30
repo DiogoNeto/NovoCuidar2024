@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -15,12 +16,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Responsaveis
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Responsavel.ToListAsync());
         }
 
         // GET: Responsaveis/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,6 +42,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: ContactoPrioritario/Create
+        [Authorize]
         public IActionResult Create()
         {
             ContactoPrioritario contactoPrioritario = new ContactoPrioritario
@@ -78,6 +82,7 @@ namespace NovoCuidar2024.Controllers
         // POST: Responsaveis/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         public IActionResult Add(int utenteId)
         {
             if (utenteId == null)
@@ -95,6 +100,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Responsaveis/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -115,6 +121,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,Nome,Pais,Descricao,Parentesco,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada,CodPostal,Localidade,Concelho,EstadoCivil,Observações")] ContactoPrioritario responsavel)
         {
             if (id != responsavel.Id)
@@ -147,6 +154,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Responsaveis/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -167,6 +175,7 @@ namespace NovoCuidar2024.Controllers
         // POST: Responsaveis/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var responsavel = await _context.Responsavel.FindAsync(id);

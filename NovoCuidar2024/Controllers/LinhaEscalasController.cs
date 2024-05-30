@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -15,6 +16,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaEscalas
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.LinhaEscala.ToListAsync());

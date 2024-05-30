@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -17,6 +18,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Utentes
+        [Authorize]
         public async Task<IActionResult> Index(bool activo)
         {
             //var items = _context.Utente.ToList();
@@ -68,6 +70,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Utentes/Details/5   
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -120,6 +123,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Utentes/Create
+        [Authorize]
         public IActionResult Create()
         {
             var dataResponsavelTecnico = _context.Responsavel.ToList();
@@ -138,6 +142,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
         {
             if (ModelState.IsValid)
@@ -242,6 +247,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ResponsavelId,SubSistemaId,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil, Ativo,TecnicoResponsavelId")] Utente utente)
         {
             if (id != utente.Id)
@@ -273,6 +279,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Utentes/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -311,6 +318,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Upload(IFormFile photo)
         {
             if (photo == null || photo.Length == 0)

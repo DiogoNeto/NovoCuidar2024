@@ -13,15 +13,18 @@
         <dt class="col-sm-3">
         </dt>
         <dd class="col-sm-9">
-            <div style="max-height:10px; max-width:10px; float:right">
-                <img src="~/uploads/@Html.DisplayFor(model => model.Foto)" />
-            </div>
+            
         </dd>
         <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Ativo)
         </dt>
-        <dd class="col-sm-9">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Ativo)
+        </dd>
+        <dd class="col-sm-3">
+            <div sstyle="float:right">
+                <img src="~/uploads/@Html.DisplayFor(model => model.Foto)" style="max-width:100px; max-height:100px; float:right" />
+            </div>
         </dd>
         <dt class="col-sm-3">
             Contacto de Email
