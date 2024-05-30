@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -15,12 +16,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: DadosClinicos
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.DadosClinicos.ToListAsync());
         }
 
         // GET: DadosClinicos/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,6 +42,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: DadosClinicos/Create
+        [Authorize]
         public IActionResult Create()
         {
             DadosClinicos dadosClinicos = new DadosClinicos
@@ -54,6 +58,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,CentroSaude,MedicoAssistente,NumUtenteSaúde,GrupoSanguineo,Alergias,RestricoesAlimentare,Patologias,InformacoessComplementares,ResumoClinico")] DadosClinicos dadosClinicos)
         {
             if (ModelState.IsValid)
@@ -66,6 +71,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: DadosClinicos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +92,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,CentroSaude,MedicoAssistente,NumUtenteSaúde,GrupoSanguineo,Alergias,RestricoesAlimentare,Patologias,InformacoessComplementares,ResumoClinico")] DadosClinicos dadosClinicos)
         {
             if (id != dadosClinicos.Id)
@@ -117,6 +124,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: DadosClinicos/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +145,7 @@ namespace NovoCuidar2024.Controllers
         // POST: DadosClinicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var dadosClinicos = await _context.DadosClinicos.FindAsync(id);

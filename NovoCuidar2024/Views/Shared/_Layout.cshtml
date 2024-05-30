@@ -9,71 +9,77 @@
     <link rel="stylesheet" href="~/NovoCuidar2024.styles.css" asp-append-version="true" />
 </head>
 
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/novoCuidar.png" width="40px" /></a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Utentes" asp-action="Index">Utentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cuidadoras" asp-action="Index">Cuidadoras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Tecnicos" asp-action="Index">Técnicas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Index">Gestão</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Index">Configuração</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ServicoContratado" asp-action="Index">Escalas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Visitas" asp-action="Index">Visitas Domiciliárias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Subsistemas" asp-action="Index">Subsistemas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Servicos" asp-action="Index">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Visitas" asp-action="Index">Contratos</a>
+                        </li>
+                    </ul>
+                </div>
 
-<div class="container-fluid" style="width:100%">
-    <div class="row flex-nowrap">
-        <div class="col-auto px-0">
-            <div id="sidebar" class="collapse collapse-horizontal show border-end">
-                <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-film"></i> <span><a class="nav-link text-dark" asp-area="" asp-controller="Utentes" asp-action="Index">Utentes</a></span></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-bootstrap"></i> <a class="nav-link text-dark" asp-area="" asp-controller="ServicoContratado" asp-action="Index">Escalas</a> </a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-clock"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Visitas" asp-action="Index">Visitas Domiciliárias</a></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-clock"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Cuidadoras" asp-action="Index">Cuidadoras</a></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-clock"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Tecnicos" asp-action="Index">Técnicas</a></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-bricks"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Subsistemas" asp-action="Index">Subsistemas</a></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-heart"></i> <span><a class="nav-link text-dark" asp-area="" asp-controller="Servicos" asp-action="Index">Serviços</a></span></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-bootstrap"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Contratos" asp-action="Index">Contratos</a> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-
-                    @* <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-archive"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Responsaveis" asp-action="Index">Responsáveis</a></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-gear"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Orcamentos" asp-action="Index">Orçamento</a></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-calendar"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Colaboradores" asp-action="Index">Colaborador</a></a>
-                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-envelope"></i> <a class="nav-link text-dark" asp-area="" asp-controller="LinhaOrcamentos" asp-action="Index">Linha de Orçamento</a></a> *@
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                    </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
-        </div>
-        <main class="col ps-md-2 pt-2">
-            
-
-            <body>
-                <header>
-                    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                        <div class="container-fluid">
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/novoCuidar.png" width="40px"/></a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                                <ul class="navbar-nav flex-grow-1">
-                                </ul>
-                                <partial name="_LoginPartial" />
-                            </div>
-                        </div>
-                    </nav>
-                </header>
-                <div class="container">
+        </nav>
+    </header>
+    <div class="container">
 
 
 
-                    <main role="main" class="pb-3">
-                        @RenderBody()
-                    </main>
-                </div>
-
-                <footer class="border-top footer text-muted">
-                    <div class="container">
-                        &copy; 2024 - NovoCuidar2024
-                    </div>
-                </footer>
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>
-                <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="~/js/site.js" asp-append-version="true"></script>
-                @await RenderSectionAsync("Scripts", required: false)
-            </body>
-
-
+        <main role="main" class="pb-3">
+            @RenderBody()
         </main>
     </div>
-</div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - NovoCuidar2024
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
 </html>

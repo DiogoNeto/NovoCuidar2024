@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +21,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Adendas
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Adendas.ToListAsync());
         }
 
         // GET: Adendas/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Adendas/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +58,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,ContratoId,Descricao,Ficheiro")] Adendas adendas)
         {
             if (ModelState.IsValid)
@@ -66,6 +71,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Adendas/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,6 +123,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Adendas/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +144,7 @@ namespace NovoCuidar2024.Controllers
         // POST: Adendas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var adendas = await _context.Adendas.FindAsync(id);

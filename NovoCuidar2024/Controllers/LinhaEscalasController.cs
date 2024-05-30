@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -15,12 +16,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaEscalas
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.LinhaEscala.ToListAsync());
         }
 
         // GET: LinhaEscalas/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,6 +42,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaEscalas/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -49,6 +53,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,CuidadoraId,ServicoContratadoId,DataHoraInicio,DataHoraFim,ValorReceberInicial,ValorPago,ValorReceberAtualizado")] LinhaEscala linhaEscala)
         {
             if (ModelState.IsValid)
@@ -61,6 +66,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaEscalas/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,6 +87,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,CuidadoraId,ServicoContratadoId,DataHoraInicio,DataHoraFim,ValorReceberInicial,ValorPago,ValorReceberAtualizado")] LinhaEscala linhaEscala)
         {
             if (id != linhaEscala.Id)
@@ -112,6 +119,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaEscalas/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,6 +140,7 @@ namespace NovoCuidar2024.Controllers
         // POST: LinhaEscalas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var linhaEscala = await _context.LinhaEscala.FindAsync(id);

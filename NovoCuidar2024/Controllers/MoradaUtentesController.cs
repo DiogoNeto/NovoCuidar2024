@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Migrations;
@@ -17,12 +18,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: MoradaUtentes
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.MoradaUtente.ToListAsync());
         }
 
         // GET: Subsistemas/Add
+        [Authorize]
         public IActionResult Add(int utenteId)
         {
             if (utenteId == null)
@@ -40,6 +43,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: MoradaUtentes/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -58,6 +62,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: MoradaUtentes/Create
+        [Authorize]
         public IActionResult Create()
         {
             MoradaUtente moradaUtentes = new MoradaUtente
@@ -72,6 +77,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,Morada,CodPostal,Localidade,Concelho,NumPorta,Andar,Fracao,CodPostal,Pais")] MoradaUtente moradaUtente)
         {
             var novoContacto = _context.Utente.Where(x => x.Id == moradaUtente.UtenteId).Count();
@@ -93,6 +99,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: MoradaUtentes/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,6 +120,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,Pais,Fracao,Andar,NumPorta,Morada,CodPostal,Localidade,Concelho")] MoradaUtente moradaUtente)
         {
             if (id != moradaUtente.Id)
@@ -144,6 +152,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: MoradaUtentes/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -164,6 +173,7 @@ namespace NovoCuidar2024.Controllers
         // POST: MoradaUtentes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var moradaUtente = await _context.MoradaUtente.FindAsync(id);

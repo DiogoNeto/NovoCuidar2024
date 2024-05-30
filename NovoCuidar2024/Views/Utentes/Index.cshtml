@@ -14,24 +14,39 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Criar</a>
 </p>
-<div style="margin-bottom:5px">
-    <label class="btn btn-sm btn-secondary" style="margin-right:1px;" type="check">
-        <a href="@Url.Action("Index", "Utentes", new { activo = "false" })" id="option1">Ativos</a>
-    </label>
-    <label class="btn btn-sm btn-secondary" style="margin-left:1px;" type="check">
-        <a href="@Url.Action("Index", "Utentes", new { activo = "true" })" id="option2">Não Ativos</a>
-    </label>
-</div>
+
 <br />
 
-<label>Responsável</label>
-<input type="text" id="responsavelInput" onkeyup="procuraResponsavel()" placeholder="Procurar por responsável">
-<label>Técnica</label>
-<input type="text" id="tecnicaInput" onkeyup="procuraTecnica()" placeholder="Procurar por técnica">
-<label>Zona1</label>
-<input type="text" id="zona1Input" onkeyup="procuraZona1()" placeholder="Procurar por zona">
-<label>Zona2</label>
-<input type="text" id="zona2Input" onkeyup="procuraZona2()" placeholder="Procurar por zona">
+<table class="col col-12">
+    <thead>
+        <tr>
+            <th class="col col-2">
+            </th>
+            <th style="font-size: 12px;" class="col col-1">
+                <input type="radio" id="radio1" name="custom-radio" class="radio-custom">
+                <a href="@Url.Action("Index", "Utentes", new { activo = "false" })" id="option1">Ativos</a>
+            </th>
+            
+            <th style="font-size: 12px;" class="col col-1">
+                <input type="radio" id="radio2" name="custom-radio" class="radio-custom">
+                <a href="@Url.Action("Index", "Utentes", new { activo = "true" })" id="option2">Não Ativos</a>
+            </th>
+            <th class="col col-2">
+                <input class="form-control-sm" type="text" id="responsavelInput" onkeyup="procuraResponsavel()" placeholder="Procurar por nome">
+            </th>
+            <th class="col col-2">
+                <input class="form-control-sm" type="text" id="tecnicaInput" onkeyup="procuraTecnica()" placeholder="Procurar por técnica">
+            </th>
+            <th class="col col-2">
+                <input class="form-control-sm" type="text" id="zona1Input" onkeyup="procuraServico()" placeholder="Procurar por serviço">
+            </th>
+            <th class="col col-1">
+                <input class="form-control-sm" type="text" id="zona2Input" onkeyup="procuraTipologia()" placeholder="Procurar por tipologia">
+            </th>
+            <th class="col col-1"></th>
+        </tr>
+    </thead>
+</table>
 
 <script>
     function procuraResponsavel() {
@@ -78,7 +93,7 @@
         }
     }
 
-    function procuraZona1() {
+    function procuraServico() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("zona1Input");
@@ -100,7 +115,7 @@
         }
     }
 
-    function procuraZona2() {
+    function procuraTipologia() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("zona2Input");
@@ -139,29 +154,30 @@
         });
     });
 </script>
-<table class="table" id="tableUtentes">
+<table class="table" id="tableUtentes" col col-12>
     <thead>
         <tr>
-            <th>
+            <th class="col col-2">
             </th>
-            <th>
+            <th class="col col-1">
             </th>
-            <th>
+            <th class="col col-1">
                 Estado
             </th>
-            <th>
+            <th class="col col-2">
                 Nome
             </th>
-            <th>
+            <th class="col col-2">
                 Técnica
             </th>
-            <th>
+            <th class="col col-2">
                 Serviço
             </th>
-            <th>
+            <th class="col col-1">
                 Tipologia de Contrato
             </th>
-
+            <th class="col col-1">  
+            </th>
         </tr>
     </thead>
     <tbody>

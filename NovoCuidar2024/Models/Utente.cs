@@ -55,6 +55,6 @@ namespace NovoCuidar2024.Models
         public required string NomeEmpresa { get; set; }
 
         public required string Foto { get; set; }
-       
+
     }
 }

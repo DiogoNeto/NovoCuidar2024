@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -15,6 +16,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Subsistemas
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             //var utentes = await _context.Utente.ToListAsync();
@@ -22,6 +24,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Subsistemas/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -40,6 +43,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Subsistemas/Add
+        [Authorize]
         public IActionResult Add(int utenteId)
         {
             if (utenteId == null)
@@ -65,6 +69,7 @@ namespace NovoCuidar2024.Controllers
 
 
         // GET: Subsistemas/Create
+        [Authorize]
         public IActionResult Create()
         {
             SubSistema subSistema = new SubSistema
@@ -81,6 +86,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome")] SubSistema subsistema)
         {
             var novoContacto = _context.Utente.Where(x => x.Id == subsistema.UtenteId).Count();
@@ -103,6 +109,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Subsistemas/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -123,6 +130,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] SubSistema subsistema)
         {
             if (id != subsistema.Id)
@@ -154,6 +162,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: Subsistemas/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -174,6 +183,7 @@ namespace NovoCuidar2024.Controllers
         // POST: Subsistemas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var subsistema = await _context.SubSistema.FindAsync(id);

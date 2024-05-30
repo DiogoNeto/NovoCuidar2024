@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -15,12 +16,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: ServicoContratado
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.ServicoContratado.ToListAsync());
         }
 
         // GET: ServicoContratado/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,6 +42,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: ServicoContratado/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -49,6 +53,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,UtenteId,ServicoId,ContratoId,Descricao,DataInicio,DataFim,Periodicidade,ValorDia,ValorSemana,ValorMes")] ServicoContratado servicoContratado)
         {
             if (ModelState.IsValid)
@@ -61,6 +66,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: ServicoContratado/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,6 +87,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,ServicoId,ContratoId,DataInicio,DataFim,Periodicidade,ValorDia,ValorSemana,ValorMes")] ServicoContratado servicoContratado)
         {
             if (id != servicoContratado.Id)
@@ -112,6 +119,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: ServicoContratado/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,6 +140,7 @@ namespace NovoCuidar2024.Controllers
         // POST: ServicoContratado/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var servicoContratado = await _context.ServicoContratado.FindAsync(id);
