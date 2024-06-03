@@ -33,6 +33,54 @@ namespace NovoCuidar2024.Controllers
             //var resul = _context.Utente.FromSqlRaw(query).ToList();
             var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
 
+
+            //verifica utentes ativos
+            //var utentes = _context.Utente;
+            var servicoContratado = _context.ServicoContratado;
+            var utente = _context.Utente;
+
+            for(int i = 0;i<servicoContratado.Count(); i++)
+            {
+
+                int dateCompare = DateTime.Compare(servicoContratado.ElementAt(i).DataFim, DateTime.Now);
+                var entity = _context.Utente.FirstOrDefault(e => e.Id == servicoContratado.ElementAt(i).UtenteId);
+                 if(dateCompare >= 0)   
+                {
+                    entity.Ativo = true;
+                }
+                else
+                {
+                    entity.Ativo = false;
+                }
+                _context.SaveChanges();
+            }
+
+            //foreach(var s in _context.ServicoContratado)
+            //{
+            //    var entityc = _context;
+            //    var utenteId = s.UtenteId;
+            //    int dateCompare = DateTime.Compare(s.DataFim, DateTime.Now);
+            //    var entity = utente.Where(x=>x.Id == s.UtenteId);
+                
+            //    if (dateCompare < 0 && entity!=null)
+            //    {
+            //        //entity.Ativo = false;
+                    
+            //        _context.SaveChanges();
+
+            //       //var queryActive = @"UPDATE utente 
+            //       //              SET activo = 0
+            //       //              WHERE s.Id = "+utenteId;
+
+            //       // utentes.Update(new Utente{ContactoEmail Ativo=false});
+            //       // var resultActive = _context.Utente.Update().ToList();
+
+            //        //_context.Utente.Where(x=>x.Id == utenteId).FirstOrDefault().Ativo = false;
+            //       //var resultActive = _context.Utente.FromSqlRaw(queryActive);
+            //       // i++;
+            //    }
+            //}
+
             //var query=from utentes in _context.Utente
             //          join tecnicas in _context.Tecnico
             //          on utentes.ResponsavelTecnicoId equals tecnicas.Id into utenteTecnicas
