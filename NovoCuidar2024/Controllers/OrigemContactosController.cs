@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
@@ -15,12 +16,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: OrigemContactos
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.OrigemContacto.ToListAsync());
         }
 
         // GET: OrigemContactos/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,6 +42,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: OrigemContactos/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -49,6 +53,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Nome")] OrigemContacto origemContacto)
         {
             if (ModelState.IsValid)
@@ -61,6 +66,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: OrigemContactos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,6 +87,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] OrigemContacto origemContacto)
         {
             if (id != origemContacto.Id)
@@ -112,6 +119,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: OrigemContactos/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,6 +140,7 @@ namespace NovoCuidar2024.Controllers
         // POST: OrigemContactos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var origemContacto = await _context.OrigemContacto.FindAsync(id);

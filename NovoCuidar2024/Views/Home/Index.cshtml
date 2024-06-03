@@ -4,26 +4,21 @@
 
 <div class="text-center">
     <h1 class="display-4">Bem vindo</h1>
-    <div id="utentes" class="align-content-start">
-        @{
-            var data = ViewBag.Message;
-        }
-        <h4>Número de utentes ativos</h4>
-        <h5>@data.numeroUtentes</h5>
-@*         <button class="button button-primary">
-        @Html.ActionLink("Lista de Utentes", "Index", "Utentes", null, new { @class = "page-scroll" })
+    @{
+        var data = ViewBag.Message;
+    }
 
-        </button> *@
+    <div id="divUtentes" class="align-content-start" style="margin:50px">
+        <h4>Número de utentes ativos</h4>
+        <h5>@data.numeroUtentes</h5> 
+
         <button onclick="location.href='@Url.Action("Index", "Utentes")'" class="btn btn-primary">Listar Todos os Utentes</button>
 
-@*         <button class="button button-primary">
-        @Html.ActionLink("Criar novo Utente", "Create", "Utentes", null, new { @class = "page-scroll" })
-        </button> *@
         <button onclick="location.href='@Url.Action("Create", "Utentes")'" class="btn btn-primary">Criar Novos Utentes</button>
 
     </div>
     
-    <div id="servicos" class="col-6">
+    <div id="divServicos" class="col-6" style="margin:10px">
         <h5>Últimos Serviços Contratados</h5>
         <div id="servicosRecentes">
             <table class="table">
@@ -71,8 +66,8 @@
             </table>
         </div>
         <div id="listaServicos" align="left">
-            <button onclick="location.href='@Url.Action("Index", "Servicos")'" class="btn btn-primary">Listar Todos os Serviços</button>
-            <button onclick="location.href='@Url.Action("Create", "Servicos")'" class="btn btn-primary">Criar Novo Serviço</button>
+            <button onclick="location.href='@Url.Action("Index", "ServicoContratado")'" class="btn btn-primary">Listar Todos os Serviços</button>
+            <button onclick="location.href='@Url.Action("Create", "ServicoContratado")'" class="btn btn-primary">Criar Novo Serviço</button>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +21,14 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaOrcamentos
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.LinhaOrcamento.ToListAsync());
         }
 
         // GET: LinhaOrcamentos/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaOrcamentos/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +58,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,OrcamentoId,UtenteId,ServicoId,Preco,Data")] LinhaOrcamento linhaOrcamento)
         {
             if (ModelState.IsValid)
@@ -66,6 +71,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaOrcamentos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +92,7 @@ namespace NovoCuidar2024.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,OrcamentoId,UtenteId,ServicoId,Preco,Data")] LinhaOrcamento linhaOrcamento)
         {
             if (id != linhaOrcamento.Id)
@@ -117,6 +124,7 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: LinhaOrcamentos/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +145,7 @@ namespace NovoCuidar2024.Controllers
         // POST: LinhaOrcamentoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var linhaOrcamento = await _context.LinhaOrcamento.FindAsync(id);
