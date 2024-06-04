@@ -4,42 +4,56 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
-<h4>ServicoContratado</h4>
+<h4>Servico Contratado</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UtenteId" class="control-label"></label>
-                <input asp-for="UtenteId" class="form-control" />
+                <label asp-for="UtenteId" class="control-label">Utente</label>
+                <input asp-for="UtenteId" class="form-control" readonly/>
                 <span asp-validation-for="UtenteId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ServicoId" class="control-label"></label>
-                <input asp-for="ServicoId" class="form-control" />
+                <label class="control-label">Nome</label>
+                <input class="form-control" value="@ViewBag.Nome" readonly />
+            </div>
+            <div class="form-group" style="margin-top:5px; margin-bottom:5px;">
+                <label asp-for="ServicoId" class="control-label">Serviço</label>
+                @* <select asp-for="ServicoId" class="form-control" /> *@
+                <select id="ServicoId" class="dropdown" name="servicoId" onchange="dropdownServicoChanged()">
+                    <option value="">Selecione uma opção</option>
+                    @foreach (var item in ViewBag.DataServicos)
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </select>
                 <span asp-validation-for="ServicoId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ContratoId" class="control-label"></label>
-                <input asp-for="ContratoId" class="form-control" />
+            <div class="form-group" style="margin-top:5px; margin-bottom:5px;">
+                <label asp-for="ContratoId" class="control-label">Contrato</label>
+                @* <select asp-for="ContratoId" class="form-control" /> *@
+                <select id="ContratoId" class="dropdown" name="contratoId" onchange="dropdownContratoChanged()">
+                    <option value="">Selecione uma opção</option>
+                    @foreach (var item in ViewBag.DataContratos)
+                    {
+                        <option value="@item.Id">@item.Descricao</option>
+                    }
+                </select>
                 <span asp-validation-for="ContratoId" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataInicio" class="control-label"></label>
-                <input asp-for="DataInicio" class="form-control" />
+                <label asp-for="DataInicio" class="control-label">Data de Início</label>
+                <input asp-for="DataInicio" type="date" class="form-control" asp-format="{0:dd/MM/yyyy}" />
                 <span asp-validation-for="DataInicio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataFim" class="control-label"></label>
-                <input asp-for="DataFim" class="form-control" />
+                <label asp-for="DataFim" class="control-label">Data de Fim</label>
+                <input asp-for="DataFim" type="date" class="form-control" asp-format="{0:dd/MM/yyyy}" />
                 <span asp-validation-for="DataFim" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,21 +62,26 @@
                 <span asp-validation-for="Periodicidade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ValorDia" class="control-label"></label>
+                <label asp-for="Descricao" class="control-label">Observações</label>
+                <textarea asp-for="Descricao" class="form-control">  </textarea>
+                <span asp-validation-for="Descricao" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorDia" class="control-label">Valor ao Dia</label>
                 <input asp-for="ValorDia" class="form-control" />
                 <span asp-validation-for="ValorDia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ValorSemana" class="control-label"></label>
+                <label asp-for="ValorSemana" class="control-label">Valor à Semana</label>
                 <input asp-for="ValorSemana" class="form-control" />
                 <span asp-validation-for="ValorSemana" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ValorMes" class="control-label"></label>
+                <label asp-for="ValorMes" class="control-label">Valor ao Mês</label>
                 <input asp-for="ValorMes" class="form-control" />
                 <span asp-validation-for="ValorMes" class="text-danger"></span>
             </div>
-            <table>
+            <table style="margin-top:10px;">
                 <td>
                     <div class="form-group">
                         <input type="submit" value="Criar" class="btn btn-primary" />

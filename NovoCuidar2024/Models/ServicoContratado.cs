@@ -13,9 +13,8 @@ namespace NovoCuidar2024.Models
         [Required]
         public int ContratoId { get; set;}
         [Required]
-        public DateTime DataInicio { get; set; }
-        [Required]
-        public DateTime DataFim { get; set; }
+        public DateOnly DataInicio { get; set; }
+        public DateOnly? DataFim { get; set; }
         [Required]
         public string Periodicidade { get; set;}
         [Required]

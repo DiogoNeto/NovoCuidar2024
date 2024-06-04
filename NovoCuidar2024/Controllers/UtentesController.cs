@@ -29,7 +29,7 @@ namespace NovoCuidar2024.Controllers
                           FROM utente u
                           LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
                           LEFT JOIN servicocontratado s ON s.UtenteId = u.Id
-                          Where u.Ativo !="+activo;
+                          Where u.Ativo !=" + activo;
             //var resul = _context.Utente.FromSqlRaw(query).ToList();
             var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
 
@@ -39,64 +39,30 @@ namespace NovoCuidar2024.Controllers
             var servicoContratado = _context.ServicoContratado;
             var utente = _context.Utente;
 
-            for(int i = 0;i<servicoContratado.Count(); i++)
+            for (int i = 0; i < servicoContratado.Count(); i++)
             {
-
-                int dateCompare = DateTime.Compare(servicoContratado.ElementAt(i).DataFim, DateTime.Now);
-                var entity = _context.Utente.FirstOrDefault(e => e.Id == servicoContratado.ElementAt(i).UtenteId);
-                 if(dateCompare >= 0)   
+                try
                 {
-                    entity.Ativo = true;
+                    DateOnly dataFim = servicoContratado.ElementAt(i).DataFim.Value;
+                    if (servicoContratado.ElementAt(i).DataFim == null)
+                    {
+                        dataFim = DateOnly.MaxValue;
+                    }
+                    int dateCompare = DateTime.Today.CompareTo(dataFim);
+                    var entity = _context.Utente.FirstOrDefault(e => e.Id == servicoContratado.ElementAt(i).UtenteId);
+                    if (dateCompare >= 0)
+                    {
+                        entity.Ativo = true;
+                    }
+                    else
+                    {
+                        entity.Ativo = false;
+                    }
                 }
-                else
-                {
-                    entity.Ativo = false;
-                }
-                _context.SaveChanges();
+                catch (Exception ex) { Console.WriteLine(ex); }
             }
 
-            //foreach(var s in _context.ServicoContratado)
-            //{
-            //    var entityc = _context;
-            //    var utenteId = s.UtenteId;
-            //    int dateCompare = DateTime.Compare(s.DataFim, DateTime.Now);
-            //    var entity = utente.Where(x=>x.Id == s.UtenteId);
-                
-            //    if (dateCompare < 0 && entity!=null)
-            //    {
-            //        //entity.Ativo = false;
-                    
-            //        _context.SaveChanges();
-
-            //       //var queryActive = @"UPDATE utente 
-            //       //              SET activo = 0
-            //       //              WHERE s.Id = "+utenteId;
-
-            //       // utentes.Update(new Utente{ContactoEmail Ativo=false});
-            //       // var resultActive = _context.Utente.Update().ToList();
-
-            //        //_context.Utente.Where(x=>x.Id == utenteId).FirstOrDefault().Ativo = false;
-            //       //var resultActive = _context.Utente.FromSqlRaw(queryActive);
-            //       // i++;
-            //    }
-            //}
-
-            //var query=from utentes in _context.Utente
-            //          join tecnicas in _context.Tecnico
-            //          on utentes.ResponsavelTecnicoId equals tecnicas.Id into utenteTecnicas
-            //          from tecnicas in utenteTecnicas.DefaultIfEmpty()
-            //          join servicos in _context.ServicoContratado
-            //          on utentes.OrigemContacto equals servicos.Id into utenteContrato
-            //          from servicos in utenteServicos.DefaultIfEmpty()
-            //          select new UtentesViewModel
-            //          {
-            //              Id = utentes.Id,
-            //              Foto = utentes.Foto,
-            //              Estado = utentes.Ativo,
-            //              Nome = utentes.Nome,
-            //              Tecnica = tecnicas.Nome,
-            //              Servico = contrato.
-            //          }
+            _context.SaveChanges();
 
 
             var Utentes = _context.Utente;
@@ -136,7 +102,12 @@ namespace NovoCuidar2024.Controllers
 
             ViewBag.Utente = utente;
 
-            //var morada = _context.MoradaUtente.FirstOrDefault(m => m.UtenteId == id);
+            List<ServicoContratado> servicoContratado = new List<ServicoContratado>();
+            foreach (var v in _context.ServicoContratado.Where(m => m.Id == id))
+            {
+                servicoContratado.Add(v);
+            }
+            ViewBag.ServicoContratado = servicoContratado;
 
             List<MoradaUtente> morada = new List<MoradaUtente>();
             foreach (var v in _context.MoradaUtente.Where(m => m.UtenteId == id))

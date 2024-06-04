@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
+using System.Globalization;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -33,20 +34,48 @@ namespace NovoCuidar2024.Controllers
 
             var servicoContratado = await _context.ServicoContratado
                 .FirstOrDefaultAsync(m => m.Id == id);
+           
+
             if (servicoContratado == null)
             {
                 return NotFound();
             }
-
+            
             return View(servicoContratado);
         }
 
         // GET: ServicoContratado/Create
         [Authorize]
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+
+            var utentes = _context.Utente.Where(x => x.Id == id);
+            var nome = utentes.FirstOrDefault().Nome;
+
+            var servicos = _context.Servico;
+            var contratos = _context.Contrato;
+
+            var servicosList = servicos.Select(x => new { x.Nome, x.Id }).ToList();
+            var contratosList = contratos.Select(x => new { x.Descricao, x.Id }).ToList();
+
+            ViewBag.Nome = nome;
+            ViewBag.DataServicos = servicosList;
+            ViewBag.DataContratos = contratosList;
+
+            ServicoContratado servicoContratado = new ServicoContratado
+            {
+                UtenteId = _context.Utente.ToList().LastOrDefault().Id,
+                DataInicio = DateOnly.FromDateTime(DateTime.Now)
+            };
+            //DateOnly res = DateOnly.ParseExact(DateOnly.FromDateTime(DateTime.Now).ToString(), "dd MM yyyy", CultureInfo.InvariantCulture);
+            return View(servicoContratado);
         }
+
 
         // POST: ServicoContratado/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
