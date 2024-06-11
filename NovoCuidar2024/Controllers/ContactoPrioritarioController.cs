@@ -93,7 +93,6 @@ namespace NovoCuidar2024.Controllers
             ContactoPrioritario contactoPrioritario = new ContactoPrioritario
             {
                 UtenteId = utenteId
-                //_context.Utente.ToList().LastOrDefault().Id
             };
 
             return View(contactoPrioritario);

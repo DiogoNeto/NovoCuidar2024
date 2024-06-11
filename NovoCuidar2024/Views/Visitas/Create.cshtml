@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
 <h4>Visita</h4>
 <hr />
@@ -12,35 +12,47 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @* <div class="form-group">
                 <label asp-for="ColaboradorId" class="control-label"></label>
                 <input asp-for="ColaboradorId" class="form-control" />
                 <span asp-validation-for="ColaboradorId" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
-                <label asp-for="UtenteId" class="control-label"></label>
-                <input asp-for="UtenteId" class="form-control" />
+                <label asp-for="UtenteId" class="control-label">Utente</label>
+                <input asp-for="UtenteId" class="form-control" readonly />
                 <span asp-validation-for="UtenteId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataHora" class="control-label"></label>
+                <label asp-for="DataHora" class="control-label">Data e Hora</label>
                 <input asp-for="DataHora" class="form-control" />
                 <span asp-validation-for="DataHora" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Observações" class="control-label"></label>
-                <input asp-for="Observações" class="form-control" />
+                <label asp-for="Observações" class="control-label">Observações</label>
+                <textarea asp-for="Observações" class="form-control"></textarea>
                 <span asp-validation-for="Observações" class="text-danger"></span>
             </div>
+
+             <a href="@Url.Action("Create", "FotosVisita")" class="btn btn-sm btn-primary">Associar Foto</a>
+            @* <a href="@Url.Action("Create", "FotosVisita", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Associar Foto</a> *@
+
+            @* <div class="form-group">
+                <a href="@Url.Action("Create", "FotosVisita", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Assiciar Foto</a>
+            </div> *@
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <table>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Criar" class="btn btn-primary" />
+                        </td>
+                        <td>
+                            <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
 </div>
 
 @section Scripts {

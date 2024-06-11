@@ -1,0 +1,48 @@
+﻿@model NovoCuidar2024.Models.DadosSociais
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>DadosSociais</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UtenteId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UtenteId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RespostaSocial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RespostaSocial)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApoioSolicitado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApoioSolicitado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OutrosApoios)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OutrosApoios)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ResumoSocial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ResumoSocial)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

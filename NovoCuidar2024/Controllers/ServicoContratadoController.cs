@@ -53,7 +53,6 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-
             var utentes = _context.Utente.Where(x => x.Id == id);
             var nome = utentes.FirstOrDefault().Nome;
 
@@ -70,7 +69,7 @@ namespace NovoCuidar2024.Controllers
             ServicoContratado servicoContratado = new ServicoContratado
             {
                 UtenteId = _context.Utente.ToList().LastOrDefault().Id,
-                DataInicio = DateOnly.FromDateTime(DateTime.Now)
+                //DataInicio = DateOnly.FromDateTime(DateTime.Now)
             };
             //DateOnly res = DateOnly.ParseExact(DateOnly.FromDateTime(DateTime.Now).ToString(), "dd MM yyyy", CultureInfo.InvariantCulture);
             return View(servicoContratado);

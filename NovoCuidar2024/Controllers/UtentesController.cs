@@ -106,7 +106,21 @@ namespace NovoCuidar2024.Controllers
             foreach (var v in _context.ServicoContratado.Where(m => m.Id == id))
             {
                 servicoContratado.Add(v);
+                
+
+
             }
+
+            for (var i = 0; i < servicoContratado.Count; i++)
+            {
+                var contrato = _context.Contrato.Where(x => x.Id == servicoContratado[i].ContratoId).FirstOrDefault().Descricao;
+                ViewBag.DescricaoContrato = contrato;
+                var servico = _context.Servico.Where(x => x.Id == servicoContratado[i].ServicoId).FirstOrDefault().Nome;
+                ViewBag.NomeServico = servico;
+                var servicoDescricao = _context.Servico.Where(x => x.Id == servicoContratado[i].ServicoId).FirstOrDefault().Descricao;
+                ViewBag.DescricaoServico = servicoDescricao;
+            }
+
             ViewBag.ServicoContratado = servicoContratado;
 
             List<MoradaUtente> morada = new List<MoradaUtente>();
@@ -137,6 +151,11 @@ namespace NovoCuidar2024.Controllers
             var dadosClinicos = _context.DadosClinicos.FirstOrDefault(m => m.UtenteId == id);
             ViewBag.DadosClinicos = dadosClinicos;
 
+            var dadosSociais = _context.DadosSociais.FirstOrDefault(m => m.UtenteId == id);
+            ViewBag.DadosSociais = dadosSociais;
+
+            var visitasDomiciliarias = _context.Visita.FirstOrDefault(m => m.UtenteId == id);
+            ViewBag.VisitasDomiciliarias = visitasDomiciliarias;
 
             return View(utente);
         }
@@ -176,7 +195,7 @@ namespace NovoCuidar2024.Controllers
 
 
 
-                var uploadsDirectoryLeitura = "C:\\Utilizador\\Diogo\\Imagens";
+                var uploadsDirectoryLeitura = "C:\\Downloads";
                 var uploadsDirectoryEscrita = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
                 var filePathLeitura = Path.Combine(uploadsDirectoryLeitura, utente.Foto);
                 var filePathEscrita = Path.Combine(uploadsDirectoryEscrita, utente.Foto);

@@ -1,0 +1,59 @@
+﻿@model NovoCuidar2024.Models.DadosSociais
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Dados Sociais</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="UtenteId" class="control-label">Número de Utente</label>
+                <input asp-for="UtenteId" class="form-control" readonly />
+                <span asp-validation-for="UtenteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RespostaSocial" class="control-label">Resposta Social</label>
+                <textarea asp-for="RespostaSocial" class="form-control"></textarea>
+                <span asp-validation-for="RespostaSocial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApoioSolicitado" class="control-label">Apoio Solicitado</label>
+                <textarea asp-for="ApoioSolicitado" class="form-control"></textarea>
+                <span asp-validation-for="ApoioSolicitado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutrosApoios" class="control-label">Outros Apoios</label>
+                <textarea asp-for="OutrosApoios" class="form-control"></textarea>
+                <span asp-validation-for="OutrosApoios" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResumoSocial" class="control-label">Resumo Social</label>
+                <textarea asp-for="ResumoSocial" class="form-control"></textarea>
+                <span asp-validation-for="ResumoSocial" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:5px">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                        </td>
+                        <td>
+                            <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -51,10 +51,11 @@ namespace NovoCuidar2024.Models
         public required string HabitacaoTipo { get; set; }
         [Required]
         public required string HabitacaoPartilhada { get; set; }
+        public required string Foto { get; set; }
         [Required]
         public required string NomeEmpresa { get; set; }
 
-        public required string Foto { get; set; }
+        
 
     }
 }

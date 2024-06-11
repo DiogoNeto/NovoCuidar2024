@@ -16,6 +16,8 @@ namespace NovoCuidar2024.Models
         [Required]
         public DateTime DataHora { get; set; }
         [Required]
-        public required string Observações { get; set;}
+        public string Observações { get; set; }
+        [ForeignKey("FotoVisita")]
+        public FotosVisita[] fotosVisita { get; set;}
     }
 }

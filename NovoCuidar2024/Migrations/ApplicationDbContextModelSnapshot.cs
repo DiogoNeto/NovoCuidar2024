@@ -503,6 +503,38 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("DadosClinicos");
                 });
 
+            modelBuilder.Entity("NovoCuidar2024.Models.DadosSociais", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApoioSolicitado")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OutrosApoios")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RespostaSocial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ResumoSocial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UtenteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DadosSociais");
+                });
+
             modelBuilder.Entity("NovoCuidar2024.Models.FamiliaUtentes", b =>
                 {
                     b.Property<int>("Id")
@@ -518,6 +550,32 @@ namespace NovoCuidar2024.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FamiliaUtentes");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.FotosVisita", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Caminho")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("FotoVisita")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FotoVisita");
+
+                    b.ToTable("FotosVisita");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.LinhaEscala", b =>
@@ -900,6 +958,31 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("Visita");
                 });
 
+            modelBuilder.Entity("NovoCuidar2024.ViewModel.FotoViewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageContentType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Foto");
+                });
+
             modelBuilder.Entity("NovoCuidar2024.ViewModel.UtentesViewModel", b =>
                 {
                     b.Property<int>("Id")
@@ -982,6 +1065,18 @@ namespace NovoCuidar2024.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.FotosVisita", b =>
+                {
+                    b.HasOne("NovoCuidar2024.Models.Visita", null)
+                        .WithMany("fotosVisita")
+                        .HasForeignKey("FotoVisita");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Visita", b =>
+                {
+                    b.Navigation("fotosVisita");
                 });
 #pragma warning restore 612, 618
         }

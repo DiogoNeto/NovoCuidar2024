@@ -466,12 +466,12 @@
                     </div>
                     <div class="col-md-6">
                         <label asp-for="Foto"></label>
-                        <input asp-for="Foto" type="file" id="file" name="file" class="form-control-file">
+                        <input asp-for="Foto" type="file" id="file" name="file" onchange="displayFileName()" class="form-control-file">
                     </div>
-                    <div class="col-md-6" style="visibility: hidden;">
+                    @* <div class="col-md-6" style="visibility: hidden;">
                         <input asp-for="Foto" id="Foto" class="form-control" />
                         <span asp-validation-for="Foto" class="text-danger"></span>
-                    </div>
+                    </div> *@
                 </div>
             </div>
             <table>
@@ -491,6 +491,45 @@
         </form>
     </div>
 </div>
+
+<script>
+    function displayFileName() {
+        // console.log('ent');
+        // var inp = document.getElementById('Foto');
+        // console.log(inp);
+        // var fileName = inp.files[0];
+        // console.log(fileName);
+
+        // document.getElementById('fileNameDisplay').innerText = 'Selected ffile: ' + fileName;
+        // console.log('filename: ' + fileName);
+
+        console.log('ent');
+        console.log(fileInput);
+        var fileInput = document.getElementById('Foto');
+        var file = fileInput;
+
+        console.log(file);
+
+        if (file) {
+            var formData = new FormData();
+            formData.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Home/UploadFile', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('File uploaded successfully');
+                } else {
+                    console.log('File upload failed');
+                }
+            };
+            xhr.send(formData);
+        } else {
+            console.log('No file selected');
+        }
+    
+    }
+</script>
 
 <script>
     // Get the file input element

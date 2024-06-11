@@ -48,9 +48,17 @@ namespace NovoCuidar2024.Controllers
 
         // GET: Visitas/Create
         [Authorize]
-        public IActionResult Create()
+        public IActionResult Create(int utenteId)
         {
-            return View();
+            if (utenteId == null)
+            {
+                return NotFound();
+            }
+            Visita visita = new Visita
+            {
+                UtenteId = utenteId
+            };
+            return View(visita);
         }
 
         // POST: Visitas/Create
