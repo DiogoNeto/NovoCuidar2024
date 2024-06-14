@@ -249,12 +249,28 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\29f179ed-be23-46bb-977a-6850e4cde76e-a",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
       "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\assinatura.png",
       "PackagePath": "staticwebassets\\uploads\\assinatura.png"
     },
     {
+      "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\b5e4bf9a-d390-4209-97bf-31aa297e17f1-img",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
+      "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\d2d4f8bb-3c36-48de-b50b-a89d4f85ef54-a",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
       "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\desktop.ini",
       "PackagePath": "staticwebassets\\uploads\\desktop.ini"
+    },
+    {
+      "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\fd35b047-6140-463c-aab5-2f2f7f9f56a7-a",
+      "PackagePath": "staticwebassets\\uploads"
     },
     {
       "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\image.png",

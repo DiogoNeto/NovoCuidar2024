@@ -1,22 +1,39 @@
-﻿@model IEnumerable<NovoCuidar2024.Models.LinhaEscala>
+﻿@model IEnumerable<NovoCuidar2024.ViewModel.LinhaEscalaViewModel>
 
 @{
     ViewData["Title"] = "Index";
 }
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
 <h1>Linhas de Escala</h1>
 
 <p>
-    <a asp-action="Create">Criar</a>
+    <a asp-action="Create" class="btn btn-primary">Criar</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CuidadoraId)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServicoContratadoId)
+                @Html.DisplayNameFor(model => model.UtenteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UtenteNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuidadoraNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoServico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorReceber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataHoraInicio)
@@ -24,48 +41,43 @@
             <th>
                 @Html.DisplayNameFor(model => model.DataHoraFim)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValorReceberInicial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValorPago)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValorReceberAtualizado)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CuidadoraId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServicoContratadoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataHoraInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataHoraFim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorReceberInicial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorReceberAtualizado)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UtenteId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UtenteNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuidadoraNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoServico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorReceber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataHoraInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataHoraFim)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-folder" style="margin:2px;" title="Criar"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-bars" style="margin:2px;" title="Detalhes"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash" style="margin:2px;" title="Eliminar"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

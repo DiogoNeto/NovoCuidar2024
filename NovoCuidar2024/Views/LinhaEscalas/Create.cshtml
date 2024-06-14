@@ -4,23 +4,50 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
-<h4>LinhaEscala</h4>
+<h4>Linha de Escala</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CuidadoraId" class="control-label"></label>
-                <input asp-for="CuidadoraId" class="form-control" />
-                <span asp-validation-for="CuidadoraId" class="text-danger"></span>
+                <table>
+                    <tr>
+                        <td>
+                            <label asp-for="CuidadoraId" class="control-label"></label>
+                        </td>
+                        <td>
+                            <select id="cuidadoraId" name="cuidadoraId">
+                                <option value="">Selecione uma opção</option>
+                                @foreach (var item in ViewBag.DataCuidadora)
+                                {
+                                    <option value="@item.Id">@item.Nome</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
             </div>
             <div class="form-group">
-                <label asp-for="ServicoContratadoId" class="control-label"></label>
-                <input asp-for="ServicoContratadoId" class="form-control" />
-                <span asp-validation-for="ServicoContratadoId" class="text-danger"></span>
+                <table>
+                    <tr>
+                        <td>
+                            <label asp-for="ServicoContratadoId" class="control-label"></label>
+                        </td>
+                        <td>
+                            <select id="servicoContratadoId" name="servicoContratadoId">
+                                <option value="">Selecione uma opção</option>
+                                @foreach (var item in ViewBag.ServicoContratado)
+                                {
+                                    <option value="@item.Id">@item.Descricao</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="form-group">
                 <label asp-for="DataHoraInicio" class="control-label"></label>
@@ -51,7 +78,7 @@
                 <table>
                     <tr>
                         <td>
-                            <input type="submit" value="Create" class="btn btn-primary"/>
+                            <input type="submit" value="Create" class="btn btn-primary" />
 
                         </td>
                         <td>
@@ -66,5 +93,7 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

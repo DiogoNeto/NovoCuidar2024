@@ -285,6 +285,9 @@
                         <table>
                             <tr>
                                 <td>
+                                    <a href="@Url.Action("Index", "LinhaEscalas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-warning">Linhas de Escala</a>
+                                </td>
+                                <td>
                                     <a href="@Url.Action("Edit", "ServicoContratado", new { id = @ViewBag.ServicoContratado[i].Id })" class="btn btn-sm btn-info">Editar</a>
                                 </td>
                                 <td>
@@ -781,6 +784,8 @@ else
         </tr>
     </table>
 }
+
+
 <div>
     <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
 </div>

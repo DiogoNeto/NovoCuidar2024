@@ -2,9 +2,13 @@
 
 @{
     ViewData["Title"] = "Edit";
+
+    var SelectedCuidadora = @ViewBag.SelectedCuidadora;
+    var SelectedServicoContratado = @ViewBag.SelectedServicoContratado;
+
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
 <h4>LinhaEscala</h4>
 <hr />
@@ -14,14 +18,41 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="CuidadoraId" class="control-label"></label>
-                <input asp-for="CuidadoraId" class="form-control" />
-                <span asp-validation-for="CuidadoraId" class="text-danger"></span>
+                <table>
+                    <tr>
+                        <td>
+                            <label asp-for="CuidadoraId" class="control-label"></label>
+                        </td>
+                        <td>
+                            <select id="cuidadoraId" name="cuidadoraId" onchange="changeCuidadoraValue('2')">
+                                <option value="">Selecione uma opção</option>
+                                @* @Html.DropDownList("dropdown", dropdownCuidadora, "Selecione um valor", new { @class = "form-control", @value = selectedCuidadora }) *@
+                                @foreach (var item in ViewBag.DataCuidadora)
+                                {
+                                    <option value="@item.Id" selected=SelectedCuidadora>@item.Nome</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="form-group">
-                <label asp-for="ServicoContratadoId" class="control-label"></label>
-                <input asp-for="ServicoContratadoId" class="form-control" />
-                <span asp-validation-for="ServicoContratadoId" class="text-danger"></span>
+                <table>
+                    <tr>
+                        <td>
+                            <label asp-for="ServicoContratadoId" class="control-label"></label>
+                        </td>
+                        <td>
+                            <select id="servicoContratadoId" name="servicoContratadoId" onchange="changeServicoContratadoValue('2')">
+                                <option value="">Selecione uma opção</option>
+                                @foreach (var item in ViewBag.ServicoContratado)
+                                {
+                                    <option value="@item.Id" selected=SelectedServicoContratado>@item.Descricao</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="form-group">
                 <label asp-for="DataHoraInicio" class="control-label"></label>
@@ -45,7 +76,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ValorReceberAtualizado" class="control-label"></label>
-                <input asp-for="ValorReceberAtualizado" class="form-control" />
+                <input asp-for="ValorReceberAtualizado" class="form-control" readonly />
                 <span asp-validation-for="ValorReceberAtualizado" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -65,5 +96,37 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+@if (!string.IsNullOrEmpty("a"))
+{
+    <script>
+        alert(@ViewBag.SelectedServicoContratado);
+        servicoContratadoId.value = @ViewBag.SelectedServicoContratado;
+        cuidadoraId.value = @ViewBag.SelectedCuidadora;
+        var dropdownCuidadora = document.getElementById('dropdown');
+        dropdown.value = selectedCuidadora;
+        alert("@Model.ServicoContratadoId");
+        CuidadoraId.value = @Model.CuidadoraId;
+        ServicoContratadoId.value = @Model.ServicoContratadoId;
+    </script>
+}
+
+<script>
+    function changeCuidadoraValue(value) {
+        var dropdown = document.getElementById('cuidadoraId');
+        dropdown.value = dropdown.value;
+        selectedCuidadora.value = dropdown.value;
+        alert("changed:" + dropdown.value);
+    }
+
+    function changeServicoContratadoValue(value) {
+        var dropdown = document.getElementById('servicoContratadoId');
+        dropdown.value = dropdown.value;
+        selectedServicoContratado.value = dropdown.value;
+        alert("changed:" + dropdown.value);
+    }
+</script>

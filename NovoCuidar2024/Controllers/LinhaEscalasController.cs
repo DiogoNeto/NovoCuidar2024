@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
+using NovoCuidar2024.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 
 namespace NovoCuidar2024.Controllers
@@ -17,9 +18,29 @@ namespace NovoCuidar2024.Controllers
 
         // GET: LinhaEscalas
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? utenteId)
         {
-            return View(await _context.LinhaEscala.ToListAsync());
+            var query = @"SELECT le.Id, u.id as UtenteId, u.nome as UtenteNome, c.nome as CuidadoraNome, sc.Descricao, le.DataHoraInicio, le.DataHoraFim, le.ValorReceberInicial as ValorReceber, s.Nome as TipoServico FROM linhaescala le
+                            LEFT JOIN cuidadora c ON CuidadoraId = c.Id
+                            LEFT JOIN servicocontratado sc ON sc.Id = ServicoContratadoId
+                            LEFT JOIN utente u ON u.id = sc.utenteId
+                            LEFT JOIN servico s ON s.Id = sc.ServicoId";
+            //_context.LinhaEscala
+            var result = _context.LinhasEscalaViewModel.FromSqlRaw(query).ToList();
+
+            //var viewModel = new LinhaEscalaViewModel { };
+            //IEnumerable<LinhaEscalaViewModel> servicoContratadoViewModels;
+
+            if (utenteId == null)
+            {
+                IEnumerable<LinhaEscalaViewModel> listaLinhasEscala = result;
+                return View(listaLinhasEscala);
+            }
+            else
+            {
+                IEnumerable<LinhaEscalaViewModel> listaLinhasEscala = result;
+                return View(listaLinhasEscala.Where(x => x.UtenteId == utenteId));
+            }
         }
 
         // GET: LinhaEscalas/Details/5
@@ -45,6 +66,12 @@ namespace NovoCuidar2024.Controllers
         [Authorize]
         public IActionResult Create()
         {
+            var dataCuidadora = _context.Cuidadora.ToList();
+            ViewBag.DataCuidadora = dataCuidadora;
+
+            var dataServicoContratado = _context.ServicoContratado.ToList();
+            ViewBag.ServicoContratado = dataServicoContratado;
+
             return View();
         }
 
@@ -75,10 +102,20 @@ namespace NovoCuidar2024.Controllers
             }
 
             var linhaEscala = await _context.LinhaEscala.FindAsync(id);
+            linhaEscala.ValorReceberAtualizado = linhaEscala.ValorReceberInicial - linhaEscala.ValorPago;
             if (linhaEscala == null)
             {
                 return NotFound();
             }
+
+            var dataCuidadora = _context.Cuidadora.ToList();
+            ViewBag.DataCuidadora = dataCuidadora;
+            ViewBag.SelectedCuidadora = linhaEscala.CuidadoraId;
+
+            var dataServicoContratado = _context.ServicoContratado.ToList();
+            ViewBag.ServicoContratado = dataServicoContratado;
+            ViewBag.SelectedServicoContratado = linhaEscala.ServicoContratadoId;
+
             return View(linhaEscala);
         }
 
@@ -156,6 +193,14 @@ namespace NovoCuidar2024.Controllers
         private bool LinhaEscalaExists(int id)
         {
             return _context.LinhaEscala.Any(e => e.Id == id);
+        }
+
+        [HttpPost]
+        public IActionResult OnChange(string selectedValue)
+        {
+            // Aqui você pode fazer algo com o valor selecionado
+            // Por exemplo, retornar uma mensagem ou atualizar algo no servidor
+            return Json(new { message = "Valor recebido: " + selectedValue });
         }
     }
 }

@@ -157,6 +157,10 @@ namespace NovoCuidar2024.Controllers
             var visitasDomiciliarias = _context.Visita.FirstOrDefault(m => m.UtenteId == id);
             ViewBag.VisitasDomiciliarias = visitasDomiciliarias;
 
+
+            //var linhasEscala = _context.LinhaEscala.FirstOrDefault(m => m.UtenteId == id);
+            //ViewBag.VisitasDomiciliarias = visitasDomiciliarias;
+
             return View(utente);
         }
 

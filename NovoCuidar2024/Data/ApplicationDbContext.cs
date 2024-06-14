@@ -32,5 +32,6 @@ namespace NovoCuidar2024.Data
         public DbSet<NovoCuidar2024.Models.DadosSociais> DadosSociais { get; set; } = default!;
         public DbSet<NovoCuidar2024.Models.FotosVisita> FotosVisita { get; set; } = default!;
         public DbSet<NovoCuidar2024.ViewModel.FotoViewModel> Foto { get; set; } = default!;
+        public DbSet<NovoCuidar2024.ViewModel.LinhaEscalaViewModel> LinhasEscalaViewModel { get; set; } = default!;
     }
 }

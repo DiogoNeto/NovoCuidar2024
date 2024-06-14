@@ -5,6 +5,7 @@ using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
 using NovoCuidar2024.ViewModel;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -81,6 +82,56 @@ namespace NovoCuidar2024.Controllers
             string fileName = null;
             if (fv.Name != null)
             {
+
+                string folderPath = @"C:\YourFolder";
+                string filePath2 = Path.Combine(folderPath, "example.txt");
+                string filePath3 = Path.Combine(folderPath, "example.png");
+
+                try
+                {
+                    // Ensure the folder exists
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+                    // Create or overwrite the file at the specified path
+                    using (StreamWriter sw = new StreamWriter(filePath2))
+                    {
+                        sw.WriteLine("Hello, this is a test file.");
+                        sw.WriteLine("This file was created by a .NET application.");
+                    }
+
+                    string uploadDir2 = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                    fileName = Guid.NewGuid().ToString() + "-" + fv.Name;
+
+                    //string filePath = Path.Combine(uploadDir, fileName);
+                    string filePath4 = Path.Combine(uploadDir2, fileName);
+
+
+                    Bitmap bitmap = new Bitmap(200,100);
+                    bitmap.Save(filePath4, ImageFormat.Png);
+
+                    Console.WriteLine("File created successfully.");
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    Console.WriteLine($"Access denied: {ex.Message}");
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    Console.WriteLine($"Directory not found: {ex.Message}");
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine($"IO error: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                }
+
+
                 string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                 fileName = Guid.NewGuid().ToString()+"-"+fv.Name;
 

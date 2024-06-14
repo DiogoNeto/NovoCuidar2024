@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
+using NovoCuidar2024.ViewModel;
+using System;
 using System.Globalization;
 
 namespace NovoCuidar2024.Controllers
@@ -18,9 +20,26 @@ namespace NovoCuidar2024.Controllers
 
         // GET: ServicoContratado
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? utenteId)
         {
-            return View(await _context.ServicoContratado.ToListAsync());
+            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
+                          FROM utente u
+                          LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
+                          LEFT JOIN servicocontratado s ON s.UtenteId = u.Id;";
+                          
+            //var resul = _context.Utente.FromSqlRaw(query).ToList();
+            var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
+
+            var viewModel = new LinhaEscalaViewModel { };
+            IEnumerable<LinhaEscalaViewModel> servicoContratadoViewModels;
+            if (utenteId == null)
+            {
+                return View(await _context.ServicoContratado.ToListAsync());
+            }
+            else
+            {
+                return View(await _context.ServicoContratado.Where(x=>x.UtenteId==utenteId).ToListAsync());
+            }
         }
 
         // GET: ServicoContratado/Details/5
