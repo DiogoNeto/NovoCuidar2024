@@ -104,12 +104,10 @@
 @if (!string.IsNullOrEmpty("a"))
 {
     <script>
-        alert(@ViewBag.SelectedServicoContratado);
         servicoContratadoId.value = @ViewBag.SelectedServicoContratado;
         cuidadoraId.value = @ViewBag.SelectedCuidadora;
         var dropdownCuidadora = document.getElementById('dropdown');
         dropdown.value = selectedCuidadora;
-        alert("@Model.ServicoContratadoId");
         CuidadoraId.value = @Model.CuidadoraId;
         ServicoContratadoId.value = @Model.ServicoContratadoId;
     </script>

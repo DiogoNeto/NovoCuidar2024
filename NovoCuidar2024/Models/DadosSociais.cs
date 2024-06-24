@@ -8,14 +8,14 @@ namespace NovoCuidar2024.Models
         [Key]
         public int Id { get; set; }
         [ForeignKey("Utente")]
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int UtenteId { get; set; }
         public string RespostaSocial { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string ApoioSolicitado { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string OutrosApoios { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string ResumoSocial { get; set; }
     }
 }

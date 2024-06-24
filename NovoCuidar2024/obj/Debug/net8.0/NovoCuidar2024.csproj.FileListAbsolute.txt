@@ -273,6 +273,7 @@ C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\De
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\NovoCuidar2024.genruntimeconfig.cache
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\ref\NovoCuidar2024.dll
 C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\obj\Debug\net8.0\NovoCuid.F69F6FB8.Up2Date
+C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\appsettings.json
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\NovoCuidar2024.staticwebassets.runtime.json
@@ -313,7 +314,6 @@ C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.CodeAnalysis.W
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.DiaSymReader.dll
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.DotNet.Scaffolding.Shared.dll
-C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\diogo.neto\Dev\NovoCuidar2024\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Humanizer.Localisation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
@@ -6,6 +7,7 @@ using NovoCuidar2024.Models;
 using NovoCuidar2024.ViewModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace NovoCuidar2024.Controllers
 {
@@ -53,6 +55,9 @@ namespace NovoCuidar2024.Controllers
             {
                 return NotFound();
             }
+
+            string stringFileName = UploadFile(new FotosVisita { Id = _context.FotosVisita.OrderBy(x=>x.Id).LastOrDefault().Id + 1, Caminho = "", Descricao = "" });
+
             FotoViewModel fotosVisita = new FotoViewModel
             {
                 Id = utenteId
@@ -61,29 +66,30 @@ namespace NovoCuidar2024.Controllers
         }
 
         // GET: FotosVisitas/Create
-        [Authorize]
-        [HttpPost]
-        public IActionResult Create(FotoViewModel fv)
-        {
-            string stringFileName = UploadFile(fv);
+        //[Authorize]
+        //[HttpPost]
+        //public IActionResult Create(FotosVisita fv)
+        //{
+        //    string stringFileName = UploadFile(fv);
              
-            FotosVisita fotosVisita = new FotosVisita
-            {
-                Caminho = fv.Name,
-                Descricao = "",
-            };
-            _context.FotosVisita.Add(fotosVisita);
-            _context.SaveChanges();
-            return View(fotosVisita);
-        }
+        //    FotosVisita fotosVisita = new FotosVisita
+        //    {
+        //        Caminho = fv.Caminho,
+        //        Descricao = "",
+        //    };
+        //    _context.FotosVisita.Add(fotosVisita);
+        //    _context.SaveChanges();
+        //    return View(fotosVisita);
+        //}
 
-        private string UploadFile(FotoViewModel fv)
+        private string UploadFile(FotosVisita fv)
         {
+            var fotosVisita = _context.FotosVisita;
             string fileName = null;
-            if (fv.Name != null)
+            if (fotosVisita.FirstOrDefault().Caminho != null)
             {
 
-                string folderPath = @"C:\YourFolder";
+                string folderPath = @"C:\NovoCuidar\Fotos";
                 string filePath2 = Path.Combine(folderPath, "example.txt");
                 string filePath3 = Path.Combine(folderPath, "example.png");
 
@@ -103,7 +109,7 @@ namespace NovoCuidar2024.Controllers
                     }
 
                     string uploadDir2 = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
-                    fileName = Guid.NewGuid().ToString() + "-" + fv.Name;
+                    fileName = Guid.NewGuid().ToString() + "-" + fv.Caminho;
 
                     //string filePath = Path.Combine(uploadDir, fileName);
                     string filePath4 = Path.Combine(uploadDir2, fileName);
@@ -133,22 +139,50 @@ namespace NovoCuidar2024.Controllers
 
 
                 string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
-                fileName = Guid.NewGuid().ToString()+"-"+fv.Name;
+                fileName = Guid.NewGuid().ToString()+"-"+fotosVisita.FirstOrDefault().Caminho;
 
                 //string filePath = Path.Combine(uploadDir, fileName);
-                string filePath = Path.Combine(uploadDir, "\\image.png");
-                string content = "Test";
-                FileStream fs = new FileStream(uploadDir, FileMode.Create);
-                byte[] buffer = new byte[1024];
-                fs.Write(buffer, 0, buffer.Length);
+                //string filePathEscrita = Path.Combine(uploadDir, "\\image.png");
+                var uploadsDirectoryLeitura = "C:\\NovoCuidar\\Fotos\\";
+                var filePathLeitura = Path.Combine(uploadsDirectoryLeitura, fotosVisita.FirstOrDefault().Caminho);
 
-                Image img = Image.FromFile(uploadDir + filePath);
-                string newImagePath = Path.Combine(uploadDir);
-                img.Save(newImagePath+"\\image.png", System.Drawing.Imaging.ImageFormat.Jpeg);
-                using (var fileStream = new FileStream(uploadDir, FileMode.Create))
-                {
-                    fv.Image.CopyTo(fileStream);
-                }
+                var uploadsDirectoryEscrita = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+
+                var filePathEscrita = Path.Combine(uploadsDirectoryEscrita, fotosVisita.FirstOrDefault().Caminho);
+
+                //string content = "Test";
+                //FileStream fs = new FileStream(filePathEscrita, FileMode.Create);
+                //byte[] buffer = new byte[1024];
+                //fs.Write(buffer, 0, buffer.Length);
+
+                System.Drawing.Image image = System.Drawing.Image.FromFile(filePathEscrita);
+
+                var ms = new MemoryStream();
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                var bytess = ms.ToArray();
+                image.Dispose();
+                System.IO.File.WriteAllBytes(filePathEscrita, bytess);
+
+                //_context.Add(fotosVisita);
+                _context.SaveChangesAsync();
+
+                ViewBag.Data = _context.Utente;
+
+                //string newImagePath = Path.Combine(uploadDir);
+
+                //try
+                //{
+                //    image.Save(newImagePath + "\\image.png", System.Drawing.Imaging.ImageFormat.Jpeg);
+                //}
+                //catch (Exception ex) { }
+
+
+
+                //using (var fileStream = new FileStream(uploadDir, FileMode.Create))
+                //{
+                //    fv.Image.CopyTo(fileStream);
+                //}
             }
             return fileName;
         }

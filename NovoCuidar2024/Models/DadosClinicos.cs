@@ -6,25 +6,25 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int UtenteId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string CentroSaude { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string MedicoAssistente { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int NumUtenteSaúde { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string GrupoSanguineo { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string Alergias { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string RestricoesAlimentare { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string Patologias { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string InformacoessComplementares { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string ResumoClinico { get; set; }
     }
 }

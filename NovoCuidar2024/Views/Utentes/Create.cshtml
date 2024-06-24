@@ -8,6 +8,7 @@
 
 <h4>Passo 1 - Ficha de Utente</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-12">
         <form asp-action="Create">
@@ -15,12 +16,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="Nome" class="control-label">Nome</label>
+                        <label asp-for="Nome" class="control-label">Nome *</label>
                         <input asp-for="Nome" class="form-control" maxlenght="50" />
                         <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="DataInscricao" class="control-label">Data de Inscrição</label>
+                        <label asp-for="DataInscricao" class="control-label">Data de Inscrição *</label>
                         <input asp-for="DataInscricao" class="form-control" type="date" />
                         <span asp-validation-for="DataInscricao" class="text-danger"></span>
                     </div>
@@ -30,12 +31,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="IdInterno" class="control-label">Indentificador Interno</label>
+                        <label asp-for="IdInterno" class="control-label">Indentificador Interno *</label>
                         <input asp-for="IdInterno" class="form-control" />
                         <span asp-validation-for="IdInterno" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="Nif" class="control-label">NIF</label>
+                        <label asp-for="Nif" class="control-label">NIF *</label>
                         <input asp-for="Nif" class="form-control" maxlength="9" />
                         <span asp-validation-for="Nif" class="text-danger"></span>
                     </div>
@@ -65,6 +66,7 @@
                                 <option value="@item.Id">@item.Codigo</option>
                             }
                         </select>
+                        <span asp-validation-for="FamiliaId" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -93,7 +95,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
+                        <label asp-for="DataNascimento" class="control-label">Data de Nascimento *</label>
                         <input asp-for="DataNascimento" class="form-control" type="date" />
                         <span asp-validation-for="DataNascimento" class="text-danger"></span>
                     </div>
@@ -105,7 +107,7 @@
                             <option value="Solteiro(a)">Solteiro(a)</option>
                             <option value="Casado(a)">Casado(a)</option>
                             <option value="Divorciado(a)">Divorciado(a)</option>
-                            <option value="Viúvo(a)">Separado(a)</option>
+                            <option value="Viúvo(a)">Viúvo(a)</option>
                             <option value="Separado(a)">Separado(a)</option>
                         </select>
                         <span asp-validation-for="EstadoCivil" class="text-danger"></span>
@@ -116,7 +118,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="DocIdentificacaoTipo" class="control-label">Tipo de Documento de Identificação</label>
+                        <label asp-for="DocIdentificacaoTipo" class="control-label">Tipo de Documento de Identificação *</label>
                         <br />
                         <select id="docIdentificacaoTipo" name="docIdentificacaoTipo" onchange="dropdownDocIdentificacaoChanged()">
                             <option value="">Selecione uma opção</option>
@@ -128,7 +130,7 @@
                         <span asp-validation-for="DocIdentificacaoTipo" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="DocIdentificacaoNum" class="control-label">Número de Documento de Identificação</label>
+                        <label asp-for="DocIdentificacaoNum" class="control-label">Número de Documento de Identificação *</label>
                         <input asp-for="DocIdentificacaoNum" class="form-control" maxlength="25" />
                         <span asp-validation-for="DocIdentificacaoNum" class="text-danger"></span>
                     </div>
@@ -138,12 +140,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="DocIdentificacaoValidade" class="control-label">Validade de Documento de Identificação</label>
+                        <label asp-for="DocIdentificacaoValidade" class="control-label">Validade de Documento de Identificação *</label>
                         <input asp-for="DocIdentificacaoValidade" class="form-control" type="date" />
                         <span asp-validation-for="DocIdentificacaoValidade" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="SegurancaSocialNum" class="control-label">Número de Segurança Social</label>
+                        <label asp-for="SegurancaSocialNum" class="control-label">Número de Segurança Social *</label>
                         <input asp-for="SegurancaSocialNum" class="form-control" maxlength="12" />
                         <span asp-validation-for="SegurancaSocialNum" class="text-danger"></span>
                     </div>
@@ -428,13 +430,13 @@
                         <span asp-validation-for="HabitacaoPartilhada" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="NomeEmpresa" class="control-label">Nome de Empresa</label>
+                        <label asp-for="NomeEmpresa" class="control-label">Nome de Empresa *</label>
                         <br />
-                        <select id="nomeEmpresa" name="nomeEmpresa" onchange="dropdownNomeEmpresaChanged()">
+                        <select asp-for="NomeEmpresa" id="nomeEmpresa" name="nomeEmpresa" onchange="dropdownNomeEmpresaChanged()">
                             <option value="">Selecione uma opção</option>
                             <option value="Qerc">Qerc</option>
                             <option value="Magnetic">Magnetic</option>
-                        </select>
+                        </select>   
                         <span asp-validation-for="NomeEmpresa" class="text-danger"></span>
                     </div>
                 </div>
@@ -452,39 +454,39 @@
                                 <option value="@item.Id">@item.Nome</option>
                             }
                         </select>
-                        @*  <select id="origemContacto" name="origemContacto" onchange="dropdownOrigemContactoChanged()">
-                        <option value="">Selecione uma opção</option>
-                        <option value="Internet">Internet</option>
-                        <option value="MaisQueCuidar">Mais Que Cuidar</option>
-                        <option value="SMP">SMP</option>
-                        <option value="AnjosDaNoite">Anjos Da Noite</option>
-                        <option value="RNA">RNA</option>
-                        <option value="Outro">Outro</option>
-                        <option value="Referenciado">Referenciado</option>
-                        </select> *@
                         <span asp-validation-for="OrigemContacto" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="Foto"></label>
-                        <input asp-for="Foto" type="file" id="file" name="file" onchange="displayFileName()" class="form-control-file">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label asp-for="Foto"></label>
+                                    <input asp-for="Foto" type="file" id="file" name="file" onchange="displayFileName()" class="form-control-file">
+                                    <span asp-validation-for="Foto" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <p>Importar a foto a partir da directoria 'C:/NovoCuidar/Fotos'</p>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    @* <div class="col-md-6" style="visibility: hidden;">
+                    <div class="col-md-6" style="visibility: hidden;">
                         <input asp-for="Foto" id="Foto" class="form-control" />
                         <span asp-validation-for="Foto" class="text-danger"></span>
-                    </div> *@
+                    </div>
                 </div>
             </div>
             <table>
                 <tr>
                     <td>
-            <div class="form-group">
-                <input type="submit" value="Próximo" class="btn btn-primary" />
-            </div>
+                        <div class="form-group">
+                            <input type="submit" value="Próximo" class="btn btn-primary" />
+                        </div>
                     </td>
                     <td>
-            <div>
-                <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
-            </div>
+                        <div>
+                            <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -504,8 +506,9 @@
         // console.log('filename: ' + fileName);
 
         console.log('ent');
+        var fileInput = document.getElementByName('Foto');
         console.log(fileInput);
-        var fileInput = document.getElementById('Foto');
+
         var file = fileInput;
 
         console.log(file);
@@ -527,7 +530,7 @@
         } else {
             console.log('No file selected');
         }
-    
+
     }
 </script>
 
@@ -539,10 +542,13 @@
     fileInput.addEventListener('change', function (event) {
         // Get the selected file name
         var fileName = event.target.files[0].name;
+
+
+
         Foto.Value = fileName;
         //C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\wwwroot\uploads\
         // Do something with the file name
-        console.log('Selected file: ' + fileName);
+        console.log('Selected file: ' + fileName + ":" + fileInput);
     });
 </script>
 

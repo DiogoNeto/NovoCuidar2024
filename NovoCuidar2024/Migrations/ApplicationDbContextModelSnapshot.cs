@@ -850,10 +850,12 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateOnly>("DataInscricao")
+                    b.Property<DateOnly?>("DataInscricao")
+                        .IsRequired()
                         .HasColumnType("date");
 
-                    b.Property<DateOnly>("DataNascimento")
+                    b.Property<DateOnly?>("DataNascimento")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<string>("DocIdentificacaoNum")
@@ -864,14 +866,14 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateOnly>("DocIdentificacaoValidade")
+                    b.Property<DateOnly?>("DocIdentificacaoValidade")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<string>("EstadoCivil")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("FamiliaId")
+                    b.Property<int?>("FamiliaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Foto")
@@ -879,29 +881,26 @@ namespace NovoCuidar2024.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Genero")
-                        .IsRequired()
                         .HasColumnType("varchar(1)");
 
                     b.Property<string>("Habilitacoes")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("HabitacaoPartilhada")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("HabitacaoTipo")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("IdInterno")
+                    b.Property<int?>("IdInterno")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Nacionalidade")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Nif")
+                    b.Property<int?>("Nif")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
@@ -913,18 +912,15 @@ namespace NovoCuidar2024.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("OrigemContacto")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("ResponsavelTecnicoId")
+                    b.Property<int?>("ResponsavelTecnicoId")
                         .HasColumnType("int");
 
                     b.Property<string>("SegurancaSocialNum")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Vivencia")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -955,6 +951,8 @@ namespace NovoCuidar2024.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UtenteId");
+
                     b.ToTable("Visita");
                 });
 
@@ -980,7 +978,41 @@ namespace NovoCuidar2024.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Foto");
+                    b.ToTable("FotoViewModel");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.ViewModel.LinhaEscalaViewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CuidadoraNome")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DataHoraFim")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataHoraInicio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("TipoServico")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("UtenteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtenteNome")
+                        .HasColumnType("longtext");
+
+                    b.Property<double?>("ValorReceber")
+                        .HasColumnType("double");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LinhasEscalaViewModel");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.ViewModel.UtentesViewModel", b =>
@@ -1072,6 +1104,20 @@ namespace NovoCuidar2024.Migrations
                     b.HasOne("NovoCuidar2024.Models.Visita", null)
                         .WithMany("fotosVisita")
                         .HasForeignKey("FotoVisita");
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Visita", b =>
+                {
+                    b.HasOne("NovoCuidar2024.Models.Utente", null)
+                        .WithMany("Visita")
+                        .HasForeignKey("UtenteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NovoCuidar2024.Models.Utente", b =>
+                {
+                    b.Navigation("Visita");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.Visita", b =>

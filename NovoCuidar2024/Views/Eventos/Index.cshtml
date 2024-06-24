@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Calendar";
+}
+
+<h2>Calendário</h2>
+
+<div id="calendar"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                locale: 'pt',
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                buttonText: {
+                    today: 'Hoje',
+                    month: 'Mês',
+                    week: 'Semana',
+                    day: 'Dia',
+                    list: 'Lista'
+                },
+                editable: true,
+                events: '/Eventos/GetEvents?utenteId=102',
+                selectable: true,
+                selectHelper: true,
+                select: function (start, end) {
+                    var title = prompt('Servico Contratado:');
+                    var cuidadora = prompt('Cuidadora:');
+                    if (title) {
+                        window.location.href = 'LinhaEscalas/Create';
+                        var eventData = {
+                            title: title,
+                            cuidadora: cuidadora,
+                            start: start.format(),
+                            end: end.format()
+                        };
+                        $.ajax({
+                            url: '/Eventos/CreateEvent',
+                            type: 'POST',
+                            data: JSON.stringify(eventData),
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+                                $('#calendar').fullCalendar('renderEvent', eventData, true);
+                            }
+                        });
+                    }
+                    $('#calendar').fullCalendar('unselect');
+                },
+                eventRender: function (event, element) {
+                    element.bind('dblclick', function () {
+                        if (confirm('Detalhes: Serviço Contratado:' + event.title + " Cuidadora: " + event.cuidadora + '         Pretende eliminar este evento?')) {
+                            $.ajax({
+
+                                url: '/Eventos/DeleteEvent',
+                                type: 'POST',
+                                data: JSON.stringify(event.id),
+                                contentType: 'application/json; charset=utf-8',
+                                success: function (response) {
+                                    if (response.success) {
+                                        // Redirecionar para outra página
+                                        window.location.href = '@Url.Action("TargetPage", "Home")';
+                                    } else {
+                                        alert('Ocorreu um erro.');
+                                    }
+                                },
+                                error: function () {
+                                    window.location.href = '@Url.Action("Edit", "Home")';
+
+                                    alert('Não foi possível eliminar este evento.');
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/pt.js"></script>
+}

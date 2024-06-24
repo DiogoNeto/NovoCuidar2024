@@ -5,6 +5,7 @@ using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
 using NovoCuidar2024.ViewModel;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace NovoCuidar2024.Controllers
@@ -38,7 +39,7 @@ namespace NovoCuidar2024.Controllers
             }
             else
             {
-                return View(await _context.ServicoContratado.Where(x=>x.UtenteId==utenteId).ToListAsync());
+                return RedirectToAction("Details", "Utentes", new { id = utenteId });
             }
         }
 
@@ -87,7 +88,7 @@ namespace NovoCuidar2024.Controllers
 
             ServicoContratado servicoContratado = new ServicoContratado
             {
-                UtenteId = _context.Utente.ToList().LastOrDefault().Id,
+                UtenteId = utentes.FirstOrDefault().Id,
                 //DataInicio = DateOnly.FromDateTime(DateTime.Now)
             };
             //DateOnly res = DateOnly.ParseExact(DateOnly.FromDateTime(DateTime.Now).ToString(), "dd MM yyyy", CultureInfo.InvariantCulture);
@@ -107,9 +108,10 @@ namespace NovoCuidar2024.Controllers
             {
                 _context.Add(servicoContratado);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
             }
-            return View(servicoContratado);
+            return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
+
         }
 
         // GET: ServicoContratado/Edit/5
@@ -160,9 +162,9 @@ namespace NovoCuidar2024.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
             }
-            return View(servicoContratado);
+            return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
         }
 
         // GET: ServicoContratado/Delete/5
@@ -197,7 +199,8 @@ namespace NovoCuidar2024.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            
+            return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
         }
 
         private bool ServicoContratadoExists(int id)

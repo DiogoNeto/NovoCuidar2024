@@ -6,17 +6,17 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public DateOnly DataAssinatura { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Motivo { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Descricao { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int Valor { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public bool Ativo { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int Ficheiro { get; set; }
     }
 }

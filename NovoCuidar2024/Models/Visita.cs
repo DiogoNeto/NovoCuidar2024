@@ -8,16 +8,16 @@ namespace NovoCuidar2024.Models
         [Key]
         public int Id { get; set; }
         [ForeignKey("Colaborador")]
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int ColaboradorId { get; set; }
         [ForeignKey("Utente")]
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int UtenteId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public DateTime DataHora { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string Observações { get; set; }
         [ForeignKey("FotoVisita")]
-        public FotosVisita[] fotosVisita { get; set;}
+        public FotosVisita[] fotosVisita { get; set; }
     }
 }

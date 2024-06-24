@@ -8,11 +8,11 @@ namespace NovoCuidar2024.Models
         [Key]
         public int Id { get; set; }
         [ForeignKey("Utente")]
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int UtenteId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int Total { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public DateTime DataOrcamento { get; set; }
     }
 }

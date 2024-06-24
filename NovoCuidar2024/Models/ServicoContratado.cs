@@ -6,24 +6,24 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int UtenteId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int ServicoId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int ContratoId { get; set;}
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public DateOnly DataInicio { get; set; }
         public DateOnly? DataFim { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string Periodicidade { get; set;}
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string Descricao { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public float ValorDia { get; set;}
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public float ValorSemana { get; set;}
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public float ValorMes { get; set;}
     }
 }

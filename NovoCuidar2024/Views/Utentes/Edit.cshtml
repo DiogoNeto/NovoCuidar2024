@@ -2,6 +2,19 @@
 
 @{
     ViewData["Title"] = "Edit";
+
+    var SelectedResponsavel = @ViewBag.SelectedResponsavel;
+    var SelectedEstadoCivil = @ViewBag.SelectedEstadoCivil;
+    var SelectedFamilia = @ViewBag.SelectedFamilia;
+    var SelectedIdentificacaoTipo = @ViewBag.SelectedIdentificacaoTipo;
+    var SelectedNacionalidade = @ViewBag.SelectedNacionalidade;
+    var SelectedHabilitacoes = @ViewBag.SelectedHabilitacoes;
+    var SelectedVivencia = @ViewBag.SelectedVivencia;
+    var SelectedHabitacaoTipo = @ViewBag.SelectedHabitacaoTipo;
+    var HabitacaoPartilhada = @ViewBag.HabitacaoPartilhada;
+    var SelectedNomeEmpresa = @ViewBag.SelectedNomeEmpresa;
+    var SelectedOrigemContacto = @ViewBag.SelectedOrigemContacto;
+    var SelectedDocIdentificacaoTipo = @ViewBag.DocIdentificacaoTipo;
 }
 
 <h1>Editar</h1>
@@ -9,66 +22,726 @@
 <h4>Utente</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Nif" class="control-label"></label>
-                <input asp-for="Nif" class="form-control" />
-                <span asp-validation-for="Nif" class="text-danger"></span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Nome" class="control-label">Nome</label>
+                        <input asp-for="Nome" class="form-control" maxlenght="50" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="DataInscricao" class="control-label">Data de Inscrição</label>
+                        <input asp-for="DataInscricao" class="form-control" type="date" />
+                        <span asp-validation-for="DataInscricao" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="IdInterno" class="control-label">Indentificador Interno</label>
+                        <input asp-for="IdInterno" class="form-control" />
+                        <span asp-validation-for="IdInterno" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Nif" class="control-label">NIF</label>
+                        <input asp-for="Nif" class="form-control" maxlength="9" />
+                        <span asp-validation-for="Nif" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DataNascimento" class="control-label"></label>
-                <input asp-for="DataNascimento" class="form-control" type="date" />
-                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="ResponsavelTecnicoId" class="control-label">Responsável Técnico</label>
+                        <br />
+                        <select id="responsavelTecnicoId" name="responsavelTecnicoId" onchange="dropdownResponsavelChanged()">
+                            <option value="">Selecione uma opção</option>
+                            @foreach (var item in ViewBag.DataResponsavel)
+                            {
+                                <option value="@item.Id" selected=SelectedResponsavel>@item.Nome</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="FamiliaId" class="control-label">Identificador de Família</label>
+                        <br />
+                        <select id="familiaId" name="familiaId" onchange="dropdownFamiliaChanged()">
+                            <option value="">Selecione uma opção</option>
+                            @foreach (var item in ViewBag.DataFamilia)
+                            {
+                                <option value="@item.Id" selected=SelectedFamilia>@item.Codigo</option>
+                            }
+                        </select>
+
+                        <span asp-validation-for="FamiliaId" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Nacionalidade" class="control-label"></label>
-                <input asp-for="Nacionalidade" class="form-control" />
-                <span asp-validation-for="Nacionalidade" class="text-danger"></span>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Genero" class="control-label">Género</label>
+                        <label asp-for="Genero" class="control-label">
+                            <input type="radio" name="genero" value="m">
+                            Masculino
+                        </label>
+                        <label asp-for="Genero" class="control-label">
+                            <input type="radio" name="genero" value="f">
+                            Feminino
+                        </label>
+                        <label asp-for="Genero" class="control-label">
+                            <input type="radio" name="genero" value="o">
+                            Outro
+                        </label>
+
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Genero" class="control-label"></label>
-                <label asp-for="Genero" class="control-label">
-                    <input type="radio" name="gender" value="m">
-                    Masculino
-                </label>
-                <label asp-for="Genero" class="control-label">
-                    <input type="radio" name="gender" value="f">
-                    Feminino
-                </label>
-                <label asp-for="Genero" class="control-label">
-                    <input type="radio" name="gender" value="o">
-                    Outro
-                </label>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
+                        <input asp-for="DataNascimento" class="form-control" type="date" />
+                        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="EstadoCivil" class="control-label">Estádo Cívil</label>
+
+                        <select id="estadoCivil" name="estadoCivil" onchange="dropdownEstadoCivilChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Solteiro(a)">Solteiro(a)</option>
+                            <option value="Casado(a)">Casado(a)</option>
+                            <option value="Divorciado(a)">Divorciado(a)</option>
+                            <option value="Viúvo(a)">Viúvo(a)</option>
+                            <option value="Separado(a)">Separado(a)</option>
+                        </select>
+
+                        <span asp-validation-for="EstadoCivil" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="EstadoCivil" class="control-label"></label>
-                <input asp-for="EstadoCivil" class="form-control" />
-                <span asp-validation-for="EstadoCivil" class="text-danger"></span>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="DocIdentificacaoTipo" class="control-label">Tipo de Documento de Identificação</label>
+                        <br />
+                        <select id="docIdentificacaoTipo" name="docIdentificacaoTipo" onchange="dropdownDocIdentificacaoChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Bilhete de Identidade">Bilhete de Identidade</option>
+                            <option value="Cartao de Cidadao">Cartão de Cidadão</option>
+                            <option value="Passaporte">Passaporte</option>
+                            <option value="Titulo de Residencia">Título de Residência</option>
+                        </select>
+                        <span asp-validation-for="DocIdentificacaoTipo" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="DocIdentificacaoNum" class="control-label">Número de Documento de Identificação</label>
+                        <input asp-for="DocIdentificacaoNum" class="form-control" maxlength="25" />
+                        <span asp-validation-for="DocIdentificacaoNum" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <table>
-                    <tr>
-                        <td>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="DocIdentificacaoValidade" class="control-label">Validade de Documento de Identificação</label>
+                        <input asp-for="DocIdentificacaoValidade" class="form-control" type="date" />
+                        <span asp-validation-for="DocIdentificacaoValidade" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="SegurancaSocialNum" class="control-label">Número de Segurança Social</label>
+                        <input asp-for="SegurancaSocialNum" class="form-control" maxlength="12" />
+                        <span asp-validation-for="SegurancaSocialNum" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Nacionalidade" class="control-label">Nacionalidade</label>
+                        <br />
+                        <select id="nacionalidade" name="nacionalidade" onchange="dropdownNacionalidadeChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Afghan">Afegão</option>
+                            <option value="Albanian">Albanês</option>
+                            <option value="Algerian">Argelino</option>
+                            <option value="American">Americano</option>
+                            <option value="Andorran">Andorrano</option>
+                            <option value="Angolan">Angolano</option>
+                            <option value="Antiguans">Antiguano</option>
+                            <option value="Argentinean">Argentino</option>
+                            <option value="Armenian">Armênio</option>
+                            <option value="Australian">Australiano</option>
+                            <option value="Austrian">Austríaco</option>
+                            <option value="Azerbaijani">Azerbaijano</option>
+                            <option value="Bahamian">Bahamense</option>
+                            <option value="Bahraini">Barenita</option>
+                            <option value="Bangladeshi">Bangladeshiano</option>
+                            <option value="Barbadian">Barbadiano</option>
+                            <option value="Barbudans">Barbudense</option>
+                            <option value="Batswana">Botsuano</option>
+                            <option value="Belarusian">Bielorrusso</option>
+                            <option value="Belgian">Belga</option>
+                            <option value="Belizean">Belizeano</option>
+                            <option value="Beninese">Beninense</option>
+                            <option value="Bhutanese">Bhutanês</option>
+                            <option value="Bolivian">Boliviano</option>
+                            <option value="Bosnian">Bósnio</option>
+                            <option value="Brazilian">Brasileiro</option>
+                            <option value="British">Britânico</option>
+                            <option value="Bruneian">Bruneano</option>
+                            <option value="Bulgarian">Búlgaro</option>
+                            <option value="Burkinabe">Burquinês</option>
+                            <option value="Burmese">Mianmarense</option>
+                            <option value="Burundian">Burundiano</option>
+                            <option value="Cambodian">Cambojano</option>
+                            <option value="Cameroonian">Camaronês</option>
+                            <option value="Canadian">Canadense</option>
+                            <option value="Cape Verdean">Cabo-verdiano</option>
+                            <option value="Central African">Centro-africano</option>
+                            <option value="Chadian">Chadiano</option>
+                            <option value="Chilean">Chileno</option>
+                            <option value="Chinese">Chinês</option>
+                            <option value="Colombian">Colombiano</option>
+                            <option value="Comoran">Comorense</option>
+                            <option value="Congolese">Congolês</option>
+                            <option value="Costa Rican">Costarriquenho</option>
+                            <option value="Croatian">Croata</option>
+                            <option value="Cuban">Cubano</option>
+                            <option value="Cypriot">Cipriota</option>
+                            <option value="Czech">Tcheco</option>
+                            <option value="Danish">Dinamarquês</option>
+                            <option value="Djibouti">Djibutiense</option>
+                            <option value="Dominican">Dominicano</option>
+                            <option value="Dutch">Holandês</option>
+                            <option value="East Timorese">Timorense</option>
+                            <option value="Ecuadorean">Equatoriano</option>
+                            <option value="Egyptian">Egípcio</option>
+                            <option value="Emirian">Emiradense</option>
+                            <option value="Equatorial Guinean">Guineense Equatorial</option>
+                            <option value="Eritrean">Eritreio</option>
+                            <option value="Estonian">Estoniano</option>
+                            <option value="Ethiopian">Etíope</option>
+                            <option value="Fijian">Fijiano</option>
+                            <option value="Filipino">Filipino</option>
+                            <option value="Finnish">Finlandês</option>
+                            <option value="French">Francês</option>
+                            <option value="Gabonese">Gabonês</option>
+                            <option value="Gambian">Gambiano</option>
+                            <option value="Georgian">Georgiano</option>
+                            <option value="German">Alemão</option>
+                            <option value="Ghanaian">Ganense</option>
+                            <option value="Greek">Grego</option>
+                            <option value="Grenadian">Granadino</option>
+                            <option value="Guatemalan">Guatemalteco</option>
+                            <option value="Guinea-Bissauan">Guineense-bissauense</option>
+                            <option value="Guinean">Guineense</option>
+                            <option value="Guyanese">Guianense</option>
+                            <option value="Haitian">Haitiano</option>
+                            <option value="Herzegovinian">Herzegoviniano</option>
+                            <option value="Honduran">Hondurenho</option>
+                            <option value="Hungarian">Húngaro</option>
+                            <option value="Icelander">Islandês</option>
+                            <option value="Indian">Indiano</option>
+                            <option value="Indonesian">Indonésio</option>
+                            <option value="Iranian">Iraniano</option>
+                            <option value="Iraqi">Iraquiano</option>
+                            <option value="Irish">Irlandês</option>
+                            <option value="Israeli">Israelense</option>
+                            <option value="Italian">Italiano</option>
+                            <option value="Ivorian">Costarriquenho</option>
+                            <option value="Jamaican">Jamaicano</option>
+                            <option value="Japanese">Japonês</option>
+                            <option value="Jordanian">Jordaniano</option>
+                            <option value="Kazakhstani">Cazaque</option>
+                            <option value="Kenyan">Queniano</option>
+                            <option value="Kittian and Nevisian">São-cristovense</option>
+                            <option value="Kuwaiti">Kuwaitiano</option>
+                            <option value="Kyrgyz">Quirguiz</option>
+                            <option value="Laotian">Laociano</option>
+                            <option value="Latvian">Letão</option>
+                            <option value="Lebanese">Libanês</option>
+                            <option value="Liberian">Liberiano</option>
+                            <option value="Libyan">Líbio</option>
+                            <option value="Liechtensteiner">Liechtensteinense</option>
+                            <option value="Lithuanian">Lituano</option>
+                            <option value="Luxembourger">Luxemburguês</option>
+                            <option value="Macedonian">Macedônio</option>
+                            <option value="Malagasy">Malgaxe</option>
+                            <option value="Malawian">Malauiense</option>
+                            <option value="Malaysian">Malaio</option>
+                            <option value="Maldivan">Maldívio</option>
+                            <option value="Malian">Maliano</option>
+                            <option value="Maltese">Maltês</option>
+                            <option value="Marshallese">Marshalês</option>
+                            <option value="Mauritanian">Mauritano</option>
+                            <option value="Mauritian">Mauriciano</option>
+                            <option value="Mexican">Mexicano</option>
+                            <option value="Micronesian">Micronésio</option>
+                            <option value="Moldovan">Moldávio</option>
+                            <option value="Monacan">Monegasco</option>
+                            <option value="Mongolian">Mongol</option>
+                            <option value="Moroccan">Marroquino</option>
+                            <option value="Mosotho">Lesotiano</option>
+                            <option value="Motswana">Botsuanês</option>
+                            <option value="Mozambican">Mozambicano</option>
+                            <option value="Namibian">Namibiano</option>
+                            <option value="Nauruan">Nauruano</option>
+                            <option value="Nepalese">Nepalês</option>
+                            <option value="New Zealander">Neozelandês</option>
+                            <option value="Nicaraguan">Nicaraguense</option>
+                            <option value="Nigerian">Nigeriano</option>
+                            <option value="Nigerien">Nigeriano</option>
+                            <option value="North Korean">Norte-coreano</option>
+                            <option value="Northern Irish">Norte-irlandês</option>
+                            <option value="Norwegian">Norueguês</option>
+                            <option value="Omani">Omanense</option>
+                            <option value="Pakistani">Paquistanês</option>
+                            <option value="Palauan">Palauano</option>
+                            <option value="Panamanian">Panamenho</option>
+                            <option value="Papua New Guinean">Papuásio</option>
+                            <option value="Paraguayan">Paraguaio</option>
+                            <option value="Peruvian">Peruano</option>
+                            <option value="Polish">Polonês</option>
+                            <option value="Portuguese">Português</option>
+                            <option value="Qatari">Qatari</option>
+                            <option value="Romanian">Romeno</option>
+                            <option value="Russian">Russo</option>
+                            <option value="Rwandan">Ruandês</option>
+                            <option value="Saint Lucian">Santa-lucense</option>
+                            <option value="Salvadoran">Salvadorenho</option>
+                            <option value="Samoan">Samoano</option>
+                            <option value="San Marinese">São-marinense</option>
+                            <option value="Sao Tomean">Santomense</option>
+                            <option value="Saudi">Saudita</option>
+                            <option value="Scottish">Escocês</option>
+                            <option value="Senegalese">Senegalês</option>
+                            <option value="Serbian">Sérvio</option>
+                            <option value="Seychellois">Seychellois</option>
+                            <option value="Sierra Leonean">Serra-leonense</option>
+                            <option value="Singaporean">Singuaporiano</option>
+                            <option value="Slovakian">Eslovaco</option>
+                            <option value="Slovenian">Esloveno</option>
+                            <option value="Solomon Islander">Salomonense</option>
+                            <option value="Somali">Somali</option>
+                            <option value="South African">Sul-africano</option>
+                            <option value="South Korean">Sul-coreano</option>
+                            <option value="Spanish">Espanhol</option>
+                            <option value="Sri Lankan">Sri-lankês</option>
+                            <option value="Sudanese">Sudanês</option>
+                            <option value="Surinamer">Surinamês</option>
+                            <option value="Swazi">Suazi</option>
+                            <option value="Swedish">Sueco</option>
+                            <option value="Swiss">Suíço</option>
+                            <option value="Syrian">Sírio</option>
+                            <option value="Taiwanese">Taiwanês</option>
+                            <option value="Tajik">Tajique</option>
+                            <option value="Tanzanian">Tanzaniano</option>
+                            <option value="Thai">Tailandês</option>
+                            <option value="Togolese">Togolês</option>
+                            <option value="Tongan">Tonganês</option>
+                            <option value="Trinidadian or Tobagonian">Trinitário-tobagense</option>
+                            <option value="Tunisian">Tunisiano</option>
+                            <option value="Turkish">Turco</option>
+                            <option value="Tuvaluan">Tuvaluano</option>
+                            <option value="Ugandan">Ugandense</option>
+                            <option value="Ukrainian">Ucraniano</option>
+                            <option value="Uruguayan">Uruguaio</option>
+                            <option value="Uzbekistani">Uzbeque</option>
+                            <option value="Venezuelan">Venezuelano</option>
+                            <option value="Vietnamese">Vietnamita</option>
+                            <option value="Welsh">Galês</option>
+                            <option value="Yemenite">Iemenita</option>
+                            <option value="Zambian">Zambiano</option>
+                            <option value="Zimbabwean">Zimbabuano</option>
+                        </select>
+                        <span asp-validation-for="Nacionalidade" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ContactoTelemovel" class="control-label">Contacto de Telemóvel</label>
+                        <input asp-for="ContactoTelemovel" class="form-control" maxlength="15" />
+                        <span asp-validation-for="ContactoTelemovel" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="ContactoEmail" class="control-label">Contacto de E-mail</label>
+                        <input asp-for="ContactoEmail" class="form-control" maxlength="100" />
+                        <span asp-validation-for="ContactoEmail" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Habilitacoes" class="control-label">Habilitações</label>
+                        <br />
+                        <select id="habilitacoes" name="habilitacoes" onchange="dropdownHabilitacoesChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Nao sabe ler, nem escrever">Não sabe ler, nem escrever</option>
+                            <option value="Sabe ler e escrever">Sabe ler e escrever</option>
+                            <option value="Ensino Basico (ensino primario)">Ensino Básico (ensino primário)</option>
+                            <option value="Ensino Preparatorio">Ensino Preparatório </option>
+                            <option value="Ensino Secundario">Ensino Secundário</option>
+                            <option value="Ensino Tecnico Profissional">Ensino Técnico Profissional</option>
+                            <option value="Licenciatura">Licenciatura</option>
+                            <option value="Pos-graduacao">Pós-graduação</option>
+                            <option value="Mestrado">Mestrado</option>
+                            <option value="Doutoramento">Doutoramento</option>
+                        </select>
+                        <span asp-validation-for="Habilitacoes" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Vivencia" class="control-label">Vivência</label>
+                        <br />
+                        <select id="vivencia" name="vivencia" onchange="dropdownVivenciaChanged()" SelectedVivencia>
+                            <option value="">Selecione uma opção</option>
+                            <option value="Isolado">Isolado</option>
+                            <option value="Agregado">Agregado</option>
+                        </select>
+                        <span asp-validation-for="Vivencia" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="HabitacaoTipo" class="control-label">Tipo de Habitação</label>
+                        <br />
+                        <select id="habitacaoTipo" name="habitacaoTipo" onchange="dropdownHabitacaoTipoChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Quarto">Quarto</option>
+                            <option value="Outra">Outra</option>
+                        </select>
+                        <span asp-validation-for="HabitacaoTipo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="HabitacaoPartilhada" class="control-label">Habitação Partilhada</label>
+                        <br />
+                        <select id="habitacaoPartilhada" name="habitacaoPartilhada" onchange="dropdownHabitacaoPartilhadaChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                        <span asp-validation-for="HabitacaoPartilhada" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="NomeEmpresa" class="control-label">Nome de Empresa</label>
+                        <br />
+                        <select id="nomeEmpresa" name="nomeEmpresa" onchange="dropdownNomeEmpresaChanged()" SelectedNomeEmpresa>
+                            <option value="">Selecione uma opção</option>
+                            <option value="Qerc">Qerc</option>
+                            <option value="Magnetic">Magnetic</option>
+                        </select>
+                        <span asp-validation-for="NomeEmpresa" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row" style="padding-top:10px">
+                    <div class="col-md-6">
+                        <label asp-for="OrigemContacto" class="control-label">Origem de Contacto</label>
+                        <br />
+                        <select id="origemContacto" name="origemContacto" onchange="dropdownOrigemContactoChanged()">
+                            <option value="">Selecione uma opção</option>
+                            @foreach (var item in ViewBag.DataOrigemContacto)
+                            {
+                                <option value="@item.Id" SelectedOrigemContacto>@item.Nome</option>
+                            }
+                        </select>
+                        <span asp-validation-for="OrigemContacto" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Foto"></label>
+                        <input asp-for="Foto" type="file" id="file" name="file" onchange="displayFileName()" class="form-control-file">
+                    </div>
+                    <div class="col-md-6" style="visibility: hidden;">
+                        <input asp-for="Foto" id="Foto" class="form-control" />
+                        <span asp-validation-for="Foto" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <div class="form-group">
                             <input type="submit" value="Gravar" class="btn btn-primary" />
-                        </td>
-                        <td>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
                             <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
 </div>
 
+<script>
+    function displayFileName() {
+
+        console.log('ent');
+        var fileInput = document.getElementByName('Foto');
+        console.log(fileInput);
+
+        var file = fileInput;
+
+        console.log(file);
+
+        if (file) {
+            var formData = new FormData();
+            formData.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Home/UploadFile', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('File uploaded successfully');
+                } else {
+                    console.log('File upload failed');
+                }
+            };
+            xhr.send(formData);
+        } else {
+            console.log('No file selected');
+        }
+
+    }
+</script>
+
+<script>
+    // Get the file input element
+    var fileInput = document.getElementById('file');
+
+    // Add event listener for change event
+    fileInput.addEventListener('change', function (event) {
+        // Get the selected file name
+        var fileName = event.target.files[0].name;
+
+
+
+        Foto.Value = fileName;
+        //C:\Users\joao.dias\Documents\Diogo\Projects\NovoCuidar2024\NovoCuidar2024\wwwroot\uploads\
+        // Do something with the file name
+        console.log('Selected file: ' + fileName + ":" + fileInput);
+    });
+</script>
+
+<script>
+    // Attach event listener to radio buttons
+    var radioButtons = document.getElementsByName('gender');
+    radioButtons.forEach(function (radioButton) {
+        radioButton.addEventListener('change', function () {
+            // Get the selected value
+            var selectedValue = this.value;
+        });
+    });
+</script>
+
+<script>
+    // Get references to the file input and textbox
+    var fileInput = document.getElementById('file');
+    var fileNameTextbox = document.getElementById('Foto');
+
+    // Attach change event listener to the file input
+    fileInput.addEventListener('change', function () {
+        // Check if a file is selected
+        if (this.files && this.files.length > 0) {
+            // Get the filename of the selected file
+            var fileName = this.files[0].name;
+            // Set the value of the textbox to the filename
+            fileNameTextbox.value = fileName;
+        } else {
+            // If no file is selected, clear the value of the textbox
+            fileNameTextbox.value = '';
+        }
+    });
+
+</script>
+
+<script>
+    function dropdownVivenciaChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("vivencia").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownResponsavelChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("responsavelTecnicoId").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownFamiliaChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("familiaId").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+
+<script>
+    function dropdownEstadoCivilChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("estadoCivil").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownNacionalidadelChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("nacionalidade").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownHabilitacoesChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("habilitacoes").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownHabitacaoTipoChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("habitacaoTipo").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownHabitacaoPartilhadaChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("HabitacaoPartilhada").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownNomeEmpresaChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("nomeEmpresa").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownOrigemContactoChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("origemContacto").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownNacionalidadeChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("nacionalidade").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownDocIdentificacaoChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("docIdentificacaoTipo").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+@if (!string.IsNullOrEmpty("a"))
+{
+    <script>
+        document.getElementById("habitacaoPartilhada").value = '@ViewBag.HabitacaoPartilhada';
+        document.getElementById("habitacaoTipo").value = '@ViewBag.HabitacaoTipo';
+        document.getElementById("nomeEmpresa").value = '@ViewBag.NomeEmpresa';
+        document.getElementById("origemContacto").value = '@ViewBag.OrigemContacto';
+        document.getElementById("vivencia").value = '@ViewBag.Vivencia';
+        document.getElementById("nacionalidade").value = '@ViewBag.Nacionalidade';
+        document.getElementById("docIdentificacaoTipo").value = '@ViewBag.DocIdentificacaoTipo';
+        document.getElementById("estadoCivil").value = '@ViewBag.EstadoCivil';
+        document.getElementById("dataOrigemContacto").value = '@ViewBag.DataOrigemContacto';
+        document.getElementById("habilitacoes").value = '@ViewBag.Habilitacoes';
+        document.getElementById("genero").value = '@ViewBag.Genero';
+
+
+
+        @* var dropdown = document.getElementById("HabitacaoTipo");
+
+        // Check if the value exists in the dropdown
+        var isValueFound = false;
+        for (var i = 0; i < dropdown.options.length; i++) {
+        if (dropdown.options[i].value === valueToSelect) {
+        isValueFound = true;
+        break;
+        }
+        }
+
+        // Set the dropdown value if the value exists
+        if (isValueFound) {
+        dropdown.value = valueToSelect;
+        } else {
+        console.log("Value not found in dropdown");
+        } *@
+
+        @*document.getElementById("habitacaoTipo")
+        dropdownEstadoCivilChanged(@ViewBag.SelectedEstadoCivil);
+        cuidadoraId.value = @ViewBag.SelectedCuidadora;
+        estadoCivilId.selectedValue = @ViewBag.SelectedEstadoCivil;
+        console.log("estadoCivil: " + estadoCivilId);
+
+
+        var dropdownCuidadora = document.getElementById('dropdown');
+        dropdown.value = selectedCuidadora;
+        *@
+
+    </script>
 }

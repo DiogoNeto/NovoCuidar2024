@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
+using NovoCuidar2024.Migrations;
 using NovoCuidar2024.Models;
 
 namespace NovoCuidar2024.Controllers
@@ -67,13 +70,14 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,ColaboradorId,UtenteId,DataHora,Observações")] Visita visita)
+        public async Task<IActionResult> Create([Bind("Id,UtenteId,DataHora,Observações,FotosVisita")] Visita visita)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(visita);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Utentes", new { id = visita.UtenteId });
             }
             return View(visita);
         }
@@ -87,7 +91,7 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var visita = await _context.Visita.FindAsync(id);
+            var visita = await _context.Visita.FirstOrDefaultAsync(m => m.Id == id);
             if (visita == null)
             {
                 return NotFound();
@@ -101,7 +105,7 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ColaboradorId,UtenteId,DataHora,Observações")] Visita visita)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UtenteId,DataHora,Observações")] Visita visita)
         {
             if (id != visita.Id)
             {
@@ -126,7 +130,7 @@ namespace NovoCuidar2024.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Utentes", new { id = visita.UtenteId });
             }
             return View(visita);
         }
@@ -140,8 +144,7 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
-            var visita = await _context.Visita
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var visita = await _context.Visita.FirstOrDefaultAsync(m => m.Id == id);
             if (visita == null)
             {
                 return NotFound();
@@ -163,7 +166,7 @@ namespace NovoCuidar2024.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Utentes", new { id = visita.UtenteId });
         }
 
         private bool VisitaExists(int id)

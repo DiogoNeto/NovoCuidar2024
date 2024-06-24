@@ -7,37 +7,37 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int Nif { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int CC { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int SNS { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string NomePrincipal { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string NomeApelido { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public DateOnly DataNascimento { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Nacionalidade { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public char Genero { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Telefone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Morada { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string CodPostal { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Localidade { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Concelho { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string EstadoCivil { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public required string Tipo { get; set; }
     }
 }

@@ -8,17 +8,17 @@ namespace NovoCuidar2024.Models
         [Key]
         public int Id { get; set; }
         [ForeignKey("Orcamento")]
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int OrcamentoId { get; set; }
         [ForeignKey("Utente")]
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int UtenteId { get; set; }
         [ForeignKey("Servico")]
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int ServicoId { get; set;}
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public int Preco { get; set;}
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public DateTime Data { get; set;}
     }
 }

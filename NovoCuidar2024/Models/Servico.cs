@@ -6,7 +6,7 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public string? Nome { get; set; }
         public string? Descricao { get; set; }
     }

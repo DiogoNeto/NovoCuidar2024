@@ -21,16 +21,12 @@ namespace NovoCuidar2024.Controllers
         [Authorize]
         public async Task<IActionResult> Index(bool activo)
         {
-            //var items = _context.Utente.ToList();
-
-            //return View(await _context.Utente.Where(x=>x.Ativo!=activo).OrderByDescending(x=>x.Id).ToListAsync());
 
             var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
                           FROM utente u
                           LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
                           LEFT JOIN servicocontratado s ON s.UtenteId = u.Id
                           Where u.Ativo !=" + activo;
-            //var resul = _context.Utente.FromSqlRaw(query).ToList();
             var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
 
 
@@ -75,9 +71,6 @@ namespace NovoCuidar2024.Controllers
                 //Servicos = Servicos.ToList().Where(x => x.UtenteId == Utentes.First().Id).ToList()
             };
 
-            //var utentesViewModels = new List<UtentesViewModel>();
-            //utentesViewModels.Add(viewModel);
-            //IEnumerable<UtentesViewModel> listUtentes = utentesViewModels;
             IEnumerable<UtentesViewModel> listUtentes = result;
 
             return View(listUtentes);
@@ -106,9 +99,6 @@ namespace NovoCuidar2024.Controllers
             foreach (var v in _context.ServicoContratado.Where(m => m.Id == id))
             {
                 servicoContratado.Add(v);
-                
-
-
             }
 
             for (var i = 0; i < servicoContratado.Count; i++)
@@ -154,12 +144,13 @@ namespace NovoCuidar2024.Controllers
             var dadosSociais = _context.DadosSociais.FirstOrDefault(m => m.UtenteId == id);
             ViewBag.DadosSociais = dadosSociais;
 
-            var visitasDomiciliarias = _context.Visita.FirstOrDefault(m => m.UtenteId == id);
-            ViewBag.VisitasDomiciliarias = visitasDomiciliarias;
-
+            List<Visita> visitas = new List<Visita>();
+            //foreach(var v in _context.Visita.Where(m=> m.UtenteId == id)){
+            //    //visitas.Add(v);
+            //}
 
             //var linhasEscala = _context.LinhaEscala.FirstOrDefault(m => m.UtenteId == id);
-            //ViewBag.VisitasDomiciliarias = visitasDomiciliarias;
+            //ViewBag.Visitas = visitas;
 
             return View(utente);
         }
@@ -168,12 +159,14 @@ namespace NovoCuidar2024.Controllers
         [Authorize]
         public IActionResult Create()
         {
-            var dataResponsavelTecnico = _context.Responsavel.ToList();
+            var dataResponsavelTecnico = _context.Tecnico.ToList();
             var dataFamilia = _context.FamiliaUtentes.ToList();
+            var utente = _context.Utente.ToList();
             var dataOrigemContacto = _context.OrigemContacto.ToList();
 
             ViewBag.DataResponsavel = dataResponsavelTecnico;
             ViewBag.DataFamilia = dataFamilia;
+            ViewBag.Utente = utente;
             ViewBag.DataOrigemContacto = dataOrigemContacto;
 
             return View();
@@ -185,21 +178,11 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
-        {
+        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,Foto,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
+            {
             if (ModelState.IsValid)
             {
-                //string content = "Este é o conteúdo do arquivo que será baixado.";
-
-                //byte[] bytes = Encoding.UTF8.GetBytes(content);
-
-                // Define o tipo de conteúdo e o nome do arquivo
-                //string contentType = "text/plain";
-                //string fileName = "C:\\Teste\\arquivo.txt";
-
-
-
-                var uploadsDirectoryLeitura = "C:\\Downloads";
+                var uploadsDirectoryLeitura = "C:\\NovoCuidar\\Fotos\\";
                 var uploadsDirectoryEscrita = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
                 var filePathLeitura = Path.Combine(uploadsDirectoryLeitura, utente.Foto);
                 var filePathEscrita = Path.Combine(uploadsDirectoryEscrita, utente.Foto);
@@ -222,42 +205,6 @@ namespace NovoCuidar2024.Controllers
                 }
 
 
-                //var a = File(bytes, contentType, filePath);
-
-                //using (FileStream fs = File.Create(filePath))
-                //{
-                //    Console.WriteLine("File created successfully.");
-                //}
-
-
-
-                //File.Copy(filePath, uploadsDirectory + utente.Foto);
-                //using (var fileStream = new FileStream(filePath, FileMode.Create))
-                //{
-                //    await file.CopyToAsync(fileStream);
-                //}
-
-
-
-                //try
-                //{
-                //    // Read the source file
-                //    using (FileStream sourceStream = new FileStream(uploadsDirectory, FileMode.Open, FileAccess.Read))
-                //    {
-                //        // Create or overwrite the destination file
-                //        using (FileStream destinationStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                //        {
-                //            // Copy data from source to destination
-                //            sourceStream.CopyTo(destinationStream);
-                //        }
-                //    }
-
-                //    Console.WriteLine("File copied successfully.");
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine("An error occurred while copying the file: " + ex.Message);
-                //}
 
                 _context.Add(utente);
                 await _context.SaveChangesAsync();
@@ -277,6 +224,26 @@ namespace NovoCuidar2024.Controllers
             }
 
             var utente = await _context.Utente.FindAsync(id);
+
+            var dataResponsavelTecnico = _context.Responsavel.ToList();
+            var dataFamilia = _context.FamiliaUtentes.ToList();
+            var dataOrigemContacto = _context.OrigemContacto.ToList();
+            
+
+            ViewBag.DataResponsavel = dataResponsavelTecnico;
+            ViewBag.SelectedResponsavel = utente.ResponsavelTecnicoId;
+            ViewBag.DataFamilia = dataFamilia;
+            ViewBag.DataOrigemContacto = dataOrigemContacto;
+            ViewBag.EstadoCivil = utente.EstadoCivil;
+            ViewBag.DocIdentificacaoTipo = utente.DocIdentificacaoTipo;
+            ViewBag.Nacionalidade = utente.Nacionalidade;
+            ViewBag.Habilitacoes = utente.Habilitacoes;
+            ViewBag.Vivencia = utente.Vivencia;
+            ViewBag.HabitacaoTipo = utente.HabitacaoTipo;
+            ViewBag.HabitacaoPartilhada = utente.HabitacaoPartilhada;
+            ViewBag.NomeEmpresa = utente.NomeEmpresa;
+            ViewBag.OrigemContacto = utente.OrigemContacto;
+            ViewBag.Genero = utente.Genero;
             if (utente == null)
             {
                 return NotFound();
@@ -290,7 +257,7 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ResponsavelId,SubSistemaId,Nif,CC,SNS,NomePrincipal,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil, Ativo,TecnicoResponsavelId")] Utente utente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ResponsavelId,SubSistemaId,Nif,CC,SNS,HabitacaoPartilhada,ContactoTelemovel,OrigemContacto,HabitacaoTipo,ContactoEmail,Habilitacoes,Nome,Foto,DocIdentificacaoNum,SegurancaSocialNum,NomePrincipal,DocIdentificacaoTipo,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil,Ativo,TecnicoResponsavelId,NomeEmpresa,Vivencia")] Utente utente)
         {
             if (id != utente.Id)
             {

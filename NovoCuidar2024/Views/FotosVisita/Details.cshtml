@@ -25,6 +25,14 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <table>
+        <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-sm btn-primary">Editar</a>
+            </td>
+            <td>
+                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+            </td>
+        </tr>
+    </table>
 </div>

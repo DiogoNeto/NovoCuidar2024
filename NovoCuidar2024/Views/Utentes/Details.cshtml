@@ -98,12 +98,6 @@
             @Html.DisplayFor(model => model.DocIdentificacaoTipo)
         </dd>
         <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.DocIdentificacaoValidade)
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.DocIdentificacaoValidade)
-        </dd>
-        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.EstadoCivil)
         </dt>
         <dd class="col-sm-9">
@@ -286,6 +280,9 @@
                             <tr>
                                 <td>
                                     <a href="@Url.Action("Index", "LinhaEscalas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-warning">Linhas de Escala</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Index", "Eventos", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-warning">Calendário</a>
                                 </td>
                                 <td>
                                     <a href="@Url.Action("Edit", "ServicoContratado", new { id = @ViewBag.ServicoContratado[i].Id })" class="btn btn-sm btn-info">Editar</a>
@@ -671,6 +668,17 @@ else
 else
 {
     <div>Ainda não tem Dados Clínicos associados.</div>
+    <div style="padding-bottom : 20px;">
+        <table>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <a href="@Url.Action("Create", "DadosClinicos", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 }
 
 
@@ -743,49 +751,67 @@ else
 }
 
 
-<h4>Visitas Domiciliárias</h4>
+ <h4>Visitas Domiciliárias</h4>
 <hr />
 @if (ViewBag.Visitas != null && ViewBag.Visitas.Count > 0)
 {
     int i = 0;
-    @foreach (var c in ViewBag.DadosSociais)
+    @foreach (var c in ViewBag.Visitas)
     {
         <dl class="row">
             <dt class="col-sm-3">
                 Id
             </dt>
             <dd class="col-sm-9">
-                @ViewBag.VisitasDomiciliarias.Id
+                @ViewBag.Visitas[i].Id
             </dd>
-
-            <div style="padding-bottom : 20px;">
-                <table>
-                    <td>
-                        <div class="form-group">
-                            <a href="@Url.Action("Edit", "Visitas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-info">Editar</a>
-                        </div>
-                    </td>
-                </table>
-            </div>
+            <dt class="col-sm-3">
+                DataHora
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.Visitas[i].DataHora
+            </dd>
+            <dt class="col-sm-3">
+                Observações
+            </dt>
+            <dd class="col-sm-9">
+                @ViewBag.Visitas[i].Observações
+            </dd>
         </dl>
+        <table style="padding-bottom : 20px;">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <a href="@Url.Action("Edit", "Visitas", new { id = @ViewBag.Visitas[i].Id })" class="btn btn-sm btn-info">Editar</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <a href="@Url.Action("Delete", "Visitas", new { id = @ViewBag.Visitas[i].Id })" class="btn btn-sm btn-danger">Remover</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
         i++;
     }
 }
 else
 {
-    <div>Ainda não tem Visitas Domiciliárias associados.</div>
-    <table>
-        <tr>
-            <td>
-                <div class="form-group">
-                    <a href="@Url.Action("Create", "Visitas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div>Ainda não tem Visitas Domiciliárias associadas.</div>
 }
 
+<table>
+    <tr>
+        <td>
+            <div class="form-group">
+                <a href="@Url.Action("Create", "Visitas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
+            </div>
+        </td>
+    </tr>
+</table> 
 
-<div>
-    <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
+
+<div style="padding-top:20px;">
+    <a href="javascript:history.go(-1)" class="btn btn-sm btn-secondary">Voltar</a>
 </div>

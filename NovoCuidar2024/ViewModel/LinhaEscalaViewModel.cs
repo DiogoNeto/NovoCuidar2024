@@ -7,8 +7,8 @@
         public string? UtenteNome { get; set; }
         public string? CuidadoraNome { get; set; }
         public string? TipoServico { get; set; }
-        public DateTime? DataHoraInicio { get; set; }
-        public DateTime? DataHoraFim { get; set; }
+        public DateTime DataHoraInicio { get; set; }
+        public DateTime DataHoraFim { get; set; }
         public double? ValorReceber { get; set; }
     }
 }

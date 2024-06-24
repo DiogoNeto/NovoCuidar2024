@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NovoCuidar2024.Controllers;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NovoCuidar2024.Models
@@ -7,55 +8,44 @@ namespace NovoCuidar2024.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        public int IdInterno { get; set; }
-        [Required]
-        public string Nome { get; set; }
-        [ForeignKey("Responsavel")]
-        public int ResponsavelTecnicoId { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public int? IdInterno { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public string? Nome { get; set; }
+        [ForeignKey("Tecnica")]
+        public int? ResponsavelTecnicoId { get; set; }
         [ForeignKey("FamiliaUtentes")]
-        public int FamiliaId { get; set; }
-        [Required]
+        public int? FamiliaId { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
         public bool Ativo { get; set; }
-        [Required]
-        public int Nif { get; set; }
-        [Required]
-        public DateOnly DataInscricao { get; set; }
-        [Required]
-        public string OrigemContacto { get; set; }
-        [Required]
-        public char Genero { get; set; }
-        [Required]
-        public DateOnly DataNascimento { get; set; }
-        [Required]
-        public required string EstadoCivil { get; set; }
-        [Required]
-        public required string DocIdentificacaoTipo { get; set; }
-        [Required]
-        public required string DocIdentificacaoNum { get; set; }
-        [Required]
-        public required DateOnly DocIdentificacaoValidade { get; set; }
-        [Required]
-        public required string SegurancaSocialNum { get; set; }
-        [Required]
-        public required string Nacionalidade { get; set; }
-        [Required]
-        public required string ContactoTelemovel { get; set; }
-        [Required]
-        public required string ContactoEmail { get; set; }
-        [Required]
-        public required string Habilitacoes { get; set; }
-        [Required]
-        public required string Vivencia { get; set; }
-        [Required]
-        public required string HabitacaoTipo { get; set; }
-        [Required]
-        public required string HabitacaoPartilhada { get; set; }
-        public required string Foto { get; set; }
-        [Required]
-        public required string NomeEmpresa { get; set; }
-
-        
-
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public int? Nif { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public DateOnly? DataInscricao { get; set; }
+        public string? OrigemContacto { get; set; }
+        public char? Genero { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public DateOnly? DataNascimento { get; set; }
+        public string? EstadoCivil { get; set; }
+        public string DocIdentificacaoTipo { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public string DocIdentificacaoNum { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public DateOnly? DocIdentificacaoValidade { get; set; }
+        public string? SegurancaSocialNum { get; set; }
+        public string? Nacionalidade { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public string? ContactoTelemovel { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public string? ContactoEmail { get; set; }
+        public string? Habilitacoes { get; set; }
+        public string? Vivencia { get; set; }
+        public string? HabitacaoTipo { get; set; }
+        public string? HabitacaoPartilhada { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public string Foto { get; set; }
+        [Required(ErrorMessage = "O campo é obrigatório.")]
+        public string NomeEmpresa { get; set; }
+        public List<Visita>? Visita { get; set; }
     }
 }
