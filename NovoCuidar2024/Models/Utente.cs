@@ -47,5 +47,10 @@ namespace NovoCuidar2024.Models
         [Required(ErrorMessage = "O campo é obrigatório.")]
         public string NomeEmpresa { get; set; }
         public List<Visita>? Visita { get; set; }
+        public DateTime? DataCriacao { get; set; }
+        public DateTime? DataAtualizacao { get; set; }
+        public string? UtilizadorCriador { get; set; }
+        public string? UtilizadorAtualizador { get; set;}
+        public bool Apagado { get; set; }
     }
 }

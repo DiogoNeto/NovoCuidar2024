@@ -28,12 +28,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="Nome" class="control-label">Nome</label>
+                        <label asp-for="Nome" class="control-label">Nome *</label>
                         <input asp-for="Nome" class="form-control" maxlenght="50" />
                         <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="DataInscricao" class="control-label">Data de Inscrição</label>
+                        <label asp-for="DataInscricao" class="control-label">Data de Inscrição *</label>
                         <input asp-for="DataInscricao" class="form-control" type="date" />
                         <span asp-validation-for="DataInscricao" class="text-danger"></span>
                     </div>
@@ -43,7 +43,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="IdInterno" class="control-label">Indentificador Interno</label>
+                        <label asp-for="IdInterno" class="control-label">Indentificador Interno *</label>
                         <input asp-for="IdInterno" class="form-control" />
                         <span asp-validation-for="IdInterno" class="text-danger"></span>
                     </div>
@@ -108,7 +108,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
+                        <label asp-for="DataNascimento" class="control-label">Data de Nascimento *</label>
                         <input asp-for="DataNascimento" class="form-control" type="date" />
                         <span asp-validation-for="DataNascimento" class="text-danger"></span>
                     </div>
@@ -132,7 +132,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="DocIdentificacaoTipo" class="control-label">Tipo de Documento de Identificação</label>
+                        <label asp-for="DocIdentificacaoTipo" class="control-label">Tipo de Documento de Identificação *</label>
                         <br />
                         <select id="docIdentificacaoTipo" name="docIdentificacaoTipo" onchange="dropdownDocIdentificacaoChanged()">
                             <option value="">Selecione uma opção</option>
@@ -154,7 +154,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="DocIdentificacaoValidade" class="control-label">Validade de Documento de Identificação</label>
+                        <label asp-for="DocIdentificacaoValidade" class="control-label">Validade de Documento de Identificação *</label>
                         <input asp-for="DocIdentificacaoValidade" class="form-control" type="date" />
                         <span asp-validation-for="DocIdentificacaoValidade" class="text-danger"></span>
                     </div>
@@ -369,7 +369,7 @@
                         <span asp-validation-for="Nacionalidade" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="ContactoTelemovel" class="control-label">Contacto de Telemóvel</label>
+                        <label asp-for="ContactoTelemovel" class="control-label">Contacto de Telemóvel *</label>
                         <input asp-for="ContactoTelemovel" class="form-control" maxlength="15" />
                         <span asp-validation-for="ContactoTelemovel" class="text-danger"></span>
                     </div>
@@ -379,7 +379,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="ContactoEmail" class="control-label">Contacto de E-mail</label>
+                        <label asp-for="ContactoEmail" class="control-label">Contacto de E-mail *</label>
                         <input asp-for="ContactoEmail" class="form-control" maxlength="100" />
                         <span asp-validation-for="ContactoEmail" class="text-danger"></span>
                     </div>
@@ -444,7 +444,7 @@
                         <span asp-validation-for="HabitacaoPartilhada" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="NomeEmpresa" class="control-label">Nome de Empresa</label>
+                        <label asp-for="NomeEmpresa" class="control-label">Nome de Empresa *</label>
                         <br />
                         <select id="nomeEmpresa" name="nomeEmpresa" onchange="dropdownNomeEmpresaChanged()" SelectedNomeEmpresa>
                             <option value="">Selecione uma opção</option>
@@ -471,12 +471,49 @@
                         <span asp-validation-for="OrigemContacto" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="Foto"></label>
-                        <input asp-for="Foto" type="file" id="file" name="file" onchange="displayFileName()" class="form-control-file">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label asp-for="Foto"></label>
+                                    <input asp-for="Foto" type="file" id="file" name="file" onchange="displayFileName()" class="form-control-file">
+                                </td>
+                                <td>
+                                    <p>Importar a foto a partir da directoria 'C:/NovoCuidar/Fotos'</p>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <div class="col-md-6" style="visibility: hidden;">
                         <input asp-for="Foto" id="Foto" class="form-control" />
                         <span asp-validation-for="Foto" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="DataCriacao" class="control-label">Data Criação</label>
+                        <input asp-for="DataCriacao" class="form-control" readonly/>
+                        <span asp-validation-for="DataCriacao" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="UtilizadorCriador" class="control-label">Utilizador Criador</label>
+                        <input asp-for="UtilizadorCriador" class="form-control"  readonly/>
+                        <span asp-validation-for="UtilizadorCriador" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="DataAtualizacao" class="control-label">Data Atualização</label>
+                        <input asp-for="DataAtualizacao" class="form-control" readonly/>
+                        <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="UtilizadorAtualizador" class="control-label">Utilizador Atualizador</label>
+                        <input asp-for="UtilizadorAtualizador" class="form-control" readonly/>
+                        <span asp-validation-for="UtilizadorAtualizador" class="text-danger"></span>
                     </div>
                 </div>
             </div>

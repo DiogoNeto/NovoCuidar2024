@@ -12,8 +12,8 @@ using NovoCuidar2024.Data;
 namespace NovoCuidar2024.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240624173129_fotosvisitaForign")]
-    partial class fotosvisitaForign
+    [Migration("20240625085836_addDateTimeFields")]
+    partial class addDateTimeFields
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -574,6 +574,9 @@ namespace NovoCuidar2024.Migrations
                     b.Property<int?>("FotoVisita")
                         .HasColumnType("int");
 
+                    b.Property<int>("VisitaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("FotoVisita");
@@ -842,6 +845,9 @@ namespace NovoCuidar2024.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Apagado")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool>("Ativo")
                         .HasColumnType("tinyint(1)");
 
@@ -852,6 +858,12 @@ namespace NovoCuidar2024.Migrations
                     b.Property<string>("ContactoTelemovel")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("DataAtualizacao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DataCriacao")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateOnly?>("DataInscricao")
                         .IsRequired()
@@ -923,6 +935,12 @@ namespace NovoCuidar2024.Migrations
                     b.Property<string>("SegurancaSocialNum")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UtilizadorAtualizador")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UtilizadorCriador")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Vivencia")
                         .HasColumnType("longtext");
 
@@ -938,9 +956,6 @@ namespace NovoCuidar2024.Migrations
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ColaboradorId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("DataHora")
                         .HasColumnType("datetime(6)");

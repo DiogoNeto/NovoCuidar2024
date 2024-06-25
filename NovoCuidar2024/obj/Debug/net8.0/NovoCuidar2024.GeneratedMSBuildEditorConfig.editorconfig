@@ -470,6 +470,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Removed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xSZW1vdmVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Revert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xSZXZlcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Visitas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRhc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

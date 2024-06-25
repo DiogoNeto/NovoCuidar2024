@@ -32,6 +32,12 @@
             </div>
         </dd>
         <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-3">
             Contacto de Email
         </dt>
         <dd class="col-sm-9">
@@ -152,12 +158,6 @@
             @Html.DisplayFor(model => model.IdInterno)
         </dd>
         <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.OrigemContacto)
         </dt>
         <dd class="col-sm-9">
@@ -180,6 +180,36 @@
         </dt>
         <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Vivencia)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DataCriacao)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DataAtualizacao)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DataAtualizacao)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.UtilizadorCriador)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.UtilizadorCriador)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.UtilizadorAtualizador)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.UtilizadorAtualizador)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Apagado)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Apagado)
         </dd>
     </dl>
 

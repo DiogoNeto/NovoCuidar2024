@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NovoCuidar2024.Data;
 using NovoCuidar2024.Models;
 using NovoCuidar2024.ViewModel;
+using System.ComponentModel;
 using System.Drawing;
 
 namespace NovoCuidar2024.Controllers
@@ -22,11 +23,71 @@ namespace NovoCuidar2024.Controllers
         public async Task<IActionResult> Index(bool activo)
         {
 
-            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
+            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, u.Apagado, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
                           FROM utente u
                           LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
                           LEFT JOIN servicocontratado s ON s.UtenteId = u.Id
-                          Where u.Ativo !=" + activo;
+                          Where u.Ativo !=" + activo +" AND u.Apagado = false";
+            var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
+
+
+            //verifica utentes ativos
+            //var utentes = _context.Utente;
+            var servicoContratado = _context.ServicoContratado;
+            var utente = _context.Utente;
+
+            for (int i = 0; i < servicoContratado.Count(); i++)
+            {
+                try
+                {
+                    DateOnly dataFim = servicoContratado.ElementAt(i).DataFim.Value;
+                    if (servicoContratado.ElementAt(i).DataFim == null)
+                    {
+                        dataFim = DateOnly.MaxValue;
+                    }
+                    int dateCompare = DateTime.Today.CompareTo(dataFim);
+                    var entity = _context.Utente.FirstOrDefault(e => e.Id == servicoContratado.ElementAt(i).UtenteId);
+                    if (dateCompare >= 0)
+                    {
+                        entity.Ativo = true;
+                    }
+                    else
+                    {
+                        entity.Ativo = false;
+                    }
+                }
+                catch (Exception ex) { Console.WriteLine(ex); }
+            }
+
+            _context.SaveChanges();
+
+
+            var Utentes = _context.Utente;
+            var Tecnicos = _context.Tecnico;
+            var Servicos = _context.ServicoContratado;
+            var viewModel = new UtentesViewModel
+            {
+                //Utente = Utentes.ToList(),
+                //Tecnicos = Tecnicos.ToList().Where(x => x.Id == Utentes.First().ResponsavelTecnicoId).ToList(),
+                //Servicos = Servicos.ToList().Where(x => x.UtenteId == Utentes.First().Id).ToList()
+            };
+
+            IEnumerable<UtentesViewModel> listUtentes = result;
+
+            return View(listUtentes);
+        }
+
+
+        // GET: Utentes
+        [Authorize]
+        public async Task<IActionResult> Removed(bool activo)
+        {
+
+            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, u.Apagado, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
+                          FROM utente u
+                          LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
+                          LEFT JOIN servicocontratado s ON s.UtenteId = u.Id
+                          Where u.Apagado =" + true;
             var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
 
 
@@ -145,12 +206,13 @@ namespace NovoCuidar2024.Controllers
             ViewBag.DadosSociais = dadosSociais;
 
             List<Visita> visitas = new List<Visita>();
-            //foreach(var v in _context.Visita.Where(m=> m.UtenteId == id)){
-            //    //visitas.Add(v);
-            //}
+            foreach (var v in _context.Visita.Where(m => m.UtenteId == id))
+            {
+                visitas.Add(v);
+            }
 
             //var linhasEscala = _context.LinhaEscala.FirstOrDefault(m => m.UtenteId == id);
-            //ViewBag.Visitas = visitas;
+            ViewBag.Visitas = visitas;
 
             return View(utente);
         }
@@ -178,8 +240,8 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,Foto,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto")] Utente utente)
-            {
+        public async Task<IActionResult> Create([Bind("Id,IdInterno,Nome,Foto,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto,DataCriacao,DataAtualizacao,UtilizadorCriador,UtilizadorAtualizador,Apagado")] Utente utente)
+        {
             if (ModelState.IsValid)
             {
                 var uploadsDirectoryLeitura = "C:\\NovoCuidar\\Fotos\\";
@@ -205,7 +267,9 @@ namespace NovoCuidar2024.Controllers
                 }
 
 
-
+                utente.DataCriacao = DateTime.Now;
+                utente.UtilizadorCriador = User.Identity.Name;
+                utente.Apagado = false;
                 _context.Add(utente);
                 await _context.SaveChangesAsync();
                 ViewBag.Data = _context.Utente;
@@ -225,7 +289,7 @@ namespace NovoCuidar2024.Controllers
 
             var utente = await _context.Utente.FindAsync(id);
 
-            var dataResponsavelTecnico = _context.Responsavel.ToList();
+            var dataResponsavelTecnico = _context.Tecnico.ToList();
             var dataFamilia = _context.FamiliaUtentes.ToList();
             var dataOrigemContacto = _context.OrigemContacto.ToList();
             
@@ -257,7 +321,7 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ResponsavelId,SubSistemaId,Nif,CC,SNS,HabitacaoPartilhada,ContactoTelemovel,OrigemContacto,HabitacaoTipo,ContactoEmail,Habilitacoes,Nome,Foto,DocIdentificacaoNum,SegurancaSocialNum,NomePrincipal,DocIdentificacaoTipo,NomeApelido,DataNascimento,Nacionalidade,Genero,Telefone,Email,Morada1,CodPostal1,Localidade1,Concelho1,Morada2,Concelho2,Localidade2,CodPostal2,EstadoCivil,Ativo,TecnicoResponsavelId,NomeEmpresa,Vivencia")] Utente utente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdInterno,Nome,Foto,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto,DataCriacao,DataAtualizacao,UtilizadorCriador,UtilizadorAtualizador,Apagado")] Utente utente)
         {
             if (id != utente.Id)
             {
@@ -268,6 +332,8 @@ namespace NovoCuidar2024.Controllers
             {
                 try
                 {
+                    utente.DataAtualizacao = DateTime.Now;
+                    utente.UtilizadorAtualizador = User.Identity.Name;
                     _context.Update(utente);
                     await _context.SaveChangesAsync();
                 }
@@ -282,9 +348,9 @@ namespace NovoCuidar2024.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Utentes", new { id = utente.Id });
             }
-            return View(utente);
+            return RedirectToAction("Edit", "Utentes", new { id = utente.Id });
         }
 
         // GET: Utentes/Delete/5
@@ -307,18 +373,98 @@ namespace NovoCuidar2024.Controllers
         }
 
         // POST: Utentes/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var utente = await _context.Utente.FindAsync(id);
-            if (utente != null)
+            //if (utente != null)
+            //{
+            //    _context.Utente.Remove(utente);
+            //}
+
+            //await _context.SaveChangesAsync();
+            //return RedirectToAction(nameof(Index));
+
+
+
+            if (id != utente.Id)
             {
-                _context.Utente.Remove(utente);
+                return NotFound();
             }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    utente.DataAtualizacao = DateTime.Now;
+                    utente.UtilizadorAtualizador = User.Identity.Name;
+                    utente.Apagado = true;
+                    _context.Update(utente);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UtenteExists(utente.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Removed", "Utentes", new { id = utente.Id });
+            }
+            return RedirectToAction("Details", "Utentes", new { id = utente.Id });
+        }
+
+
+        // POST: Utentes/Delete/5
+        [ActionName("Revert")]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Revert(int id)
+        {
+            var utente = await _context.Utente.FindAsync(id);
+            //if (utente != null)
+            //{
+            //    _context.Utente.Remove(utente);
+            //}
+
+            //await _context.SaveChangesAsync();
+            //return RedirectToAction(nameof(Index));
+
+
+
+            if (id != utente.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    utente.DataAtualizacao = DateTime.Now;
+                    utente.UtilizadorAtualizador = User.Identity.Name;
+                    utente.Apagado = false;
+                    _context.Update(utente);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UtenteExists(utente.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Details", "Utentes", new { id = utente.Id });
+            }
+         return RedirectToAction("Success"); ;
         }
 
         private bool UtenteExists(int id)
