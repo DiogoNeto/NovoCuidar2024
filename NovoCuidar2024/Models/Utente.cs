@@ -42,8 +42,7 @@ namespace NovoCuidar2024.Models
         public string? Vivencia { get; set; }
         public string? HabitacaoTipo { get; set; }
         public string? HabitacaoPartilhada { get; set; }
-        [Required(ErrorMessage = "O campo é obrigatório.")]
-        public string Foto { get; set; }
+        public string? Foto { get; set; }
         [Required(ErrorMessage = "O campo é obrigatório.")]
         public string NomeEmpresa { get; set; }
         public List<Visita>? Visita { get; set; }

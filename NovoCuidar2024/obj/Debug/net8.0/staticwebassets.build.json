@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c/SVCJPwuhuXn8ntrsq/Z2KGmrW7U2gyJzQcl2c1rDg=",
+  "Hash": "Co4ushoJdTBWnBzLBDEORc3xF2ggdGo4ohE8EUbo9Pg=",
   "Source": "NovoCuidar2024",
   "BasePath": "_content/NovoCuidar2024",
   "Mode": "Default",
@@ -3321,6 +3321,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\d9b94f96-09fe-4eae-8ec6-4e59d31fa809-7591.png_1200.png"
+    },
+    {
+      "Identity": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\desc",
+      "SourceId": "NovoCuidar2024",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\",
+      "BasePath": "_content/NovoCuidar2024",
+      "RelativePath": "uploads/desc",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\desc"
     },
     {
       "Identity": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\desktop.ini",

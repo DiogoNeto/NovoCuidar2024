@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
             </table>
-            <tbody>
+            @* <tbody>
                 @{
                     if (Model.fotosVisita != null)
                     {
@@ -60,7 +60,7 @@
                         }
                     }
                 }
-            </tbody>
+            </tbody> *@
 
 
             <a href="@Url.Action("Create", "FotosVisita", new { id = @ViewBag.Id })" class="btn btn-sm btn-primary">Associar Foto</a>

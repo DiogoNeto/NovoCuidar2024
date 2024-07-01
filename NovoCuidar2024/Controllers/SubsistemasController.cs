@@ -87,7 +87,7 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome")] SubSistema subsistema)
+        public async Task<IActionResult> Create([Bind("Id,UtenteId,Nome,Numero")] SubSistema subsistema)
         {
             var novoContacto = _context.Utente.Where(x => x.Id == subsistema.UtenteId).Count();
 

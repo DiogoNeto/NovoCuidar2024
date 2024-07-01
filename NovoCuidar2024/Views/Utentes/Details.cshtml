@@ -240,7 +240,7 @@
                         @ViewBag.ServicoContratado[i].Id
                     </dd>
                     <dt class="col-sm-3">
-                        <p>Descicao do Serviço Contratado</p>
+                        <p>Descrição do Serviço Contratado</p>
                     </dt>
                     <dd class="col-sm-9">
                         @ViewBag.ServicoContratado[i].Descricao
@@ -249,19 +249,19 @@
                         <p>Descrição do Contrato</p>
                     </dt>
                     <dd class="col-sm-9">
-                        @ViewBag.DescricaoContrato
+                        @ViewBag.DescricaoContrato[i]
                     </dd>
                     <dt class="col-sm-3">
                         <p>Nome do Serviço</p>
                     </dt>
                     <dd class="col-sm-9">
-                        @ViewBag.NomeServico
+                        @ViewBag.NomeServico[i]
                     </dd>
                     <dt class="col-sm-3">
                         <p>Descrição do Servico</p>
                     </dt>
                     <dd class="col-sm-9">
-                        @ViewBag.DescricaoServico
+                        @ViewBag.DescricaoServico[i]
                     </dd>
                     <dt class="col-sm-3">
                         <p>Data de Início</p>
@@ -288,19 +288,19 @@
                         @ViewBag.ServicoContratado[i].Descricao
                     </dd>
                     <dt class="col-sm-3">
-                        <p>Valor ao Dia</p>
+                        <p>Valor Diário</p>
                     </dt>
                     <dd class="col-sm-9">
                         @ViewBag.ServicoContratado[i].ValorDia
                     </dd>
                     <dt class="col-sm-3">
-                        <p>Valor ao Semana</p>
+                        <p>Valor Semanal</p>
                     </dt>
                     <dd class="col-sm-9">
                         @ViewBag.ServicoContratado[i].ValorSemana
                     </dd>
                     <dt class="col-sm-3">
-                        <p>Valor ao Mês</p>
+                        <p>Valor Mensal</p>
                     </dt>
                     <dd class="col-sm-9">
                         @ViewBag.ServicoContratado[i].ValorMes
@@ -584,7 +584,7 @@
     </td>
     </table>
 </div>
-<h4>Sub Sistemas</h4>
+<h4>Subsistemas</h4>
 <hr />
 @if (ViewBag.SubSistema != null && ViewBag.SubSistema.Count > 0)
 {
@@ -596,7 +596,10 @@
                 @ViewBag.SubSistema[i].Nome
             </dd>
             <dd class="col-sm-3">
-                <a href="@Url.Action("Delete", "SubSistemas", new { id = @ViewBag.SubSistema[i].Id })" class="btn btn-sm btn-danger">X</a>
+                @ViewBag.SubSistema[i].Numero
+            </dd>
+            <dd class="col-sm-3">
+                <a href="@Url.Action("Delete", "SubSistemas", new { id = @ViewBag.SubSistema[i].Id })" class="btn btn-sm btn-danger">Remover</a>
             </dd>
         </dl>
         i++;
@@ -604,13 +607,13 @@
 }
 else
 {
-    <div>Ainda não tem Sub Sistemas associados.</div>
+    <div>Ainda não tem Subsistemas associados.</div>
 }
 <div style="padding-bottom : 20px;">
     <table>
         <td>
             <div class="form-group">
-                <a href="@Url.Action("Add", "SubSistemas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">+</a>
+                <a href="@Url.Action("Add", "SubSistemas", new { utenteId = @ViewBag.Utente.Id })" class="btn btn-sm btn-primary">Adicionar</a>
             </div>
         </td>
     </table>

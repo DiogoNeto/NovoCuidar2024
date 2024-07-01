@@ -67,3 +67,11 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    window.onload = lancaAlertaSucesso();
+
+    function lancaAlertaSucesso() {
+        alert("Utente criado com sucesso.")
+    }
+</script>

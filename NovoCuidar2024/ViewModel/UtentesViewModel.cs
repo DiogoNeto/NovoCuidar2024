@@ -9,6 +9,7 @@
         public string? NomeTecnica { get; set; }
         public string? Descricao { get; set; }
         public string? Periodicidade { get; set; }
+        public string? Servico { get; set; }
 
     }
 }

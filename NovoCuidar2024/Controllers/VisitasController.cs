@@ -70,7 +70,7 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,UtenteId,DataHora,Observações,FotosVisita")] Visita visita)
+        public async Task<IActionResult> Create([Bind("Id,UtenteId,DataHora,Observações")] Visita visita)
         {
 
             if (ModelState.IsValid)

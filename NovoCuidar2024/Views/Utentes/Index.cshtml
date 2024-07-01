@@ -22,13 +22,13 @@
             <th class="col col-1">
             </th>
             <th style="font-size: 12px;" class="col col-1">
-                <input type="radio" id="radio1" name="custom-radio" class="radio-custom">
-                <a href="@Url.Action("Index", "Utentes", new { activo = "false" })" id="option1">Ativos</a>
+                @* <input type="text" id="radio1" name="custom-radio"> *@
+                <a href="@Url.Action("Index", "Utentes", new { activo = "true" })" id="option1">Ativos</a>
             </th>
 
             <th style="font-size: 12px;" class="col col-1">
-                <input type="radio" id="radio2" name="custom-radio" class="radio-custom">
-                <a href="@Url.Action("Index", "Utentes", new { activo = "true" })" id="option2">Não Ativos</a>
+                @* <input type="radio" id="radio2" name="custom-radio"> *@
+                <a href="@Url.Action("Index", "Utentes", new { activo = "false" })" id="option2">Não Ativos</a>
             </th>
             <th class="col col-2">
                 <input class="form-control-sm" type="text" id="responsavelInput" onkeyup="procuraResponsavel()" placeholder="Procurar por nome">
@@ -58,7 +58,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
+            td = tr[i].getElementsByTagName("td")[2];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -80,7 +80,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[4];
+            td = tr[i].getElementsByTagName("td")[3];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -102,7 +102,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[5];
+            td = tr[i].getElementsByTagName("td")[4];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -124,7 +124,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[6];
+            td = tr[i].getElementsByTagName("td")[5];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -135,6 +135,24 @@
             }
         }
     }
+
+    function verificaAtivos() {
+        var queryString = window.location.search;
+        var elemento1 = document.getElementById("option1");
+        var elemento2 = document.getElementById("option2");
+        console.log(queryString);
+        if (queryString.includes('true')) {
+            console.log("1");
+            elemento1.style.fontWeight = "bold";
+            elemento2.style.fontWeight = "normal";
+        } else {
+            console.log("2");
+            elemento1.style.fontWeight = "normal";
+            elemento2.style.fontWeight = "bold";
+        }
+    }
+
+    window.onload = verificaAtivos();
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -161,18 +179,15 @@
             <th class="col col-1">
             </th>
             <th class="col col-2">
-                Estado
-            </th>
-            <th class="col col-2">
                 Nome
             </th>
             <th class="col col-2">
                 Técnica
             </th>
-            <th class="col col-2">
+            <th class="col col-3">
                 Serviço
             </th>
-            <th class="col col-2">
+            <th class="col col-3">
                 Tipologia de Contrato
             </th>
         </tr>
@@ -189,16 +204,13 @@
                         @Html.DisplayFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Ativo)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.NomeTecnica)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
+                        @Html.DisplayFor(modelItem => item.Servico)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Periodicidade)

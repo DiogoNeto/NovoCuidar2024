@@ -23,31 +23,94 @@ namespace NovoCuidar2024.Controllers
         public async Task<IActionResult> Index(bool activo)
         {
 
-            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, u.Apagado, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
+            var result2 = from u in _context.Utente
+                         join t in _context.Tecnico on u.ResponsavelTecnicoId equals t.Id into ut
+                         from t in ut.DefaultIfEmpty()
+                         join s in _context.ServicoContratado on u.Id equals s.UtenteId into us
+                         from s in us.DefaultIfEmpty()
+                         join se in _context.Servico on s.ServicoId equals se.Id into sse
+                         from se in sse.DefaultIfEmpty()
+                         where u.Ativo == activo && u.Apagado == false
+                         select new
+                         {
+                             Id = u.Id,
+                             Nome = u.Nome,
+                             Ativo = u.Ativo,
+                             Foto = u.Foto,
+                             Apagado = u.Apagado,
+                             NomeTecnica = t.Nome,
+                             Descricao = s.Descricao,
+                             Periodicidade = s.Periodicidade,
+                             Servico = se.Nome
+                         };
+
+            var list = result2.ToList();
+
+            
+
+            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, u.Apagado, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade, se.Nome as Servico
                           FROM utente u
                           LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
                           LEFT JOIN servicocontratado s ON s.UtenteId = u.Id
-                          Where u.Ativo !=" + activo +" AND u.Apagado = false";
+                          LEFT JOIN servico se ON se.Id = s.ServicoId
+                          Where u.Ativo =" + activo + " AND u.Apagado = false";
+
             var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
 
+            
 
             //verifica utentes ativos
             //var utentes = _context.Utente;
             var servicoContratado = _context.ServicoContratado;
             var utente = _context.Utente;
+            int j = 0;
+            foreach (var res in list)
+            {
+                var q = _context.Servico;
+
+                var servicos = list.Where(x => x.Servico != null && x.Id == res.Id).ToList();
+                List<string> nomeServicos = new List<string>();
+                foreach (var servico in servicos)
+                {
+                    nomeServicos.Add(servico.Servico.ToString());
+                }
+                string listaServicos = "";
+                foreach (var s in nomeServicos)
+                {
+                    var str = s.ToString();
+                    if (!listaServicos.Contains(str))
+                    {
+                        listaServicos += " " + str;
+                    }
+                }
+
+                result[j].Servico = listaServicos;
+                j++;
+                
+            }
+
 
             for (int i = 0; i < servicoContratado.Count(); i++)
             {
+
+                var servicos = result.Where(x => x.Servico != null).ToList();
                 try
                 {
-                    DateOnly dataFim = servicoContratado.ElementAt(i).DataFim.Value;
-                    if (servicoContratado.ElementAt(i).DataFim == null)
+                    DateOnly? dataFim = DateOnly.MaxValue;
+                    try
+                    {
+                        dataFim = servicoContratado.ElementAt(i).DataFim.Value;
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex); }
+
+                    if (dataFim == null)
                     {
                         dataFim = DateOnly.MaxValue;
                     }
-                    int dateCompare = DateTime.Today.CompareTo(dataFim);
+                    DateTime agora = DateTime.Now;
+                    DateOnly hoje = DateOnly.FromDateTime(agora);
                     var entity = _context.Utente.FirstOrDefault(e => e.Id == servicoContratado.ElementAt(i).UtenteId);
-                    if (dateCompare >= 0)
+                    if (hoje <= dataFim)
                     {
                         entity.Ativo = true;
                     }
@@ -55,11 +118,15 @@ namespace NovoCuidar2024.Controllers
                     {
                         entity.Ativo = false;
                     }
+
+
+                    _context.Utente.Update(entity);
+                    await _context.SaveChangesAsync();
                 }
                 catch (Exception ex) { Console.WriteLine(ex); }
+                //_context.Update(entity);
             }
-
-            _context.SaveChanges();
+            
 
 
             var Utentes = _context.Utente;
@@ -72,7 +139,11 @@ namespace NovoCuidar2024.Controllers
                 //Servicos = Servicos.ToList().Where(x => x.UtenteId == Utentes.First().Id).ToList()
             };
 
-            IEnumerable<UtentesViewModel> listUtentes = result;
+            HashSet<UtentesViewModel> setResult = new HashSet<UtentesViewModel>(result);
+            
+
+
+            IEnumerable<UtentesViewModel> listUtentes = setResult;
 
             return View(listUtentes);
         }
@@ -83,10 +154,11 @@ namespace NovoCuidar2024.Controllers
         public async Task<IActionResult> Removed(bool activo)
         {
 
-            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, u.Apagado, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade
+            var query = @"SELECT u.Id, u.Nome as Nome, u.Ativo as Ativo, u.Foto as Foto, u.Apagado, t.Nome as NomeTecnica, s.Descricao as Descricao, s.Periodicidade as Periodicidade, se.Nome as Servico
                           FROM utente u
                           LEFT JOIN tecnico t ON t.Id = u.ResponsavelTecnicoId
                           LEFT JOIN servicocontratado s ON s.UtenteId = u.Id
+                          LEFT JOIN servico se ON se.Id = s.ServicoId
                           Where u.Apagado =" + true;
             var result = _context.UtentesViewModel.FromSqlRaw(query).ToList();
 
@@ -157,20 +229,26 @@ namespace NovoCuidar2024.Controllers
             ViewBag.Utente = utente;
 
             List<ServicoContratado> servicoContratado = new List<ServicoContratado>();
-            foreach (var v in _context.ServicoContratado.Where(m => m.Id == id))
+            foreach (var v in _context.ServicoContratado.Where(m => m.UtenteId == id))
             {
                 servicoContratado.Add(v);
             }
 
+            List<string> contrato = new List<string>();
+            List<string> servico = new List<string>(); ;
+            List<string> servicoDescricao = new List<string>(); ;
+
             for (var i = 0; i < servicoContratado.Count; i++)
             {
-                var contrato = _context.Contrato.Where(x => x.Id == servicoContratado[i].ContratoId).FirstOrDefault().Descricao;
-                ViewBag.DescricaoContrato = contrato;
-                var servico = _context.Servico.Where(x => x.Id == servicoContratado[i].ServicoId).FirstOrDefault().Nome;
-                ViewBag.NomeServico = servico;
-                var servicoDescricao = _context.Servico.Where(x => x.Id == servicoContratado[i].ServicoId).FirstOrDefault().Descricao;
-                ViewBag.DescricaoServico = servicoDescricao;
+                contrato.Add(_context.Contrato.Where(x => x.Id == servicoContratado[i].ContratoId).FirstOrDefault().Descricao);
+                servico.Add(_context.Servico.Where(x => x.Id == servicoContratado[i].ServicoId).FirstOrDefault().Nome);
+                servicoDescricao.Add(_context.Servico.Where(x => x.Id == servicoContratado[i].ServicoId).FirstOrDefault().Descricao);
             }
+
+            ViewBag.DescricaoContrato = contrato;
+            ViewBag.NomeServico = servico;
+            ViewBag.DescricaoServico = servicoDescricao;
+
 
             ViewBag.ServicoContratado = servicoContratado;
 
@@ -225,6 +303,7 @@ namespace NovoCuidar2024.Controllers
             var dataFamilia = _context.FamiliaUtentes.ToList();
             var utente = _context.Utente.ToList();
             var dataOrigemContacto = _context.OrigemContacto.ToList();
+            ViewBag.NovoIdInterno = utente.Count() == 0 ? 1 : utente.LastOrDefault().IdInterno;
 
             ViewBag.DataResponsavel = dataResponsavelTecnico;
             ViewBag.DataFamilia = dataFamilia;
@@ -292,7 +371,7 @@ namespace NovoCuidar2024.Controllers
             var dataResponsavelTecnico = _context.Tecnico.ToList();
             var dataFamilia = _context.FamiliaUtentes.ToList();
             var dataOrigemContacto = _context.OrigemContacto.ToList();
-            
+
 
             ViewBag.DataResponsavel = dataResponsavelTecnico;
             ViewBag.SelectedResponsavel = utente.ResponsavelTecnicoId;
@@ -308,6 +387,7 @@ namespace NovoCuidar2024.Controllers
             ViewBag.NomeEmpresa = utente.NomeEmpresa;
             ViewBag.OrigemContacto = utente.OrigemContacto;
             ViewBag.Genero = utente.Genero;
+
             if (utente == null)
             {
                 return NotFound();
@@ -321,7 +401,7 @@ namespace NovoCuidar2024.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdInterno,Nome,Foto,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,Foto,DataCriacao,DataAtualizacao,UtilizadorCriador,UtilizadorAtualizador,Apagado")] Utente utente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdInterno,Nome,ResponsavelTecnicoId,FamiliaId,Ativo,DataInscricao,OrigemContacto,Nif,Genero,DataNascimento,EstadoCivil,DocIdentificacaoTipo,DocIdentificacaoNum,DocIdentificacaoValidade,SegurancaSocialNum,Nacionalidade,ContactoTelemovel,ContactoEmail,Habilitacoes,Vivencia,HabitacaoTipo,HabitacaoPartilhada,NomeEmpresa,DataCriacao,DataAtualizacao,UtilizadorCriador,UtilizadorAtualizador,Apagado")] Utente utente)
         {
             if (id != utente.Id)
             {
@@ -348,9 +428,9 @@ namespace NovoCuidar2024.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", "Utentes", new { id = utente.Id });
+                return RedirectToAction("Index", "Utentes", new { id = utente.Id });
             }
-            return RedirectToAction("Edit", "Utentes", new { id = utente.Id });
+            return RedirectToAction("Index", "Utentes", new { id = utente.Id });
         }
 
         // GET: Utentes/Delete/5
@@ -464,7 +544,7 @@ namespace NovoCuidar2024.Controllers
                 }
                 return RedirectToAction("Details", "Utentes", new { id = utente.Id });
             }
-         return RedirectToAction("Success"); ;
+            return RedirectToAction("Success"); ;
         }
 
         private bool UtenteExists(int id)

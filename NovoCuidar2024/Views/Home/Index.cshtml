@@ -5,12 +5,12 @@
 <div class="text-center">
     <h1 class="display-4">Bem vindo</h1>
     @{
-        var data = ViewBag.Message;
+        // var data = ViewBag.Message;
     }
 
     <div id="divUtentes" class="align-content-start" style="margin:50px">
         <h4>Número de utentes ativos</h4>
-        <h5>@data.numeroUtentes</h5> 
+        @* <h5>@data.numeroUtentes</h5>  *@
 
         <button onclick="location.href='@Url.Action("Index", "Utentes")'" class="btn btn-primary">Listar Todos os Utentes</button>
 
@@ -18,7 +18,7 @@
 
     </div>
     
-    <div id="divServicos" class="col-6" style="margin:10px">
+    @* <div id="divServicos" class="col-6" style="margin:10px">
         <h5>Últimos Serviços Contratados</h5>
         <div id="servicosRecentes">
             <table class="table">
@@ -69,5 +69,5 @@
             <button onclick="location.href='@Url.Action("Index", "ServicoContratado")'" class="btn btn-primary">Listar Todos os Serviços</button>
             <button onclick="location.href='@Url.Action("Create", "ServicoContratado")'" class="btn btn-primary">Criar Novo Serviço</button>
         </div>
-    </div>
+    </div> *@
 </div>

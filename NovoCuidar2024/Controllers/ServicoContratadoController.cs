@@ -73,21 +73,22 @@ namespace NovoCuidar2024.Controllers
                 return NotFound();
             }
 
+
             var utentes = _context.Utente.Where(x => x.Id == id);
             var nome = utentes.FirstOrDefault().Nome;
-
             var servicos = _context.Servico;
             var contratos = _context.Contrato;
 
             var servicosList = servicos.Select(x => new { x.Nome, x.Id }).ToList();
             var contratosList = contratos.Select(x => new { x.Descricao, x.Id }).ToList();
-
+            ViewBag.Id =_context.ServicoContratado.OrderBy(x => x.Id).LastOrDefault().Id + 1;
             ViewBag.Nome = nome;
             ViewBag.DataServicos = servicosList;
             ViewBag.DataContratos = contratosList;
 
             ServicoContratado servicoContratado = new ServicoContratado
             {
+                Id = utentes.OrderBy(u=>u.Id).LastOrDefault().Id + 1,
                 UtenteId = utentes.FirstOrDefault().Id,
                 //DataInicio = DateOnly.FromDateTime(DateTime.Now)
             };
@@ -108,6 +109,47 @@ namespace NovoCuidar2024.Controllers
             {
                 _context.Add(servicoContratado);
                 await _context.SaveChangesAsync();
+
+                //verifica serviços ativos depois fazer um método privádo à parte
+                var servicosContratados = _context.ServicoContratado;
+                for (int i = 0; i < servicosContratados.Count(); i++)
+                {
+
+                    //var servicos = result.Where(x => x.Servico != null).ToList();
+                    try
+                    {
+                        DateOnly? dataFim = DateOnly.MaxValue;
+                        try
+                        {
+                            dataFim = servicosContratados.ElementAt(i).DataFim.Value;
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex); }
+
+                        if (dataFim == null)
+                        {
+                            dataFim = DateOnly.MaxValue;
+                        }
+                        DateTime agora = DateTime.Now;
+                        DateOnly hoje = DateOnly.FromDateTime(agora);
+                        var entity = _context.Utente.FirstOrDefault(e => e.Id == servicosContratados.ElementAt(i).UtenteId);
+                        if (hoje <= dataFim)
+                        {
+                            entity.Ativo = true;
+                        }
+                        else
+                        {
+                            entity.Ativo = false;
+                        }
+
+
+                        _context.Utente.Update(entity);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex); }
+                    //_context.Update(entity);
+                }
+
+
                 return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
             }
             return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
@@ -196,9 +238,41 @@ namespace NovoCuidar2024.Controllers
             if (servicoContratado != null)
             {
                 _context.ServicoContratado.Remove(servicoContratado);
+                var utenteId = servicoContratado.UtenteId;
+
+                var utente = _context.Utente.Find(utenteId);
+
+                if (utente != null && _context.Utente.Where(w => w.Id == utenteId).Count() < 2)
+                {
+                    utente.Ativo = false;
+                    _context.Update(utente);
+                }
             }
 
             await _context.SaveChangesAsync();
+
+
+
+            //var servicos = _context.ServicoContratado;
+
+            ////verifica utentes sem serviço
+            //bool temSerico = false;
+            //foreach (var u in _context.Utente)
+            //{
+            //    foreach (var sc in servicos) {
+            //        if (sc.UtenteId == u.Id) {
+            //            temSerico = true;
+            //            break;
+            //        }
+            //    }
+            //    if (temSerico == false) {
+            //        var utente = _context.Utente.Where(u => u.Id == id).FirstOrDefault();
+            //        utente.Ativo = false;
+            //        _context.Utente.Update(utente);
+            //        await _context.SaveChangesAsync();
+            //    }
+            //}
+
             
             return RedirectToAction("Details", "Utentes", new { id = servicoContratado.UtenteId });
         }
@@ -206,6 +280,49 @@ namespace NovoCuidar2024.Controllers
         private bool ServicoContratadoExists(int id)
         {
             return _context.ServicoContratado.Any(e => e.Id == id);
+        }
+
+
+        private async Task verificaServicosAtivos()
+        {
+            //verifica serviços ativos
+            var servicosContratados = _context.ServicoContratado;
+            for (int i = 0; i < servicosContratados.Count(); i++)
+            {
+
+                //var servicos = result.Where(x => x.Servico != null).ToList();
+                try
+                {
+                    DateOnly? dataFim = DateOnly.MaxValue;
+                    try
+                    {
+                        dataFim = servicosContratados.ElementAt(i).DataFim.Value;
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex); }
+
+                    if (dataFim == null)
+                    {
+                        dataFim = DateOnly.MaxValue;
+                    }
+                    DateTime agora = DateTime.Now;
+                    DateOnly hoje = DateOnly.FromDateTime(agora);
+                    var entity = _context.Utente.FirstOrDefault(e => e.Id == servicosContratados.ElementAt(i).UtenteId);
+                    if (hoje <= dataFim)
+                    {
+                        entity.Ativo = true;
+                    }
+                    else
+                    {
+                        entity.Ativo = false;
+                    }
+
+
+                    _context.Utente.Update(entity);
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex) { Console.WriteLine(ex); }
+                //_context.Update(entity);
+            }
         }
     }
 }

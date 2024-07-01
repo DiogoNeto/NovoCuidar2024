@@ -15,6 +15,7 @@
     var SelectedNomeEmpresa = @ViewBag.SelectedNomeEmpresa;
     var SelectedOrigemContacto = @ViewBag.SelectedOrigemContacto;
     var SelectedDocIdentificacaoTipo = @ViewBag.DocIdentificacaoTipo;
+    var SelectedGenero = ViewBag.SelectedGenero;
 }
 
 <h1>Editar</h1>
@@ -87,20 +88,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="Genero" class="control-label">Género</label>
-                        <label asp-for="Genero" class="control-label">
-                            <input type="radio" name="genero" value="m">
-                            Masculino
-                        </label>
-                        <label asp-for="Genero" class="control-label">
-                            <input type="radio" name="genero" value="f">
-                            Feminino
-                        </label>
-                        <label asp-for="Genero" class="control-label">
-                            <input type="radio" name="genero" value="o">
-                            Outro
-                        </label>
-
+                        <label asp-for="Genero" class="control-label">Genero</label>
+                        <select id="genero" name="genero"  onchange="dropdownGeneroChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="m">Masculino</option>
+                            <option value="f">Feminino</option>
+                            <option value="o">Outro</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -134,7 +128,7 @@
                     <div class="col-md-6">
                         <label asp-for="DocIdentificacaoTipo" class="control-label">Tipo de Documento de Identificação *</label>
                         <br />
-                        <select id="docIdentificacaoTipo" name="docIdentificacaoTipo" onchange="dropdownDocIdentificacaoChanged()">
+                        <select id="docIdentificacaoTipo" name="docIdentificacaoTipo" SelectedDocIdentificacaoTipo onchange="dropdownDocIdentificacaoChanged()">
                             <option value="">Selecione uma opção</option>
                             <option value="Bilhete de Identidade">Bilhete de Identidade</option>
                             <option value="Cartao de Cidadao">Cartão de Cidadão</option>
@@ -386,7 +380,7 @@
                     <div class="col-md-6">
                         <label asp-for="Habilitacoes" class="control-label">Habilitações</label>
                         <br />
-                        <select id="habilitacoes" name="habilitacoes" onchange="dropdownHabilitacoesChanged()">
+                        <select id="habilitacoes" name="habilitacoes" SelectedHabilitacoes onchange="dropdownHabilitacoesChanged()">
                             <option value="">Selecione uma opção</option>
                             <option value="Nao sabe ler, nem escrever">Não sabe ler, nem escrever</option>
                             <option value="Sabe ler e escrever">Sabe ler e escrever</option>
@@ -470,7 +464,7 @@
                         </select>
                         <span asp-validation-for="OrigemContacto" class="text-danger"></span>
                     </div>
-                    <div class="col-md-6">
+                   @*  <div class="col-md-6">
                         <table>
                             <tr>
                                 <td>
@@ -482,7 +476,7 @@
                                 </td>
                             </tr>
                         </table>
-                    </div>
+                    </div> *@
                     <div class="col-md-6" style="visibility: hidden;">
                         <input asp-for="Foto" id="Foto" class="form-control" />
                         <span asp-validation-for="Foto" class="text-danger"></span>
@@ -726,7 +720,14 @@
     }
 </script>
 
+<script>
+    function dropdownGeneroChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("genero").value;
 
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
 
 @section Scripts {
     @{
@@ -740,16 +741,22 @@
         document.getElementById("habitacaoPartilhada").value = '@ViewBag.HabitacaoPartilhada';
         document.getElementById("habitacaoTipo").value = '@ViewBag.HabitacaoTipo';
         document.getElementById("nomeEmpresa").value = '@ViewBag.NomeEmpresa';
+
         document.getElementById("origemContacto").value = '@ViewBag.OrigemContacto';
         document.getElementById("vivencia").value = '@ViewBag.Vivencia';
+
         document.getElementById("nacionalidade").value = '@ViewBag.Nacionalidade';
         document.getElementById("docIdentificacaoTipo").value = '@ViewBag.DocIdentificacaoTipo';
+
         document.getElementById("estadoCivil").value = '@ViewBag.EstadoCivil';
-        document.getElementById("dataOrigemContacto").value = '@ViewBag.DataOrigemContacto';
+
+        @* document.getElementById("dataOrigemContacto").value = '@ViewBag.DataOrigemContacto'; *@
+
         document.getElementById("habilitacoes").value = '@ViewBag.Habilitacoes';
         document.getElementById("genero").value = '@ViewBag.Genero';
 
 
+        @* document.getElementById("file").value = '@ViewBag.Foto'; *@
 
         @* var dropdown = document.getElementById("HabitacaoTipo");
 

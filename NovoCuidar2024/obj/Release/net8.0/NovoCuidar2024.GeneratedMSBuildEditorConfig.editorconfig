@@ -1,0 +1,511 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = NovoCuidar2024
+build_property.RootNamespace = NovoCuidar2024
+build_property.ProjectDir = C:\Users\diogo.neto\Dev\NovoCuidar2024\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\diogo.neto\Dev\NovoCuidar2024
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Adendas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRlbmRhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Adendas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRlbmRhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Adendas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRlbmRhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Adendas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRlbmRhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Adendas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRlbmRhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Colaboradores/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sYWJvcmFkb3Jlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Colaboradores/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sYWJvcmFkb3Jlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Colaboradores/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sYWJvcmFkb3Jlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Colaboradores/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sYWJvcmFkb3Jlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Colaboradores/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sYWJvcmFkb3Jlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ContactoPrioritario/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ContactoPrioritario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ContactoPrioritario/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ContactoPrioritario/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ContactoPrioritario/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ContactoPrioritario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdG9Qcmlvcml0YXJpb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Contratos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Contratos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Contratos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Contratos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Contratos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Cuidadoras/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3Jhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Cuidadoras/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3Jhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Cuidadoras/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3Jhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Cuidadoras/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3Jhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Cuidadoras/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3Jhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosClinicos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosClinicos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosClinicos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosClinicos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosClinicos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NDbGluaWNvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosSociais/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NTb2NpYWlzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosSociais/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NTb2NpYWlzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosSociais/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NTb2NpYWlzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosSociais/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NTb2NpYWlzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/DadosSociais/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NTb2NpYWlzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Eventos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FamiliaUtentes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FamiliaUtentes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FamiliaUtentes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FamiliaUtentes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FamiliaUtentes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFtaWxpYVV0ZW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FotosVisita/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm90b3NWaXNpdGFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FotosVisita/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm90b3NWaXNpdGFcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FotosVisita/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm90b3NWaXNpdGFcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FotosVisita/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm90b3NWaXNpdGFcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/FotosVisita/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm90b3NWaXNpdGFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaEscalas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFFc2NhbGFzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaEscalas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFFc2NhbGFzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaEscalas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFFc2NhbGFzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaEscalas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFFc2NhbGFzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaEscalas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFFc2NhbGFzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaOrcamentos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFPcmNhbWVudG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaOrcamentos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFPcmNhbWVudG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaOrcamentos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFPcmNhbWVudG9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaOrcamentos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFPcmNhbWVudG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/LinhaOrcamentos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGluaGFPcmNhbWVudG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/MoradaUtentes/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9yYWRhVXRlbnRlc1xBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/MoradaUtentes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9yYWRhVXRlbnRlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/MoradaUtentes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9yYWRhVXRlbnRlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/MoradaUtentes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9yYWRhVXRlbnRlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/MoradaUtentes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9yYWRhVXRlbnRlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/MoradaUtentes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9yYWRhVXRlbnRlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Orcamentos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Orcamentos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Orcamentos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Orcamentos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Orcamentos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/OrigemContactos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JpZ2VtQ29udGFjdG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/OrigemContactos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JpZ2VtQ29udGFjdG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/OrigemContactos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JpZ2VtQ29udGFjdG9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/OrigemContactos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JpZ2VtQ29udGFjdG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/OrigemContactos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JpZ2VtQ29udGFjdG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ServicoContratado/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb0NvbnRyYXRhZG9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ServicoContratado/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb0NvbnRyYXRhZG9cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ServicoContratado/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb0NvbnRyYXRhZG9cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ServicoContratado/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb0NvbnRyYXRhZG9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/ServicoContratado/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb0NvbnRyYXRhZG9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Servicos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Servicos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Servicos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Servicos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Servicos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/SubSistemas/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViU2lzdGVtYXNcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/SubSistemas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViU2lzdGVtYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/SubSistemas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViU2lzdGVtYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/SubSistemas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViU2lzdGVtYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/SubSistemas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViU2lzdGVtYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/SubSistemas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViU2lzdGVtYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Tecnicos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Tecnicos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Tecnicos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Tecnicos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Tecnicos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjbmljb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Removed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xSZW1vdmVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Utentes/Revert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRlc1xSZXZlcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Visitas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Visitas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Visitas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Visitas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Visitas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diogo.neto/Dev/NovoCuidar2024/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ms0btlwzgo

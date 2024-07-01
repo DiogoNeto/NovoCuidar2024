@@ -8,10 +8,10 @@ namespace NovoCuidar2024.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "O campo é obrigatório.")]
-        public string Caminho { get; set; }
+        public string? Caminho { get; set; }
         [Required(ErrorMessage = "O campo é obrigatório.")]
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
         [ForeignKey("Visita")]
-        public int VisitaId { get; set; }
+        public int? VisitaId { get; set; }
     }
 }

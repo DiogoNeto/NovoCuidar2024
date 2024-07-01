@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label asp-for="IdInterno" class="control-label">Indentificador Interno *</label>
-                        <input asp-for="IdInterno" class="form-control" />
+                        <input asp-for="IdInterno" id="IdInterno" class="form-control"  value="@ViewBag.NovoIdInterno" readonly/>
                         <span asp-validation-for="IdInterno" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
@@ -70,24 +70,16 @@
                     </div>
                 </div>
             </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="Genero" class="control-label">Género</label>
-                        <label asp-for="Genero" class="control-label">
-                            <input type="radio" name="genero" value="m">
-                            Masculino
-                        </label>
-                        <label asp-for="Genero" class="control-label">
-                            <input type="radio" name="genero" value="f">
-                            Feminino
-                        </label>
-                        <label asp-for="Genero" class="control-label">
-                            <input type="radio" name="genero" value="o">
-                            Outro
-                        </label>
-
+                        <label asp-for="Genero" class="control-label">Genero</label>
+                        <select id="genero" name="genero" onchange="dropdownGeneroChanged()">
+                            <option value="">Selecione uma opção</option>
+                            <option value='m'>Masculino</option>
+                            <option value='f'>Feminino</option>
+                            <option value='o'>Outro</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -687,6 +679,15 @@
     function dropdownDocIdentificacaoChanged(selectElement) {
         // Get the selected value
         var selectedValue = document.getElementById("docIdentificacaoTipo").value;
+
+        console.log("Selected value: " + selectedValue);
+    }
+</script>
+
+<script>
+    function dropdownGeneroChanged(selectElement) {
+        // Get the selected value
+        var selectedValue = document.getElementById("genero").value;
 
         console.log("Selected value: " + selectedValue);
     }

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NovoCuidar2024.props" />
+</Project>

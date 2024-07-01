@@ -445,6 +445,10 @@
       "PackagePath": "staticwebassets\\uploads\\d9b94f96-09fe-4eae-8ec6-4e59d31fa809-7591.png_1200.png"
     },
     {
+      "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\desc",
+      "PackagePath": "staticwebassets\\uploads"
+    },
+    {
       "Id": "C:\\Users\\diogo.neto\\Dev\\NovoCuidar2024\\wwwroot\\uploads\\desktop.ini",
       "PackagePath": "staticwebassets\\uploads\\desktop.ini"
     },

@@ -552,7 +552,7 @@ namespace NovoCuidar2024.Migrations
                     b.ToTable("FamiliaUtentes");
                 });
 
-            modelBuilder.Entity("NovoCuidar2024.Models.FotosVisita", b =>
+            modelBuilder.Entity("NovoCuidar2024.Models.FotoVisita", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -568,17 +568,12 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("FotoVisita")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VisitaId")
+                    b.Property<int?>("VisitaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FotoVisita");
-
-                    b.ToTable("FotosVisita");
+                    b.ToTable("FotoVisita");
                 });
 
             modelBuilder.Entity("NovoCuidar2024.Models.LinhaEscala", b =>
@@ -805,6 +800,10 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("UtenteId")
                         .HasColumnType("int");
 
@@ -889,7 +888,6 @@ namespace NovoCuidar2024.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Foto")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Genero")
@@ -1058,6 +1056,9 @@ namespace NovoCuidar2024.Migrations
                     b.Property<string>("Periodicidade")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Servico")
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.ToTable("UtentesViewModel");
@@ -1114,13 +1115,6 @@ namespace NovoCuidar2024.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NovoCuidar2024.Models.FotosVisita", b =>
-                {
-                    b.HasOne("NovoCuidar2024.Models.Visita", null)
-                        .WithMany("fotosVisita")
-                        .HasForeignKey("FotoVisita");
-                });
-
             modelBuilder.Entity("NovoCuidar2024.Models.Visita", b =>
                 {
                     b.HasOne("NovoCuidar2024.Models.Utente", null)
@@ -1133,11 +1127,6 @@ namespace NovoCuidar2024.Migrations
             modelBuilder.Entity("NovoCuidar2024.Models.Utente", b =>
                 {
                     b.Navigation("Visita");
-                });
-
-            modelBuilder.Entity("NovoCuidar2024.Models.Visita", b =>
-                {
-                    b.Navigation("fotosVisita");
                 });
 #pragma warning restore 612, 618
         }
